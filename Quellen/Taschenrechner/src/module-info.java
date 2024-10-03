@@ -1,8 +1,5 @@
-/**
- * 
- */
-/**
- * 
- */
-module Taschenrechner {
+module calculator {
+	
+	exports at.fhooe.hackenberg.calculator;
+	
 }
