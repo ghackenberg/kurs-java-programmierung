@@ -5,6 +5,7 @@ Dieses Repository enthält Beispiele zum Kurs in Java Programmierung.
 ## Beispiele
 
 * [Taschenrechner](./Quellen/Taschenrechner/)
+* [Chat](./Quellen/Chat/)
 
 ## Dokumente
 
