@@ -1,0 +1,115 @@
+classDiagram
+
+    namespace Bytes {
+
+        class InputStream {
+            <<abstract>>
+            +read() int
+            +close() void
+        }
+
+        class BufferedInputStream {
+            -buf: byte[]
+            -count: int
+            -pos: int
+            +BufferedInputStream(s: InputStream, size: int)
+        }
+
+        class FileInputStream {
+            +FileInputStream(name: string)
+        }
+
+        class OutputStream {
+            <<abstract>>
+            +write(c: int)
+            +flush()
+            +close() void
+        }
+
+        class BufferedOutputStream {
+            -buf: byte[]
+            -count: int
+            +BufferedOutputStream(s: OutputStream, size: int)
+        }
+
+        class FileOutputStream {
+            +FileOutputStream(name: string)
+        }
+        
+    }
+
+    namespace Chars {
+
+        class Reader {
+            <<abstract>>
+            +read() int
+            +close() void
+        }
+
+        class BufferedReader {
+            +BufferedReader(r: Reader, size: int)
+            +readLine() String
+        }
+
+        class InputStreamReader {
+            +InputStreamReader(s: InputStream)
+        }
+
+        class FileReader {
+            +FileReader(name: String)
+        }
+
+        class Writer {
+            <<abstract>>
+            +write(str: String) void
+            +flush() void
+            +close() void
+        }
+
+        class BufferedWriter {
+            +BufferedWriter(w: Writer, size: int)
+            +newLine() void
+        }
+
+        class OutputStreamWriter {
+            +OutputStreamWriter(s: OutputStream)
+        }
+
+        class FileWriter {
+            +FileWriter(name: String)
+        }
+        
+    }
+
+
+    InputStream <|-- BufferedInputStream
+
+    InputStream <.. BufferedInputStream: stream
+
+    InputStream <|-- FileInputStream
+
+    OutputStream <|-- BufferedOutputStream
+
+    OutputStream <.. BufferedOutputStream: stream
+
+    OutputStream <|-- FileOutputStream
+
+    Reader <|-- BufferedReader
+
+    Reader <.. BufferedReader: reader
+
+    Reader <|-- InputStreamReader
+
+    Reader <|-- FileReader
+
+    InputStreamReader ..> InputStream: stream
+
+    Writer <|-- BufferedWriter
+
+    Writer <.. BufferedWriter: writer
+
+    Writer <|-- OutputStreamWriter
+
+    Writer <|-- FileWriter
+
+    OutputStreamWriter ..> OutputStream: stream
