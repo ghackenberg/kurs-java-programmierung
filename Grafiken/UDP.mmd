@@ -1,0 +1,34 @@
+classDiagram
+
+    namespace UDP {
+
+        class DatagramSocket {
+            +DatagramSocket()
+            +DatagramSocket(port: int)
+            +DatagramSocket(port: int, addr: InetAddress)
+            +receive(p: DatagramPacket) void
+            +send(p: DatagramPacket) void
+        }
+
+        class DatagramPacket {
+            +DatagramPacket()
+            +DatagramPacket(buf: byte[], len: int)
+            +DatagramPacket(buf: byte[], len: int, addr: InetAddress, port: int)
+            +getAddress() InetAddress
+            +getPort() int
+            +getLength() int
+            +getData() byte[]
+        }
+
+        class InetAddress {
+            +getByAddress(addr: byte[]) InetAddress$
+            +getByName(host: String) InetAddress$
+            +getLocalHost() InetAddress$
+            +getAddress() byte[]
+            +getHostName() String
+        }
+
+    }
+
+    DatagramSocket o-- InetAddress: address
+    DatagramPacket o-- InetAddress: address

@@ -1,0 +1,56 @@
+classDiagram
+
+    direction LR
+
+    namespace TCP {
+        class ServerSocket {
+            +ServerSocket()
+            +ServerSocket(port: int)
+            +ServerSocket(port: int, backlog: int)
+            +ServerSocket(port: int, backlog: int, addr: InetAddress)
+            +getInetAddress() InetAddress
+            +getLocalPort() int
+            +accept() Socket
+            +close() void
+        }
+
+        class Socket {
+            +Socket()
+            +Socket(addr: InetAddres, port: int)
+            +Socket(host: String, port: int)
+            +getInetAddress() InetAddress
+            +getPort() int
+            +getInputStream() InputStream
+            +getOutputStream() OutputStream
+            +close() void
+        }
+
+        class InetAddress {
+            +getByAddress(addr: byte[]) InetAddress$
+            +getByName(host: String) InetAddress$
+            +getLocalHost() InetAddress$
+            +getAddress() byte[]
+            +getHostName() String
+        }
+    }
+
+    namespace IO {
+        class InputStream {
+            +read() int
+            +close() int
+        }
+        class OutputStream {
+            +write(c: int) void
+            +flush() void
+            +close() void
+        }
+    }
+
+    ServerSocket o-- InetAddress: address
+
+    ServerSocket ..> Socket: accept
+
+    Socket o-- InetAddress: address
+
+    Socket o-- InputStream: input
+    Socket o-- OutputStream: output
