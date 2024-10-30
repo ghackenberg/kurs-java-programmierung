@@ -34,21 +34,21 @@ TODO
 
 TODO
 
-![](./Grafiken/IO.InputStream.svg)
+![](./Grafiken/IO/InputStream.svg)
 
 TODO
 
-![](./Grafiken/IO.OutputStream.svg)
+![](./Grafiken/IO/OutputStream.svg)
 
 #### Char Input/Output
 
 TODO
 
-![](./Grafiken/IO.Reader.svg)
+![](./Grafiken/IO/Reader.svg)
 
 TODO
 
-![](./Grafiken/IO.Writer.svg)
+![](./Grafiken/IO/Writer.svg)
 
 ### IP-Kommunikation
 
@@ -61,14 +61,14 @@ TODO
 
 TODO
 
-![](./Grafiken/Net.UDP.svg)
+![](./Grafiken/Net/UDP.svg)
 
 
 #### Transmission Control Protocol (TCP)
 
 TODO
 
-![](./Grafiken/Net.TCP.svg)
+![](./Grafiken/Net/TCP.svg)
 
 ### GUI-Programmierung
 
