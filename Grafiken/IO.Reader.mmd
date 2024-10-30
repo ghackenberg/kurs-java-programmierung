@@ -1,0 +1,42 @@
+classDiagram
+
+    namespace IO {
+
+        class InputStream {
+            <<abstract>>
+            +read() int
+            +close() void
+        }
+
+        class Reader {
+            <<abstract>>
+            +read() int
+            +close() void
+        }
+
+        class BufferedReader {
+            +BufferedReader(r: Reader, size: int)
+            +readLine() String
+        }
+
+        class InputStreamReader {
+            +InputStreamReader(s: InputStream)
+        }
+
+        class FileReader {
+            +FileReader(name: String)
+        }
+        
+    }
+
+    Reader <|-- BufferedReader
+
+    Reader <.. BufferedReader: reader
+
+    Reader <|-- InputStreamReader
+
+    Reader <|-- FileReader
+
+    InputStreamReader ..> InputStream: stream
+
+    style InputStream fill:white

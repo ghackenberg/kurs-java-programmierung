@@ -2,7 +2,7 @@ classDiagram
 
     direction LR
 
-    namespace TCP {
+    namespace Net {
         class ServerSocket {
             +ServerSocket()
             +ServerSocket(port: int)
@@ -54,3 +54,6 @@ classDiagram
 
     Socket o-- InputStream: input
     Socket o-- OutputStream: output
+
+    style InputStream fill:white
+    style OutputStream fill:white

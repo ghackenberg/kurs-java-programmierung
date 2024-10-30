@@ -1,0 +1,29 @@
+classDiagram
+
+    namespace IO {
+
+        class InputStream {
+            <<abstract>>
+            +read() int
+            +close() void
+        }
+
+        class BufferedInputStream {
+            -buf: byte[]
+            -count: int
+            -pos: int
+            +BufferedInputStream(s: InputStream, size: int)
+        }
+
+        class FileInputStream {
+            +FileInputStream(name: string)
+        }
+        
+    }
+
+
+    InputStream <|-- BufferedInputStream
+
+    InputStream <.. BufferedInputStream: stream
+
+    InputStream <|-- FileInputStream

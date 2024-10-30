@@ -1,0 +1,28 @@
+classDiagram
+
+    namespace IO {
+
+        class OutputStream {
+            <<abstract>>
+            +write(c: int) void
+            +flush() void
+            +close() void
+        }
+
+        class BufferedOutputStream {
+            -buf: byte[]
+            -count: int
+            +BufferedOutputStream(s: OutputStream, size: int)
+        }
+
+        class FileOutputStream {
+            +FileOutputStream(name: string)
+        }
+        
+    }
+
+    OutputStream <|-- BufferedOutputStream
+
+    OutputStream <.. BufferedOutputStream: stream
+
+    OutputStream <|-- FileOutputStream

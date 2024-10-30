@@ -1,0 +1,44 @@
+classDiagram
+
+    namespace IO {
+
+        class OutputStream {
+            <<abstract>>
+            +write(c: int)
+            +flush() void
+            +close() void
+        }
+
+        class Writer {
+            <<abstract>>
+            +write(str: String) void
+            +flush() void
+            +close() void
+        }
+
+        class BufferedWriter {
+            +BufferedWriter(w: Writer, size: int)
+            +newLine() void
+        }
+
+        class OutputStreamWriter {
+            +OutputStreamWriter(s: OutputStream)
+        }
+
+        class FileWriter {
+            +FileWriter(name: String)
+        }
+        
+    }
+
+    Writer <|-- BufferedWriter
+
+    Writer <.. BufferedWriter: writer
+
+    Writer <|-- OutputStreamWriter
+
+    Writer <|-- FileWriter
+
+    OutputStreamWriter ..> OutputStream: stream
+
+    style OutputStream fill:white
