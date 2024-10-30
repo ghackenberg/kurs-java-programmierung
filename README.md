@@ -16,8 +16,19 @@ Die nachstehenden Inhalte sind wie folgt gegliedert:
 
 Mit konkreten Beispielen lernt man doch am besten! Das Repository bietet dir die folgenden Beispiele, welche unterschiedliche Aspekte von Java wie Konsolen- und GUI-Entwicklung und IP-Kommunikation beleuchten:
 
-* [Konsole-Taschenrechner](./Quellen/Konsole-Taschenrechner/)
-* [Konsole-Chat](./Quellen/Konsole-Chat/)
+### [Konsole-Taschenrechner](./Quellen/Konsole-Taschenrechner/)
+
+TODO
+
+### [Konsole-Chat](./Quellen/Konsole-Chat/)
+
+TODO
+
+### [GUI-Chat](./Quellen/GUI-Chat/)
+
+TODO
+
+![](./Quellen/GUI-Chat/Screenshot.png)
 
 ## Themen
 
