@@ -61,14 +61,14 @@ TODO
 
 TODO
 
-![](./Grafiken/UDP.svg)
+![](./Grafiken/Net.UDP.svg)
 
 
 #### Transmission Control Protocol (TCP)
 
 TODO
 
-![](./Grafiken/TCP.svg)
+![](./Grafiken/Net.TCP.svg)
 
 ### GUI-Programmierung
 
