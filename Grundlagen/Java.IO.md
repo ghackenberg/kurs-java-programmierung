@@ -9,10 +9,6 @@ TODO
 
 TODO
 
-![](../Grafiken/IO/InputStream.svg)
-
-TODO
-
 ```java
 // Datei zum Lesen öffnen
 FileInputStream in = new FileInputStream("pfad.ext")
@@ -28,7 +24,7 @@ in.close()
 
 TODO
 
-![](../Grafiken/IO/OutputStream.svg)
+![](../Grafiken/IO/InputStream.svg)
 
 TODO
 
@@ -45,11 +41,11 @@ out.write(125)
 out.close()
 ```
 
-## Ein- und Ausgabe von Zeichenketten
-
 TODO
 
-![](../Grafiken/IO/Reader.svg)
+![](../Grafiken/IO/OutputStream.svg)
+
+## Ein- und Ausgabe von Zeichenketten
 
 TODO
 
@@ -83,7 +79,7 @@ buffered.close()
 
 TODO
 
-![](../Grafiken/IO/Writer.svg)
+![](../Grafiken/IO/Reader.svg)
 
 TODO
 
@@ -101,3 +97,5 @@ writer.close()
 ```
 
 TODO
+
+![](../Grafiken/IO/Writer.svg)
