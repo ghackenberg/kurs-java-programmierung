@@ -1,0 +1,79 @@
+classDiagram
+
+    direction LR
+
+    namespace JavaFX {
+
+        class Control {
+            <<abstract>>
+        }
+
+        class ScrollPane {
+            +fitToWidth: boolean
+            +fitToHeight: boolean
+            +pannable: boolean
+            +hmin: double
+            +hmax: double
+            +hvalue: double
+            +vmin: double
+            +vmax: double
+            +vvalue: double
+        }
+
+        class SplitPane {
+            +orientation: Orientation
+        }
+
+        class SplitPaneDivider["SplitPane.Divider"] {
+            +position: double
+        }
+
+        class TabPane {
+            +tabMinWidth: double
+            +tabMaxWidth: double
+            +tabMinHeight: double
+            +tabMaxHeight: double
+        }
+
+        class Tab {
+            +closable: boolean
+            +disabled: boolean
+            +selected: boolean
+            +text: String
+            +style: String
+        }
+
+        class ContextMenu {
+
+        }
+
+        class Tooltip {
+
+        }
+
+        class Node {
+            <<abstract>>
+        }
+
+    }
+
+    Control <|-- ScrollPane
+    Control <|-- SplitPane
+    Control <|-- TabPane
+
+    ScrollPane o-->"1" Node: content
+
+    SplitPane o-->"*" Node: items
+
+    SplitPaneDivider "*"<--o SplitPane: dividers
+
+    TabPane o-->"*" Tab
+    TabPane o-->"1" ContextMenu
+    TabPane o-->"1" Tooltip
+
+    Tab o-->"1" Node: content
+
+    style Node fill:white
+    style Control fill:white
+    style ContextMenu fill:white
+    style Tooltip fill:white

@@ -1,0 +1,78 @@
+classDiagram
+
+    direction LR
+
+    namespace JavaFX {
+
+        class Control {
+            <<abstract>>
+        }
+
+        class MenuBar {
+            +useSystemMenuBar: boolean
+        }
+
+        class Menu {
+
+        }
+
+        class MenuItem {
+
+        }
+
+        class CheckMenuItem {
+
+        }
+
+        class RadioMenuItem {
+
+        }
+
+        class ToolBar {
+            +orientation: Orientation
+        }
+
+        class ButtonBar {
+            +buttonMinWidth: double
+            +buttonOrder: String
+            -buttonData: Map~Node,ButtonBar.ButtonData~
+            -buttonUniformSize: Map~Node,Boolean~
+        }
+
+        class ButtonBarButtonData["ButtonBar.ButtonData"] {
+            -typeCode: String
+            -isCancelButton: boolean
+            -isDefaultButton: boolean
+        }
+
+        class Node {
+            <<abstract>>
+        }
+
+    }
+
+    Control <|-- MenuBar
+    Control <|-- ToolBar
+    Control <|-- ButtonBar
+
+    MenuBar o-->"*" Menu: menus
+
+    Menu o-->"*" MenuItem: items
+    
+    Menu --|> MenuItem
+
+    CheckMenuItem --|> MenuItem
+    RadioMenuItem --|> MenuItem
+
+    ToolBar o-->"*" Node: items
+
+    ButtonBar o-->"*" Node: buttons
+
+    ButtonBar ..>"*" ButtonBarButtonData
+
+    style Node fill:white
+    style Control fill:white
+    style Menu fill:white
+    style MenuItem fill:white
+    style CheckMenuItem fill:white
+    style RadioMenuItem fill:white

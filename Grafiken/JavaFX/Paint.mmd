@@ -1,0 +1,48 @@
+classDiagram
+
+    direction RL
+
+    namespace JavaFX {
+
+        class Color {
+            -red: double
+            -green: double
+            -blue: double
+        }
+
+        class Stop {
+            -offset: double
+        }
+
+        class LinearGradient {
+            -startX: double
+            -startY: double
+            -endX: double
+            -endY: double
+        }
+
+        class RadialGradient {
+            -centerX: double
+            -centerY: double
+            -radius: double
+            -focusAngle: double
+            -focusDistance: double
+        }
+
+        class Paint {
+            <<abstract>>
+        }
+
+    }
+
+    Color <--o"1" Stop
+
+    LinearGradient o-->"*" Stop
+    RadialGradient o-->"*" Stop
+
+    Paint <|-- Color
+
+    Paint <|-- LinearGradient
+    Paint <|-- RadialGradient
+
+    style Paint fill:white

@@ -1,0 +1,76 @@
+classDiagram
+
+    direction LR
+
+    namespace JavaFX {
+
+        class Pane {
+
+        }
+
+        class BorderPane {
+            +top: Node
+            +left: Node
+            +right: Node
+            +bottom: Node
+            +center: Node
+            -margins: Map~Node,Insets~
+        }
+
+        class GridPane {
+            +hgap: double
+            +vgap: double
+            -columnIndex: Map~Node,Integer~
+            -columnSpan: Map~Node,Integer~
+            -rowIndex: Map~Node,Integer~
+            -rowSpan: Map~Node,Integer~
+        }
+
+        class RowConstraints {
+            +minHeight: double
+            +maxHeight: double
+            +prefHeight: double
+            +percentHeight: double
+            +fillHeight: boolean
+            +valignment: VPos
+            +vgrow: Priority
+        }
+
+        class ColumnConstraints {
+            +minWidth: double
+            +maxWidth: double
+            +prefWidth: double
+            +percentWidth: double
+            +fillWidth: boolean
+            +halignment: HPos
+            +hgrow: Priority
+        }
+
+        class StackPane {
+            +alignment: Pos
+            -margins: Map~Node,Insets~
+        }
+
+        class FlowPane {
+            +orientation: Orientation
+            +columnHalignment: HPos
+            +rowValignment: VPos
+            +alignment: Pos
+            +hgap: double
+            +vgap: double
+            -margins: Map~Node,Insets~
+        }
+
+    }
+
+    Pane <|-- BorderPane
+    Pane <|-- GridPane
+    Pane <|-- StackPane
+    Pane <|-- FlowPane
+
+    GridPane o-->"*" ColumnConstraints
+    GridPane o-->"*" RowConstraints
+
+    style Node fill:white
+    style Parent fill:white
+    style Pane fill:white

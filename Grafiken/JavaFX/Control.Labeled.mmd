@@ -1,0 +1,83 @@
+classDiagram
+
+    direction LR
+
+    namespace JavaFX {
+
+        class Control {
+            <<abstract>>
+        }
+
+        class Labeled {
+            <<abstract>>
+        }
+
+        class Label {
+
+        }
+
+        class ButtonBase {
+            <<abstract>>
+        }
+
+        class Button {
+
+        }
+
+        class ToggleButton {
+
+        }
+
+        class RadioButton {
+
+        }
+
+        class Toggle {
+            <<interface>>
+        }
+
+        class ToggleGroup {
+
+        }
+
+        class MenuButton {
+
+        }
+
+        class SplitMenuButton {
+
+        }
+
+        class CheckBox {
+
+        }
+
+        class Hyperlink {
+
+        }
+
+    }
+
+    Control <|-- Labeled
+    
+    Labeled <|-- Label
+    Labeled <|-- ButtonBase
+
+    ButtonBase <|-- Button
+    ButtonBase <|-- Hyperlink
+    ButtonBase <|-- CheckBox
+    ButtonBase <|-- MenuButton
+    ButtonBase <|-- ToggleButton
+
+    MenuButton <|-- SplitMenuButton
+
+    ToggleButton <|-- RadioButton
+
+    Toggle <|-- RadioButton
+
+    ToggleGroup o-->"*" Toggle
+    ToggleGroup ..> Toggle: selectedToggle
+
+    style Control fill:white
+    style ToggleGroup fill:white
+    style Toggle fill:white

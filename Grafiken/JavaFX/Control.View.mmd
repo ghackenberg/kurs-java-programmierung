@@ -1,0 +1,34 @@
+classDiagram
+
+    direction LR
+
+    namespace JavaFX {
+
+        class Control {
+            <<abstract>>
+        }
+
+        class ListView {
+
+        }
+
+        class TableView {
+
+        }
+
+        class TreeView {
+
+        }
+
+        class TreeTableView {
+
+        }
+
+    }
+
+    Control <|-- ListView
+    Control <|-- TableView
+    Control <|-- TreeView
+    Control <|-- TreeTableView
+
+    style Control fill:white

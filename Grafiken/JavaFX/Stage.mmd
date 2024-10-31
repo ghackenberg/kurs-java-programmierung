@@ -1,0 +1,55 @@
+classDiagram
+
+    namespace JavaFX {
+
+        class Application {
+            +launch(args: String[]) void$
+            +start(primaryStage: Stage): void
+        }
+
+        class Stage {
+            +setTitle(title: String) void
+            +show() void
+        }
+
+        class Scene {
+            +x: double
+            +y: double
+            +width: double
+            +height: double
+        }
+
+        class Node {
+            <<abstract>>
+            +visible: boolean
+            +disabled: boolean
+            +hover: boolean
+            +focused: boolean
+            +pressed: boolean
+            +managed: boolean
+            +layoutX: double
+            +layoutY: double
+            +style: String
+            +requestFocus() void
+        }
+
+        class Parent {
+            <<abstract>>
+            -minWidth: double
+            -minHeight: double
+            -prefWidth: double
+            -prefHeight: double
+            +layout() void
+        }
+
+    }
+
+    Application ..> Stage
+
+    Stage o-->"1" Scene
+
+    Parent "1"<--o Scene: root
+
+    Node <|-- Parent
+
+    Node "*"<--o Parent: children

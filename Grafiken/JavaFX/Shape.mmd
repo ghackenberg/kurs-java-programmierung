@@ -1,0 +1,93 @@
+classDiagram
+
+    direction LR
+
+    namespace JavaFX {
+
+        class Node {
+            <<abstract>>
+        }
+
+        class Paint {
+            <<abstract>>
+        }
+
+        class Shape {
+            <<abstract>>
+            +strokeWidth: double
+            +smooth: boolean
+        }
+
+        class Line {
+            +startX: double
+            +startY: double
+            +endX: double
+            +endY: double
+        }
+
+        class Polyline {
+            +points: double[]
+        }
+
+        class Rectangle {
+            +x: double
+            +y: double
+            +width: double
+            +height: double
+            +arcWidth: double
+            +arcHeight: double
+        }
+
+        class Polygon {
+            +points: double[]
+        }
+
+        class Circle {
+            +centerX: double
+            +centerY: double
+            +radius: double
+        }
+
+        class Ellipse {
+            +centerX: double
+            +centerY: double
+            +radiusX: double
+            +radiusY: double
+        }
+        
+        class Text {
+            +x: double
+            +y: double
+            +text: String
+            +textOrigin: VPos
+            +textAlignment: TextAlignment
+            +wrappingWidth: double
+            +lineSpacing: double
+        }
+
+        class Font {
+            -name: String
+            -size: double
+            -style: String
+        }
+
+    }
+
+    Node <|-- Shape
+
+    Paint "2"<--o Shape: fill / stroke
+
+    Shape <|-- Line
+    Shape <|-- Polyline
+    
+    Shape <|-- Rectangle
+    Shape <|-- Polygon
+    
+    Shape <|-- Circle
+    Shape <|-- Ellipse
+
+    Shape <|-- Text
+
+    Text ..>"1" Font
+
+    style Node fill:white

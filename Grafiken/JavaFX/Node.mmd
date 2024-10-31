@@ -1,0 +1,74 @@
+classDiagram
+
+    namespace JavaFX {
+        
+        class Node {
+            <<abstract>>
+        }
+
+        class ImageView {
+            +x: double
+            +y: double
+            +fitWidth: double
+            +fitHeight: double
+            +preserveRatio: boolean
+            +smooth: boolean
+        }
+
+        class MediaView {
+            +x: double
+            +y: double
+            +fitWidth: double
+            +fitHeight: double
+            +preserveRatio: boolean
+            +smooth: boolean
+        }
+
+        class Canvas {
+            +width: double
+            +height: double
+        }
+
+        class GraphicsContext {
+            +fill() void
+            +stroke() void
+            +clip() void
+        }
+
+        class Image {
+            +width: double
+            +height: double
+        }
+
+        class MediaPlayer {
+            +rate: double
+            +volume: double
+            +currentTime: double
+            +play() void
+            +pause() void
+            +stop() void
+        }
+
+        class Media {
+            +width: double
+            +height: double
+            +duration: double
+        }
+
+    }
+
+    Node <|-- ImageView
+
+    Node <|-- MediaView
+
+    Node <|-- Canvas
+
+    Canvas o-->"1" GraphicsContext
+
+    ImageView o-->"1" Image
+
+    MediaView o-->"1" MediaPlayer
+
+    MediaPlayer o-->"1" Media
+
+    style Node fill:white

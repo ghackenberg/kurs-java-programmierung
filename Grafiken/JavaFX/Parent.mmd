@@ -1,0 +1,118 @@
+classDiagram
+
+    namespace JavaFX {
+
+        class Parent {
+            <<abstract>>
+        }
+
+        class Group {
+            +autoSizeChildren: boolean
+        }
+
+        class Region {
+            +minWidth: double
+            +minHeight: double
+            +maxWidth: double
+            +maxHeight: double
+            +prefWidth: double
+            +prefHeight: double
+            +width: double
+            +height: double
+        }
+
+        class WebView {
+            +minWidth: double
+            +minHeight: double
+            +maxWidth: double
+            +maxHeight: double
+            +prefWidth: double
+            +prefHeight: double
+            +width: double
+            +height: double
+            +zoom: double
+        }
+
+        class WebEngine {
+            +location: String
+            +document: Document
+            +title: String
+            +load(url: String) void
+            +loadContent(content: String) void
+            +reload() void
+        }
+
+        class Background {
+
+        }
+
+        class BackgroundFill {
+            -fill: Paint
+        }
+
+        class BackgroundImage {
+            -image: Image
+        }
+
+        class Border {
+
+        }
+
+        class BorderStroke {
+            -topStroke: Paint
+            -leftStroke: Paint
+            -rightStroke: Paint
+            -bottomStroke: Paint
+        }
+
+        class BorderImage {
+            -image: Image
+        }
+
+        class Insets {
+            -top: double
+            -left: double
+            -right: double
+            -bottom: double
+        }
+
+        class CornerRadii {
+            -topLeft: double
+            -topRight: double
+            -bottomLeft: double
+            -bottomRight: double
+        }
+
+        class BorderWidths {
+            -top: double
+            -left: double
+            -right: double
+            -bottom: double
+        }
+
+    }
+
+    Parent <|-- Group
+
+    Parent <|-- Region
+
+    Parent <|-- WebView
+
+    Region o-->"2" Insets: padding
+    Region o-->"1" Background
+    Region o-->"1" Border
+
+    Background o-->"*" BackgroundFill
+    Background o-->"*" BackgroundImage
+
+    Border o-->"*" BorderStroke
+    Border o-->"*" BorderImage
+
+    BackgroundFill o-->"1" CornerRadii
+
+    BorderStroke o-->"1" CornerRadii
+    BorderStroke o-->"1" BorderWidths
+
+    WebView o-->"1" WebEngine
+
+    style Parent fill:white
