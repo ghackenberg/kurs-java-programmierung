@@ -20,9 +20,17 @@ Mit konkreten Beispielen lernt man doch am besten! Das Repository bietet dir die
 
 TODO
 
+![](./Quellen/Konsole-Taschenrechner/Screenshot.png)
+
 ### [Konsole-Chat](./Quellen/Konsole-Chat/)
 
 TODO
+
+![](./Quellen/Konsole-Chat/Screenshot-Client.png)
+
+TODO
+
+![](./Quellen/Konsole-Chat/Screenshot-Server.png)
 
 ### [GUI-Chat](./Quellen/GUI-Chat/)
 
