@@ -17,9 +17,9 @@ Die nachstehenden Inhalte sind wie folgt gegliedert:
 Je nach konkreter Anwendungen kommen in der Regel verschiedene Bibliotheken und Frameworks zum Einsatz.
 Im Rahmen dieses Kurses werden die folgenden Themen betrachtet:
 
-* [Dateneingabe und -ausgabe mit `java.io`](./Themen/Java.IO.md)
-* [Netzwerk-Kommunikation mit `java.net`](./Themen/Java.Net.md)
-* [Grafische Benutzerschnittstellen mit `javafx`](./Themen/JavaFX.md)
+* [Dateneingabe und -ausgabe mit `java.io`](./Grundlagen/Java.IO.md)
+* [Netzwerk-Kommunikation mit `java.net`](./Grundlagen/Java.Net.md)
+* [Grafische Benutzerschnittstellen mit `javafx`](./Grundlagen/JavaFX.md)
 
 ## Anwendungen
 
