@@ -20,6 +20,8 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -33,8 +35,61 @@ public class Program extends Application {
 		Program.launch(args);
 		
 	}
+
+	private Spinner<Integer> receivePort;
+	private DatagramSocket receiveSocket;
+	private VBox receiveMessages;
 	
-	private DatagramSocket socket;
+	private TextField sendName;
+	private TextField sendHost;
+	private Spinner<Integer> sendPort;
+	private TextField sendMessage;
+	
+	private void send() {
+		try (DatagramSocket sendSocket = new DatagramSocket()) {
+			// Prüfe den Nachrichteninhalt
+			if (sendMessage.getText().trim().length() == 0) {
+				throw new IOException("Bitte gib eine Nachricht ein.");
+			}
+			
+			// Nachrichtentext erzeugen
+			String data = sendName.getText() + ": " + sendMessage.getText();
+			
+			// Nachrichtentext umwandeln
+			byte[] buffer = data.getBytes();
+
+			// UDP-Paket erzeugen
+			DatagramPacket packet = new DatagramPacket(buffer, buffer.length, InetAddress.getByName(sendHost.getText()), sendPort.getValue());
+
+			// UDP-Paket senden				
+			sendSocket.send(packet);
+			
+			// Nachrichtentext in der Nachrichtenliste anzeigen
+			Label label = new Label(data);
+			label.setPadding(new Insets(10));
+			label.setStyle("-fx-background-color: lightgreen; -fx-background-radius: 10;");
+			label.setWrapText(true);
+			
+			HBox box = new HBox();
+			box.setAlignment(Pos.CENTER_RIGHT);
+			box.getChildren().add(label);
+			
+			receiveMessages.getChildren().add(box);
+			
+			// Inhalt des Texteingabefeldes leeren
+			sendMessage.setText("");
+			
+			// Fokus zurück auf das Texteingabefeld setzen
+			sendMessage.requestFocus();
+		} catch (IOException e) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Problem beim Senden");
+			alert.setHeaderText("Es ist ein Problem beim Senden aufgetreten.");
+			alert.setContentText(e.getLocalizedMessage());
+			
+			alert.showAndWait();
+		}
+	}
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -47,9 +102,6 @@ public class Program extends Application {
 		ownNameDialog.setContentText("Name:");
 		ownNameDialog.showAndWait();
 		
-		TextField ownNameField = new TextField(ownNameDialog.getResult());
-		ownNameField.setDisable(true);
-		
 		// Portnummer abfragen
 		
 		TextInputDialog ownPortDialog = new TextInputDialog("4000");
@@ -58,19 +110,13 @@ public class Program extends Application {
 		ownPortDialog.setContentText("Port:");
 		ownPortDialog.showAndWait();
 		
-		Spinner<Integer> ownPortSpinner = new Spinner<Integer>(0, 65536, Integer.parseInt(ownPortDialog.getResult()));
-		ownPortSpinner.setDisable(true);
-		
 		// IP-Adresse abfragen
 		
-		TextInputDialog otherHostDialog = new TextInputDialog("localhost");
+		TextInputDialog otherHostDialog = new TextInputDialog("127.0.0.1");
 		otherHostDialog.setTitle("Die IP-Adresse zum Senden");
 		otherHostDialog.setHeaderText("Gib bitte die IP-Addresse zum Senden von Nachrichten ein.");
 		otherHostDialog.setContentText("IP-Adresse:");
 		otherHostDialog.showAndWait();
-		
-		TextField otherHostField = new TextField(otherHostDialog.getResult());
-		otherHostField.setDisable(true);
 		
 		// Portnummer abfragen
 		
@@ -80,95 +126,87 @@ public class Program extends Application {
 		otherPortDialog.setContentText("Port:");
 		otherPortDialog.showAndWait();
 		
-		Spinner<Integer> otherPortSpinner = new Spinner<Integer>(0, 65536, Integer.parseInt(otherPortDialog.getResult()));
-		otherPortSpinner.setDisable(true);
-		
 		// GUI erstellen
 		
-		VBox receiveMessageList = new VBox();
-		receiveMessageList.setSpacing(10);
-		receiveMessageList.setPadding(new Insets(10));
+		receivePort = new Spinner<Integer>(0, 65536, Integer.parseInt(ownPortDialog.getResult()));
+		receivePort.setDisable(true);
+		receivePort.setPrefWidth(75);
 		
-		ScrollPane receiveScrollBar = new ScrollPane();
-		receiveScrollBar.setFitToWidth(true);
-		receiveScrollBar.setContent(receiveMessageList);
-		// Auto-Scroll an das Listenende
-		receiveScrollBar.vvalueProperty().bind(receiveMessageList.heightProperty());
+		receiveMessages = new VBox();
+		receiveMessages.setSpacing(10);
+		receiveMessages.setPadding(new Insets(10));
 		
-		TextField sendMessageField = new TextField("Nachricht");
+		sendName = new TextField(ownNameDialog.getResult());
+		sendName.setDisable(true);
 		
-		Button sendButton = new Button("Senden");
-		sendButton.setOnAction(event -> {
-			try (DatagramSocket socket = new DatagramSocket()) {
-				// Nachrichtentext erzeugen
-				String data = ownNameField.getText() + ": " + sendMessageField.getText();
-				
-				// Nachrichtentext umwandeln
-				byte[] buffer = data.getBytes();
-
-				// UDP-Paket erzeugen
-				DatagramPacket packet = new DatagramPacket(buffer, buffer.length, InetAddress.getByName(otherHostField.getText()), otherPortSpinner.getValue());
-
-				// UDP-Paket senden				
-				socket.send(packet);
-				
-				// Nachrichtentext in der Nachrichtenliste anzeigen
-				Label label = new Label(data);
-				label.setPadding(new Insets(10));
-				label.setStyle("-fx-background-color: lightgreen; -fx-background-radius: 10;");
-				label.setWrapText(true);
-				
-				HBox box = new HBox();
-				box.setAlignment(Pos.CENTER_RIGHT);
-				box.getChildren().add(label);
-				
-				receiveMessageList.getChildren().add(box);
-				
-				// Inhalt des Texteingabefeldes leeren
-				sendMessageField.setText("");
-				
-				// Fokus zurück auf das Texteingabefeld setzen
-				sendMessageField.requestFocus();
-			} catch (IOException e) {
-				Alert alert = new Alert(AlertType.ERROR);
-				alert.setTitle("Problem beim Senden");
-				alert.setHeaderText("Es ist ein Problem beim Senden aufgetreten.");
-				alert.setContentText(e.getLocalizedMessage());
-				
-				alert.showAndWait();
+		sendHost = new TextField(otherHostDialog.getResult());
+		sendHost.setDisable(true);
+		sendHost.setPrefWidth(75);
+		
+		sendPort = new Spinner<Integer>(0, 65536, Integer.parseInt(otherPortDialog.getResult()));
+		sendPort.setDisable(true);
+		sendPort.setPrefWidth(75);
+		
+		sendMessage = new TextField("Nachricht");
+		sendMessage.setOnKeyPressed(event -> {
+			if (event.getCode() == KeyCode.ENTER) {
+				send();
 			}
 		});
 		
-		GridPane receiveToolBar = new GridPane();
-		receiveToolBar.setHgap(10);
-		receiveToolBar.setPadding(new Insets(10));
-		receiveToolBar.add(new Label("Port:"), 0, 0);
-		receiveToolBar.add(ownPortSpinner, 1, 0);
+		ScrollPane receivePane = new ScrollPane();
+		receivePane.setFitToWidth(true);
+		receivePane.setContent(receiveMessages);
+		// Auto-Scroll an das Listenende
+		receivePane.vvalueProperty().bind(receiveMessages.heightProperty());
 		
-		GridPane sendToolBar = new GridPane();
-		sendToolBar.setHgap(10);
-		sendToolBar.setPadding(new Insets(10, 10, 0, 10));
-		sendToolBar.add(new Label("Name:"), 0, 0);
-		sendToolBar.add(ownNameField, 1, 0);
-		sendToolBar.add(new Label("Host:"), 2, 0);
-		sendToolBar.add(otherHostField, 3, 0);
-		sendToolBar.add(new Label("Port:"), 4, 0);
-		sendToolBar.add(otherPortSpinner, 5, 0);
+		Button sendButton = new Button("Senden");
+		sendButton.setOnAction(event -> {
+			send();
+		});
 		
-		BorderPane sendMessageBar = new BorderPane();
-		sendMessageBar.setPadding(new Insets(10));
-		sendMessageBar.setLeft(new Label("Nachricht:"));
-		sendMessageBar.setCenter(sendMessageField);
-		sendMessageBar.setRight(sendButton);
-		BorderPane.setMargin(sendMessageField, new Insets(0, 10, 0, 10));
+		ImageView sendImage = new ImageView("send.png");
+		sendImage.setFitWidth(16);
+		sendImage.setFitHeight(16);
 		
-		VBox sendBar = new VBox();
-		sendBar.getChildren().add(sendToolBar);
-		sendBar.getChildren().add(sendMessageBar);
+		ImageView receiveImage = new ImageView("receive.png");
+		receiveImage.setFitWidth(16);
+		receiveImage.setFitHeight(16);
+		
+		Label sendLabel = new Label("Senden");
+		sendLabel.setStyle("-fx-font-weight: bold;");
+		
+		Label receiveLabel = new Label("Empfangen");
+		receiveLabel.setStyle("-fx-font-weight: bold;");
+		
+		GridPane settingsBar = new GridPane();
+		settingsBar.setHgap(10);
+		settingsBar.setVgap(10);
+		settingsBar.setPadding(new Insets(10));
+		
+		settingsBar.add(receiveImage, 0, 0);
+		settingsBar.add(receiveLabel, 1, 0);
+		settingsBar.add(new Label("Port:"), 2, 0);
+		settingsBar.add(receivePort, 3, 0);
+
+		settingsBar.add(sendImage, 0, 1);
+		settingsBar.add(sendLabel, 1, 1);
+		settingsBar.add(new Label("Port:"), 2, 1);
+		settingsBar.add(sendPort, 3, 1);
+		settingsBar.add(new Label("Host:"), 4, 1);
+		settingsBar.add(sendHost, 5, 1);
+		settingsBar.add(new Label("Name:"), 6, 1);
+		settingsBar.add(sendName, 7, 1);
+		
+		BorderPane sendBar = new BorderPane();
+		sendBar.setPadding(new Insets(10));
+		sendBar.setCenter(sendMessage);
+		sendBar.setRight(sendButton);
+		BorderPane.setMargin(sendMessage, new Insets(0, 10, 0, 10));
 		
 		BorderPane main = new BorderPane();
-		main.setTop(receiveToolBar);
-		main.setCenter(receiveScrollBar);
+		main.setTop(settingsBar);
+		main.setCenter(receivePane);
 		main.setBottom(sendBar);
 		
 		Scene scene = new Scene(main, 640, 480);
@@ -177,7 +215,7 @@ public class Program extends Application {
 		primaryStage.setTitle("GUI-Chat");
 		primaryStage.setOnCloseRequest(event -> {
 			try {
-				socket.close();
+				receiveSocket.close();
 			} catch (Exception e) {
 				Alert alert = new Alert(AlertType.ERROR);
 				alert.setTitle("Problem beim Schließen");
@@ -194,7 +232,7 @@ public class Program extends Application {
 		Thread thread = new Thread(() -> {
 			try {
 				// UDP-Socket erzeugen
-				socket = new DatagramSocket(ownPortSpinner.getValue());
+				receiveSocket = new DatagramSocket(receivePort.getValue());
 				
 				// Datenbuffer erzeugen
 				byte[] buffer = new byte[1024];
@@ -206,7 +244,7 @@ public class Program extends Application {
 				while (true) {
 					try {
 						// UDP-Paket empfangen
-						socket.receive(packet);
+						receiveSocket.receive(packet);
 						
 						// Nachrichtentext auslesen 
 						String data = new String(packet.getData(), packet.getOffset(), packet.getLength());
@@ -221,7 +259,7 @@ public class Program extends Application {
 							HBox box = new HBox();
 							box.getChildren().add(label);
 							
-							receiveMessageList.getChildren().add(box);
+							receiveMessages.getChildren().add(box);
 						});
 					} catch (IOException e) {
 						if (e instanceof SocketException && e.getCause() instanceof AsynchronousCloseException) {
