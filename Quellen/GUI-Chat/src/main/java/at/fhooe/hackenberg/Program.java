@@ -4,18 +4,24 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.net.SocketException;
+import java.nio.channels.AsynchronousCloseException;
 
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -35,67 +41,73 @@ public class Program extends Application {
 		
 		// Nutzernamen abfragen
 		
-		TextInputDialog nameInput = new TextInputDialog("Anonymous");
-		nameInput.setTitle("Dein Name");
-		nameInput.setHeaderText("Gib bitte deinen Namen ein.");
-		nameInput.setContentText("Name:");
-		nameInput.showAndWait();
+		TextInputDialog ownNameDialog = new TextInputDialog("Anonymous");
+		ownNameDialog.setTitle("Dein Name");
+		ownNameDialog.setHeaderText("Gib bitte deinen Namen zum Senden von Nachrichten ein.");
+		ownNameDialog.setContentText("Name:");
+		ownNameDialog.showAndWait();
 		
-		String name = nameInput.getResult();
+		TextField ownNameField = new TextField(ownNameDialog.getResult());
+		ownNameField.setDisable(true);
 		
 		// Portnummer abfragen
 		
-		TextInputDialog ownPortInput = new TextInputDialog("4000");
-		ownPortInput.setTitle("Dein Port zum Empfangen");
-		ownPortInput.setHeaderText("Gib bitte deinen Port zum Empfangen von Nachrichten ein.");
-		ownPortInput.setContentText("Port:");
-		ownPortInput.showAndWait();
+		TextInputDialog ownPortDialog = new TextInputDialog("4000");
+		ownPortDialog.setTitle("Dein Port zum Empfangen");
+		ownPortDialog.setHeaderText("Gib bitte deinen Port zum Empfangen von Nachrichten ein.");
+		ownPortDialog.setContentText("Port:");
+		ownPortDialog.showAndWait();
 		
-		int ownPort = Integer.parseInt(ownPortInput.getResult());
+		Spinner<Integer> ownPortSpinner = new Spinner<Integer>(0, 65536, Integer.parseInt(ownPortDialog.getResult()));
+		ownPortSpinner.setDisable(true);
 		
 		// IP-Adresse abfragen
 		
-		TextInputDialog otherAddressInput = new TextInputDialog("localhost");
-		otherAddressInput.setTitle("Die IP-Adresse zum Senden");
-		otherAddressInput.setHeaderText("Gib bitte die IP-Addresse zum Senden von Nachrichten ein.");
-		otherAddressInput.setContentText("IP-Adresse:");
-		otherAddressInput.showAndWait();
+		TextInputDialog otherHostDialog = new TextInputDialog("localhost");
+		otherHostDialog.setTitle("Die IP-Adresse zum Senden");
+		otherHostDialog.setHeaderText("Gib bitte die IP-Addresse zum Senden von Nachrichten ein.");
+		otherHostDialog.setContentText("IP-Adresse:");
+		otherHostDialog.showAndWait();
 		
-		InetAddress otherAddress = InetAddress.getByName(otherAddressInput.getResult());
+		TextField otherHostField = new TextField(otherHostDialog.getResult());
+		otherHostField.setDisable(true);
 		
 		// Portnummer abfragen
 		
-		TextInputDialog otherPortInput = new TextInputDialog("4000");
-		otherPortInput.setTitle("Der Port zum Senden");
-		otherPortInput.setHeaderText("Gib bitte den Port zum Senden von Nachrichten ein.");
-		otherPortInput.setContentText("Port:");
-		otherPortInput.showAndWait();
+		TextInputDialog otherPortDialog = new TextInputDialog("4000");
+		otherPortDialog.setTitle("Der Port zum Senden");
+		otherPortDialog.setHeaderText("Gib bitte den Port zum Senden von Nachrichten ein.");
+		otherPortDialog.setContentText("Port:");
+		otherPortDialog.showAndWait();
 		
-		int otherPort = Integer.parseInt(otherPortInput.getResult());
+		Spinner<Integer> otherPortSpinner = new Spinner<Integer>(0, 65536, Integer.parseInt(otherPortDialog.getResult()));
+		otherPortSpinner.setDisable(true);
 		
 		// GUI erstellen
 		
-		VBox vertical = new VBox();
-		vertical.setSpacing(10);
-		vertical.setPadding(new Insets(10));
+		VBox receiveMessageList = new VBox();
+		receiveMessageList.setSpacing(10);
+		receiveMessageList.setPadding(new Insets(10));
 		
-		ScrollPane scroll = new ScrollPane();
-		scroll.setFitToWidth(true);
-		scroll.setContent(vertical);
+		ScrollPane receiveScrollBar = new ScrollPane();
+		receiveScrollBar.setFitToWidth(true);
+		receiveScrollBar.setContent(receiveMessageList);
+		// Auto-Scroll an das Listenende
+		receiveScrollBar.vvalueProperty().bind(receiveMessageList.heightProperty());
 		
-		TextField message = new TextField("Nachricht");
+		TextField sendMessageField = new TextField("Nachricht");
 		
-		Button send = new Button("Senden");
-		send.setOnAction(event -> {
+		Button sendButton = new Button("Senden");
+		sendButton.setOnAction(event -> {
 			try (DatagramSocket socket = new DatagramSocket()) {
 				// Nachrichtentext erzeugen
-				String data = name + ": " + message.getText();
+				String data = ownNameField.getText() + ": " + sendMessageField.getText();
 				
 				// Nachrichtentext umwandeln
 				byte[] buffer = data.getBytes();
 
 				// UDP-Paket erzeugen
-				DatagramPacket packet = new DatagramPacket(buffer, buffer.length, otherAddress, otherPort);
+				DatagramPacket packet = new DatagramPacket(buffer, buffer.length, InetAddress.getByName(otherHostField.getText()), otherPortSpinner.getValue());
 
 				// UDP-Paket senden				
 				socket.send(packet);
@@ -110,27 +122,54 @@ public class Program extends Application {
 				box.setAlignment(Pos.CENTER_RIGHT);
 				box.getChildren().add(label);
 				
-				vertical.getChildren().add(box);
+				receiveMessageList.getChildren().add(box);
 				
 				// Inhalt des Texteingabefeldes leeren
-				message.setText("");
+				sendMessageField.setText("");
 				
 				// Fokus zurück auf das Texteingabefeld setzen
-				message.requestFocus();
+				sendMessageField.requestFocus();
 			} catch (IOException e) {
-				e.printStackTrace();
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Problem beim Senden");
+				alert.setHeaderText("Es ist ein Problem beim Senden aufgetreten.");
+				alert.setContentText(e.getLocalizedMessage());
+				
+				alert.showAndWait();
 			}
 		});
 		
-		BorderPane bottom = new BorderPane();
-		bottom.setPadding(new Insets(10));
-		bottom.setCenter(message);
-		bottom.setRight(send);
-		BorderPane.setMargin(send, new Insets(0, 0, 0, 10));
+		GridPane receiveToolBar = new GridPane();
+		receiveToolBar.setHgap(10);
+		receiveToolBar.setPadding(new Insets(10));
+		receiveToolBar.add(new Label("Port:"), 0, 0);
+		receiveToolBar.add(ownPortSpinner, 1, 0);
+		
+		GridPane sendToolBar = new GridPane();
+		sendToolBar.setHgap(10);
+		sendToolBar.setPadding(new Insets(10, 10, 0, 10));
+		sendToolBar.add(new Label("Name:"), 0, 0);
+		sendToolBar.add(ownNameField, 1, 0);
+		sendToolBar.add(new Label("Host:"), 2, 0);
+		sendToolBar.add(otherHostField, 3, 0);
+		sendToolBar.add(new Label("Port:"), 4, 0);
+		sendToolBar.add(otherPortSpinner, 5, 0);
+		
+		BorderPane sendMessageBar = new BorderPane();
+		sendMessageBar.setPadding(new Insets(10));
+		sendMessageBar.setLeft(new Label("Nachricht:"));
+		sendMessageBar.setCenter(sendMessageField);
+		sendMessageBar.setRight(sendButton);
+		BorderPane.setMargin(sendMessageField, new Insets(0, 10, 0, 10));
+		
+		VBox sendBar = new VBox();
+		sendBar.getChildren().add(sendToolBar);
+		sendBar.getChildren().add(sendMessageBar);
 		
 		BorderPane main = new BorderPane();
-		main.setCenter(scroll);
-		main.setBottom(bottom);
+		main.setTop(receiveToolBar);
+		main.setCenter(receiveScrollBar);
+		main.setBottom(sendBar);
 		
 		Scene scene = new Scene(main, 640, 480);
 		
@@ -140,7 +179,12 @@ public class Program extends Application {
 			try {
 				socket.close();
 			} catch (Exception e) {
-				e.printStackTrace();
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Problem beim Schließen");
+				alert.setHeaderText("Es ist ein Problem beim Schließen des UDP-Socket aufgetreten.");
+				alert.setContentText(e.getLocalizedMessage());
+				
+				alert.showAndWait();
 			}
 		});
 		primaryStage.show();
@@ -150,7 +194,7 @@ public class Program extends Application {
 		Thread thread = new Thread(() -> {
 			try {
 				// UDP-Socket erzeugen
-				socket = new DatagramSocket(ownPort);
+				socket = new DatagramSocket(ownPortSpinner.getValue());
 				
 				// Datenbuffer erzeugen
 				byte[] buffer = new byte[1024];
@@ -160,29 +204,53 @@ public class Program extends Application {
 				
 				// UDP-Pakete in einer Schleife empfangen
 				while (true) {
-					// UDP-Paket empfangen
-					socket.receive(packet);
-					
-					// Nachrichtentext auslesen 
-					String data = new String(packet.getData(), packet.getOffset(), packet.getLength());
-					
-					// Nachrichtentext in der GUI anzeigen
-					Platform.runLater(() -> {
-						Label label = new Label(data);
-						label.setPadding(new Insets(10));
-						label.setStyle("-fx-background-color: lightblue; -fx-background-radius: 10;");
-						label.setWrapText(true);
+					try {
+						// UDP-Paket empfangen
+						socket.receive(packet);
 						
-						HBox box = new HBox();
-						box.getChildren().add(label);
+						// Nachrichtentext auslesen 
+						String data = new String(packet.getData(), packet.getOffset(), packet.getLength());
 						
-						vertical.getChildren().add(box);
-					});
+						// Nachrichtentext in der GUI anzeigen
+						Platform.runLater(() -> {
+							Label label = new Label(data);
+							label.setPadding(new Insets(10));
+							label.setStyle("-fx-background-color: lightblue; -fx-background-radius: 10;");
+							label.setWrapText(true);
+							
+							HBox box = new HBox();
+							box.getChildren().add(label);
+							
+							receiveMessageList.getChildren().add(box);
+						});
+					} catch (IOException e) {
+						if (e instanceof SocketException && e.getCause() instanceof AsynchronousCloseException) {
+							// Socket wurde geschlossen => Thread beenden
+							return;
+						} else {
+							// Anderes Problem => Alert
+							Platform.runLater(() -> {
+								Alert alert = new Alert(AlertType.ERROR);
+								alert.setTitle("Problem beim Empfangen");
+								alert.setHeaderText("Es ist ein Problem beim Empfangen aufgetreten.");
+								alert.setContentText(e.getLocalizedMessage());
+								
+								alert.showAndWait();
+							});
+						}
+					}
 				}
-			} catch (IOException e) {
-				// ignore
+			} catch (SocketException e) {
+				Platform.runLater(() -> {
+					Alert alert = new Alert(AlertType.ERROR);
+					alert.setTitle("Problem beim Empfangen");
+					alert.setHeaderText("Es ist ein Problem beim Empfangen aufgetreten.");
+					alert.setContentText(e.getLocalizedMessage());
+					
+					alert.showAndWait();
+				});
 			}
-		});
+		});	
 		thread.start();
 		
 	}
