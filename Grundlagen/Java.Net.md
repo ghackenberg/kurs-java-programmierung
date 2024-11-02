@@ -9,6 +9,12 @@ TODO
 
 TODO
 
+![](../Grafiken/Net/UDP.svg)
+
+### UDP-Pakete senden
+
+TODO
+
 ```java
 // IP-Adresse des Empfängers festlegen
 InetAddress address = ...
@@ -29,6 +35,8 @@ packet.setData(data)
 DatagramSocket socket = new DatagramSocket()
 socket.send(packet)
 ```
+
+### UDP-Pakete empfangen
 
 TODO
 
@@ -51,11 +59,13 @@ DatagramSocket socket = new DatagramSocket(port)
 socket.receive(packet)
 ```
 
+## Transmission Control Protokoll (TCP)
+
 TODO
 
-![](../Grafiken/Net/UDP.svg)
+![](../Grafiken/Net/TCP.svg)
 
-## Transmission Control Protokoll (TCP)
+### TCP-Client erstellen
 
 TODO
 
@@ -63,12 +73,10 @@ TODO
 // Client
 ```
 
+### TCP-Server erstellen
+
 TODO
 
 ```java
 // Server
 ```
-
-TODO
-
-![](../Grafiken/Net/TCP.svg)

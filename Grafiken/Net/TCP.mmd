@@ -36,10 +36,12 @@ classDiagram
 
     namespace IO {
         class InputStream {
+            <<abstract>>
             +read() int
             +close() int
         }
         class OutputStream {
+            <<abstract>>
             +write(c: int) void
             +flush() void
             +close() void
