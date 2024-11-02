@@ -4,13 +4,10 @@
 
 Dieses Repository enthält Unterlagen zum Kurs in Java Programmierung an der [Fakultät für Technik und angewandte Naturwissenschaften](https://fh-ooe.at/campus-wels) (*engl.* School of Engineering) der [Fachhochschule Oberösterreich](https://fh-ooe.at/).
 
-Beachte, dass sich der Kurs an Personen richtet, die bereits mit einer anderen objektorientierten Programmiersprache wie C# oder C++ umgehen können. Deshalb verzichten wir auf die Einführung grundlegender Elemente von (objektorientierten) Programmiersprachen wie Datentypen, Operatoren, Literale, Variablen, Zuweisungen, Verzweigungen, Schleifen, Funktionen, Klassen, Methoden und Namensräume.
+*Beachte, dass sich der Kurs an Personen richtet, die bereits mit einer anderen objektorientierten Programmiersprache wie C# oder C++ umgehen können.*
+*Deshalb verzichten wir auf die Einführung grundlegender Elemente von (objektorientierten) Programmiersprachen wie Datentypen, Operatoren, Literale, Variablen, Zuweisungen, Verzweigungen, Schleifen, Funktionen, Klassen, Methoden und Namensräume.*
 
-Die nachstehenden Inhalte sind wie folgt gegliedert:
-
-* Grundlagen
-* Anwendungen
-* Regelungen
+Im Folgenden findest du **Grundlagen** der Java-Programmierung mit unterschiedlichen Standardbibliotheken, konkrete **Anwendungen** inklusive vollständigem Quelltext, und **Regelungen** zur Nutzung dieses Repositories.
 
 ## Grundlagen
 
@@ -25,7 +22,7 @@ Im Rahmen dieses Kurses werden die folgenden Themen betrachtet:
 
 Mit konkreten Beispielen lernt man doch am besten! Das Repository bietet dir die folgenden Beispiele, welche unterschiedliche Aspekte von Java wie Konsolen- und GUI-Entwicklung und IP-Kommunikation beleuchten:
 
-### [Konsole-Taschenrechner](./Quellen/Konsole-Taschenrechner/)
+### 💻 [Konsole-Taschenrechner](./Quellen/Konsole-Taschenrechner/)
 
 Die erste Anwendung ist ein einfacher Taschenrechner, der die Grundrechenarten beherrscht.
 Das Programm ließt vom Benutzer nacheinander zwei Zahlen und einen Rechenoperator ein.
@@ -35,7 +32,7 @@ Bei ungültigen Eingaben gibt das Programm eine Fehlermeldung aus und wiederholt
 
 ![](./Quellen/Konsole-Taschenrechner/Screenshot.png)
 
-### [Konsole-Chat](./Quellen/Konsole-Chat/)
+### 💻 [Konsole-Chat](./Quellen/Konsole-Chat/)
 
 Die zweite Anwendung zeigt das Senden und Empfangen von UDP-Paketen.
 Die Anwendung umfasst eine Client- und eine Serveranwendung, die separat gestartet werden müssen.
@@ -53,7 +50,7 @@ Nachdem die Informationen ausgegeben wurden, terminiert die Anwendung.
 
 ![](./Quellen/Konsole-Chat/Screenshot-Server.png)
 
-### [GUI-Chat](./Quellen/GUI-Chat/)
+### 💻 [GUI-Chat](./Quellen/GUI-Chat/)
 
 Die dritte Anwendung erweitert das vorige Beispiel zum Senden und Empfangen von UDP-Paketen um eine grafische Benutzerschnittstelle.
 Die grafische Benutzerschnittstelle fragt zunächst den Namen des Nutzers, die gewünschte Portnummer für das Empfangen von Nachrichten, sowie die IP-Adresse und die Portnummer für das Senden von Nachrichten ab.
