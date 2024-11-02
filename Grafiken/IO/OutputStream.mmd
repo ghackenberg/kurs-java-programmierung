@@ -1,5 +1,15 @@
 classDiagram
 
+    direction LR
+
+    namespace Lang {
+
+        class System {
+            <<static>>
+        }
+
+    }
+
     namespace IO {
 
         class OutputStream {
@@ -9,20 +19,27 @@ classDiagram
             +close() void
         }
 
-        class BufferedOutputStream {
-            -buf: byte[]
-            -count: int
-            +BufferedOutputStream(s: OutputStream, size: int)
-        }
-
         class FileOutputStream {
             +FileOutputStream(name: string)
+        }
+
+        class IOException {
+
+        }
+
+        class FileNotFoundException {
+
         }
         
     }
 
-    OutputStream <|-- BufferedOutputStream
-
-    OutputStream <.. BufferedOutputStream: stream
+    System o..>"1" OutputStream: out
 
     OutputStream <|-- FileOutputStream
+    OutputStream ..> IOException: throws
+
+    FileOutputStream ..> FileNotFoundException: throws
+
+    IOException <|-- FileNotFoundException
+
+    style System fill:white

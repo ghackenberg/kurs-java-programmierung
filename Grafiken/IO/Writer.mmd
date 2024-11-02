@@ -1,5 +1,15 @@
 classDiagram
 
+    direction LR
+
+    namespace Lang {
+
+        class System {
+            <<static>>
+        }
+
+    }
+
     namespace IO {
 
         class OutputStream {
@@ -16,13 +26,9 @@ classDiagram
             +close() void
         }
 
-        class BufferedWriter {
-            +BufferedWriter(w: Writer, size: int)
-            +newLine() void
-        }
-
-        class OutputStreamWriter {
-            +OutputStreamWriter(s: OutputStream)
+        class PrintWriter {
+            +print(s: String) void
+            +println(s: String) void
         }
 
         class FileWriter {
@@ -31,14 +37,14 @@ classDiagram
         
     }
 
-    Writer <|-- BufferedWriter
+    System o-->"1" PrintWriter: out
 
-    Writer <.. BufferedWriter: writer
+    Writer <|-- PrintWriter
+    Writer "0..1"<.. PrintWriter: writer
 
-    Writer <|-- OutputStreamWriter
+    PrintWriter ..>"0..1" OutputStream: stream
 
     Writer <|-- FileWriter
 
-    OutputStreamWriter ..> OutputStream: stream
-
+    style System fill:white
     style OutputStream fill:white

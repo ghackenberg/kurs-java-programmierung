@@ -1,5 +1,15 @@
 classDiagram
 
+    direction LR
+
+    namespace Lang {
+
+        class System {
+            <<static>>
+        }
+
+    }
+
     namespace IO {
 
         class InputStream {
@@ -29,14 +39,17 @@ classDiagram
         
     }
 
+    System o-->"1" InputStream: in
+
     Reader <|-- BufferedReader
 
-    Reader <.. BufferedReader: reader
+    Reader "1"<.. BufferedReader: reader
 
     Reader <|-- InputStreamReader
 
     Reader <|-- FileReader
 
-    InputStreamReader ..> InputStream: stream
+    InputStreamReader ..>"1" InputStream: stream
 
+    style System fill:white
     style InputStream fill:white
