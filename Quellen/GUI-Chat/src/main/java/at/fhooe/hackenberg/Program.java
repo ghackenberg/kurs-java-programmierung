@@ -202,20 +202,20 @@ public class Program extends Application {
 		settingsBar.add(new Label("Name:"), 6, 1);
 		settingsBar.add(sendName, 7, 1);
 		
-		BorderPane sendBar = new BorderPane();
-		sendBar.getStyleClass().add("border-pane");
-		sendBar.setPadding(new Insets(10));
-		sendBar.setCenter(sendMessage);
-		sendBar.setRight(sendButton);
+		BorderPane sendPane = new BorderPane();
+		sendPane.getStyleClass().add("border-pane");
+		sendPane.setPadding(new Insets(10));
+		sendPane.setCenter(sendMessage);
+		sendPane.setRight(sendButton);
 		BorderPane.setMargin(sendMessage, new Insets(0, 10, 0, 10));
 		
-		BorderPane main = new BorderPane();
-		main.getStyleClass().add("border-pane");
-		main.setTop(settingsBar);
-		main.setCenter(receivePane);
-		main.setBottom(sendBar);
+		BorderPane rootPane = new BorderPane();
+		rootPane.getStyleClass().add("border-pane");
+		rootPane.setTop(settingsBar);
+		rootPane.setCenter(receivePane);
+		rootPane.setBottom(sendPane);
 		
-		Scene scene = new Scene(main, 640, 480);
+		Scene scene = new Scene(rootPane, 640, 480);
 		scene.getStylesheets().add("default.css");
 		if (DEBUG) {
 			scene.getStylesheets().add("debug.css");

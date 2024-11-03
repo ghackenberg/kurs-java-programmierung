@@ -1,3 +1,3 @@
 # Lizenz
 
-Kommt bald.
+Kontaktiere georg.hackenberg@fh-wels.at 😉
