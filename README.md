@@ -57,7 +57,22 @@ Die grafische Benutzerschnittstelle fragt zunächst den Namen des Nutzers, die g
 Danach kann der Benutzer Nachrichten eingeben und versenden.
 Außerdem bekommt der Benutzer versendete und empfangene Nachrichten angezeigt.
 
-![](./Quellen/GUI-Chat/Screenshot.png)
+![](./Quellen/GUI-Chat/Screenshot-Default.png)
+
+Der folgende Screenshot zeigt den Aufbau der grafischen Benutzerschnittstelle bestehend aus einer Szene mit sogenannten Knoten.
+JavaFX unterscheidet verschiedene Knotentypen wie Buttons, Texteingabefelder, Zahleneingabefelder und Beschriftungen (*rote* Kästen).
+Des Weiteren bietet JavaFX bestimmte Knotentypen für das Layout von Kindelememten wie die Klassen `BorderPane`, `GridPane`, `ScrollPane` und `VBox` (*grüne* Kästen).
+Beachte, dass der Stil jedes Knotens individuell konfiguriert werden kann.
+
+![](./Quellen/GUI-Chat/Screenshot-Debug.png)
+
+Die folgende Grafik zeigt den schematischen Aufbau der grafischen Benutzeroberfläche als Knotenbaum.
+Die Wurzel des Knotenbaums ist eine Instanz der Klasse `Stage`, welche das gesamte Fenster repräsentiert.
+Eine `Stage` enthält wiederum genau eine Instanz der Klasse `Scene`, welche den Inhalt des Fensters darstellt.
+Die `Scene` enthält schließlich genau ein Wurzelelement, welches in diesem konkreten Fall eine Instanz der Klasse `BorderPane` ist.
+Das Wurzelelemnt kann dann weitere Knoten beinhalten.
+
+![](./Quellen/GUI-Chat/Scene.svg)
 
 ## Regelungen
 

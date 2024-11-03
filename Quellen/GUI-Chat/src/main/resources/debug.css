@@ -1,0 +1,39 @@
+.label {
+	-fx-border-width: 1px;
+	-fx-border-color: red;
+}
+
+.spinner {
+	-fx-border-width: 1px;
+	-fx-border-color: red;
+}
+
+.text-field {
+	-fx-border-width: 1px;
+	-fx-border-color: red;
+}
+
+.button {
+	-fx-border-width: 1px;
+	-fx-border-color: red;
+}
+
+.border-pane {
+	-fx-border-width: 1px;
+	-fx-border-color: green;
+}
+
+.grid-pane {
+	-fx-border-width: 1px;
+	-fx-border-color: green;
+}
+
+.scroll-pane {
+	-fx-border-width: 1px;
+	-fx-border-color: green;
+}
+
+.vbox {
+	-fx-border-width: 1px;
+	-fx-border-color: green;
+}

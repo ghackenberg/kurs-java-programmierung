@@ -35,6 +35,8 @@ public class Program extends Application {
 		Program.launch(args);
 		
 	}
+	
+	private final boolean DEBUG = false;
 
 	private Spinner<Integer> receivePort;
 	private DatagramSocket receiveSocket;
@@ -133,6 +135,7 @@ public class Program extends Application {
 		receivePort.setPrefWidth(75);
 		
 		receiveMessages = new VBox();
+		receiveMessages.getStyleClass().add("vbox");
 		receiveMessages.setSpacing(10);
 		receiveMessages.setPadding(new Insets(10));
 		
@@ -166,10 +169,12 @@ public class Program extends Application {
 		});
 		
 		ImageView sendImage = new ImageView("send.png");
+		sendImage.getStyleClass().add("image-view");
 		sendImage.setFitWidth(16);
 		sendImage.setFitHeight(16);
 		
 		ImageView receiveImage = new ImageView("receive.png");
+		receiveImage.getStyleClass().add("image-view");
 		receiveImage.setFitWidth(16);
 		receiveImage.setFitHeight(16);
 		
@@ -180,15 +185,14 @@ public class Program extends Application {
 		receiveLabel.setStyle("-fx-font-weight: bold;");
 		
 		GridPane settingsBar = new GridPane();
+		settingsBar.getStyleClass().add("grid-pane");
 		settingsBar.setHgap(10);
 		settingsBar.setVgap(10);
 		settingsBar.setPadding(new Insets(10));
-		
 		settingsBar.add(receiveImage, 0, 0);
 		settingsBar.add(receiveLabel, 1, 0);
 		settingsBar.add(new Label("Port:"), 2, 0);
 		settingsBar.add(receivePort, 3, 0);
-
 		settingsBar.add(sendImage, 0, 1);
 		settingsBar.add(sendLabel, 1, 1);
 		settingsBar.add(new Label("Port:"), 2, 1);
@@ -199,17 +203,23 @@ public class Program extends Application {
 		settingsBar.add(sendName, 7, 1);
 		
 		BorderPane sendBar = new BorderPane();
+		sendBar.getStyleClass().add("border-pane");
 		sendBar.setPadding(new Insets(10));
 		sendBar.setCenter(sendMessage);
 		sendBar.setRight(sendButton);
 		BorderPane.setMargin(sendMessage, new Insets(0, 10, 0, 10));
 		
 		BorderPane main = new BorderPane();
+		main.getStyleClass().add("border-pane");
 		main.setTop(settingsBar);
 		main.setCenter(receivePane);
 		main.setBottom(sendBar);
 		
 		Scene scene = new Scene(main, 640, 480);
+		scene.getStylesheets().add("default.css");
+		if (DEBUG) {
+			scene.getStylesheets().add("debug.css");
+		}
 		
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("GUI-Chat");

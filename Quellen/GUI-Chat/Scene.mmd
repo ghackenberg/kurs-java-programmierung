@@ -1,0 +1,32 @@
+flowchart
+
+    Stage["Stage<hr/><i>primaryStage</i>"] --scene--> Scene["Scene<hr/><i>scene</i>"]
+
+    Scene --root--> BorderPane["BorderPane<hr/><i>rootPane</i>"]
+
+    BorderPane --top--> GridPane["GridPane<hr/><i>settingsPane</i>"]
+
+    GridPane --> Children1(["<code>children</code>"])
+
+    Children1 --> ImageView["ImageView<hr/><i>sendImage</i><br/><i>receiveImage</i>"]
+    Children1 --> Label1["Label<hr/><i>sendHostLabel</i><br/><i>sendNameLabel</i><br/><i>sendPortLabel</i><br/><i>receivePortLabel</i>"]
+    Children1 --> TextField["TextField<hr/><i>sendHostField</i><br/><i>sendNameField</i>"]
+    Children1 --> Spinner["Spinner<hr/><i>sendPortField</i><br/><i>receivePortField</i>"]
+
+    BorderPane --center--> ScrollPane["ScrollPane<hr/><i>receiveScroll</i>"]
+
+    ScrollPane --content--> VBox["VBox<hr/><i>receiveVBox</i>"]
+
+    VBox --> Children2(["<code>children</code>"])
+
+    Children2 --> Label2["Label<hr/><i>receiveMessage <b>1</b></i>"]
+    Children2 --> Label3["Label<hr/><i>receiveMessage <b>...</b></i>"]
+    Children2 --> Label4["Label<hr/><i>receiveMessage <b>n</b></i>"]
+
+    BorderPane --bottom--> BorderPane2["BorderPane<hr/><i>sendPane</i>"]
+
+    BorderPane2 --center--> TextField2["TextField<hr/><i>sendField</i>"]
+    BorderPane2 --right--> Button["Button<hr/><i>sendButton</i>"]
+
+    style Children1 fill:white
+    style Children2 fill:white
