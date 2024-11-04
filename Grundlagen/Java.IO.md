@@ -4,12 +4,16 @@ Dateneingabe und -ausgabe sind zwei wichtige Funktionen, die alle Arten von Prog
 Die Standardbibliothek der Java Laufzeitumgebung bietet einige grundlegende Elemente für Ein- und Ausgabe.
 Im Folgenden betrachten wir diese beiden Aspekte:
 
-* Ein- und Ausgabe von **Rohdaten**
-* Ein- und Ausgabe von **Zeichenketten**
+1. **Ein- und Ausgabe von *Rohdaten***
+   * Eingabe von Rohdaten (Konsole, Datei)
+   * Ausgabe von Rohdaten (Konsole, Datei)
+1. **Ein- und Ausgabe von *Zeichenketten***
+   * Eingabe von Zeichenketten (Konsole, Datei)
+   * Ausgabe von Zeichenketten (Konsole, Datei)
 
-## Ein- und Ausgabe von Rohdaten
+## 1. Ein- und Ausgabe von Rohdaten
 
-### Eingabe von Rohdaten
+### 1.1. Eingabe von Rohdaten
 
 Die Eingabe von Rohdaten erfolgt grundsätzlich über sogenannte *Eingabeströme*, welche in Java durch die abstrakte Klasse `InputStream` repräsentiert werden.
 In diesem ersten Abschnitt betrachten wir das Einlesen von Rohdaten von der Konsoleneingabe als auch von Dateien auf der Festplatte.
@@ -19,7 +23,7 @@ Diese Zusammenhänge sind noch einmal im folgenden Klassendiagramm dargestellt.
 
 ![](../Grafiken/IO/InputStream.svg)
 
-#### Konsoleneingabe von Rohdaten
+#### 1.1.1. Konsoleneingabe von Rohdaten
 
 Das erste Beispiel zeigt, wie man Rohdaten (d.h. einzelne Bytes) von der Konsoleneingabe liest.
 Für das Lesen einzelner Bytes bietet die Klasse `InputStream` die Methode `read()`.
@@ -35,7 +39,7 @@ System.in.read()
 System.in.read()
 ```
 
-#### Dateieingabe von Rohdaten
+#### 1.1.2. Dateieingabe von Rohdaten
 
 Das zweite Beispiel zeigt, wie man Rohdaten von einer Datei auf der Festplatte liest.
 Für das Auslesen einer Datei muss zunächst eine Instanz der Klasse `FileInputStream` erzeugt werden.
@@ -60,7 +64,7 @@ in.read();
 in.close();
 ```
 
-### Ausgabe von Rohdaten
+### 1.2. Ausgabe von Rohdaten
 
 Die Ausgabe von Rohdaten erfolgt grundsätzlich über sogenannte *Ausgabeströme*, welche in Java durch die abstrakte Klasse `OutputStream` repräsentiert werden.
 In diesem ersten Abschnitt betrachten wir das Schreiben von Rohdaten in die Konsolenausgabe als auch in Dateien auf der Festplatte.
@@ -70,7 +74,7 @@ Diese Zusammenhänge sind noch einmal im folgenden Klassendiagramm dargestellt.
 
 ![](../Grafiken/IO/OutputStream.svg)
 
-#### Konsolenausgabe von Rohdaten
+#### 1.2.1. Konsolenausgabe von Rohdaten
 
 Das erste Beispiel zeigt zunächst wieder, wie man einzelne Bytes auf die Konsolenausgabe schreibt.
 Die Konsolenausgabe kann über einen Ausgabestrom zugegriffen, der von der Klasse `System` aus dem Paket `java.lang` bereitgestellt wird.
@@ -85,7 +89,7 @@ System.out.write(31);
 System.out.write(96);
 ```
 
-#### Dateiausgabe von Rohdaten
+#### 1.2.2. Dateiausgabe von Rohdaten
 
 Das zweite Beispiel zeigt hingegen, wie man einzelne Bytes in eine Datei auf der Festplatte schreiben kann.
 Für die Dateiausgabe bietet Java die Klasse `FileOutputStream` im Paket `java.io` an.
@@ -109,9 +113,9 @@ out.write(125);
 out.close();
 ```
 
-## Ein- und Ausgabe von Zeichenketten
+## 2. Ein- und Ausgabe von Zeichenketten
 
-### Eingabe von Zeichenketten
+### 2.1. Eingabe von Zeichenketten
 
 Viele Anwendungen möchten Bytes ein- und ausgeben, sondern möchten stattdessen Zeichenketten verarbeiten.
 Wie du bereits wissen solltest, benötigt man für die Umwandlung von Bytes in Zeichenketten eine zugehörige Zeichencode-Tabelle (z.B. ASCII oder UTF-8).
@@ -120,7 +124,7 @@ Java bietet für die Ein- und Ausgabe von Zeichenketten das Konzept der `Reader`
 
 ![](../Grafiken/IO/Reader.svg)
 
-#### Konsoleneingabe von Zeichenketten
+#### 2.1.1. Konsoleneingabe von Zeichenketten
 
 Das erste Beispiel zeigt, wie man den Eingabestrom für die Konsoleneingabe in einer `Reader` verwandelt und dann einzelne Zeichen einließt.
 Für die Konsoleneinhabe ist nicht standardmäßig festgelegt, dass Zeichenketten eingelesen werden.
@@ -161,7 +165,7 @@ buffered.readLine();
 buffered.readLine();
 ```
 
-#### Dateieingabe von Zeichenketten
+#### 2.1.2. Dateieingabe von Zeichenketten
 
 Das erste Beispiel zeigt, wie man einen Dateipfad zum Lesen von Zeichenketten öffnet.
 Java bietet dafür die Klasse `FileReader`, deren Konstruktur den Dateipfad übergeben bekommt.
@@ -184,7 +188,12 @@ reader.read();
 reader.close();
 ```
 
-TODO
+Das zweite Beispiel zeigt, wie man einzelne Textzeilen aus einer Datei einlesen kann.
+Dazu muss zunächst die Datei lesend geöffnet werden, was eine `FileNotFoundException` auslösen kann.
+Danach muss der `FileReader` in einen `BufferedReader` verwandelt werden.
+Schließlich kann die Methode `readLine()` der Klasse `BufferedReader` verwendet werden, um einzelne Zeilen einzulesen.
+Die Methode `readLine()` liefert denn Wert `null` zurück, wenn das Ende der Datei erreicht ist.
+Nachdem die Eingabe beendet ist, muss der `Reader` noch mit der Methode `close()` geschlossen werden.
 
 ```java
 import java.io.FileReader;
@@ -205,15 +214,21 @@ buffered.readLine();
 buffered.close();
 ```
 
-### Ausgabe von Zeichenketten
+### 2.2. Ausgabe von Zeichenketten
 
-TODO
+Nun stellt sich abschließend noch die Frage, wie man Zeichenketten auf die Konsole oder in Dateien ausgeben kann.
+Java bietet für die Ausgabe von Zeichenketten das Konzept der `Writer` an, welche die Methode `write(...)` zum schreiben einer Zeichenketten implementieren.
+Von der abstrakten Klasse `Writer` gibt es wiederum einige konkrete Implementierungen, welche unterschiedliche Ziele verfolgen.
+Die Klasse `OutputStreamWriter` ermöglicht beispielsweise die Umwandung eines Ausgabestroms für Rohdaten in einen `Writer` für Zeichenketten mit einer definierten Zeichencode-Tabelle.
+Die Klasse `PrintWriter` ermöglicht hingegen die Ausgabe inklusive impliziter Umwandlung verschiedener Datentypen wie `boolean` oder `int` in Zeichenketten. 
 
 ![](../Grafiken/IO/Writer.svg)
 
-#### Konsolenausgabe von Zeichenketten
+#### 2.2.1. Konsolenausgabe von Zeichenketten
 
-TODO
+Das erste Beipsiel zeigt, wie man einzelne Zeichenketten auf der Konsole ausgeben kann.
+Der Ausgabestrom `out` der Klasse `System` aus dem Paket `java.lang` implementiert dafür bereits die Klasse `PrintWriter`.
+Somit können auf der Konsole einfach alle unterschiedlichen Datentypen ausgegeben werden, während der `PrintWriter` sich um die Typumwandlung kümmert.
 
 ```java
 import java.lang.System;
@@ -224,9 +239,13 @@ System.out.print("String");
 System.out.print("String");
 ```
 
-#### Dateiausgabe von Zeichenketten
+#### 2.2.2. Dateiausgabe von Zeichenketten
 
-TODO
+Das folgende Beispiel zeigt, wie man einzelne Zeichenketten in eine Datei ausgegeben kann.
+Dazu muss zunächst ein `FileWriter` für den gewünschten Dateipfad erzeugt werden.
+Der Konstruktor dieser Klasse kann eine `FileNotFoundException` auslösen, wenn der Dateipfad nicht zum Schreiben geöffnet werden kann.
+Nachdem die Datei erfolgreich geöffnet wurde, können mit der Methode `write(...)` einzelne Zeichenketten in die Datei geschrieben werden.
+Wenn die Dateiausgabe beendet ist, muss der `FileWriter` noch mit der Methode `close()` geschlossen werden.
 
 ```java
 import java.io.FileWriter;
