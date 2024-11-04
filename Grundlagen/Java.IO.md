@@ -72,7 +72,9 @@ Diese Zusammenhänge sind noch einmal im folgenden Klassendiagramm dargestellt.
 
 #### Konsolenausgabe von Rohdaten
 
-TODO
+Das erste Beispiel zeigt zunächst wieder, wie man einzelne Bytes auf die Konsolenausgabe schreibt.
+Die Konsolenausgabe kann über einen Ausgabestrom zugegriffen, der von der Klasse `System` aus dem Paket `java.lang` bereitgestellt wird.
+Der Ausgabestrom implementiert die Schnittstelle `OutputStream`, welche wiederum die Methode `write(int value)` anbietet. 
 
 ```java
 import java.lang.System;
@@ -85,7 +87,12 @@ System.out.write(96);
 
 #### Dateiausgabe von Rohdaten
 
-TODO
+Das zweite Beispiel zeigt hingegen, wie man einzelne Bytes in eine Datei auf der Festplatte schreiben kann.
+Für die Dateiausgabe bietet Java die Klasse `FileOutputStream` im Paket `java.io` an.
+Wenn man eine Instanz dieser Klasse erzeugt, kann man den Dateipfad angeben, der zum Schreiben geöffnet werden soll.
+Der Konstruktor kann prinzipiell eine `FileNotFoundException` werfen, wenn z.B. ein Order des Dateipfads nicht existiert.
+Nachdem der Ausgabestrom erfolgreich erzeugt wurde, können wieder einzelne Bytes in die Datei geschrieben werden.
+Wenn die Ausgabe beendet ist, sollte der Strom mit der Methode `close()` wieder geschlossen werden.
 
 ```java
 import java.io.FileOutputStream;
