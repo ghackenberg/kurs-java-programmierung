@@ -31,10 +31,19 @@ classDiagram
 
         class InputStreamReader {
             +InputStreamReader(s: InputStream)
+            +InputStreamReader(s: InputStream, c: Charset)
+            +InputStreamReader(s: InputStream, d: CharsetDecoder)
         }
 
         class FileReader {
             +FileReader(name: String)
+        }
+
+        class Charset {
+            <<abstract>>
+            +encode(str: String) ByteBuffer
+            +encode(cb: CharBuffer) ByteBuffer
+            +decode(bb: ByteBuffer) CharBuffer
         }
         
     }
@@ -47,7 +56,9 @@ classDiagram
 
     Reader <|-- InputStreamReader
 
-    Reader <|-- FileReader
+    InputStreamReader ..>"1" Charset: charset
+
+    InputStreamReader <|-- FileReader
 
     InputStreamReader ..>"1" InputStream: stream
 

@@ -26,13 +26,31 @@ classDiagram
             +close() void
         }
 
+        class OutputStreamWriter {
+            +OutputStreamWriter(o: OutputStream)
+            +OutputStreamWriter(o: OutputStream, c: Charset)
+        }
+
         class PrintWriter {
+            +print(b: boolean) void
+            +print(c: char) void
+            +print(i: int) void
+            +print(l: long) void
+            +print(f: float) void
+            +print(d: double) void
             +print(s: String) void
-            +println(s: String) void
+            +print(o: Object) void
         }
 
         class FileWriter {
             +FileWriter(name: String)
+        }
+
+        class Charset {
+            <<abstract>>
+            +encode(str: String) ByteBuffer
+            +encode(cb: CharBuffer) ByteBuffer
+            +decode(bb: ByteBuffer) CharBuffer
         }
         
     }
@@ -42,9 +60,14 @@ classDiagram
     Writer <|-- PrintWriter
     Writer "0..1"<.. PrintWriter: writer
 
-    PrintWriter ..>"0..1" OutputStream: stream
+    PrintWriter ..>"1" OutputStream: stream
 
-    Writer <|-- FileWriter
+    Writer <|-- OutputStreamWriter
+
+    OutputStreamWriter ..>"1" OutputStream: stream
+    OutputStreamWriter <|-- FileWriter
+
+    OutputStreamWriter ..>"1" Charset: charset
 
     style System fill:white
     style OutputStream fill:white

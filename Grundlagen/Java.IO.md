@@ -113,7 +113,10 @@ out.close();
 
 ### Eingabe von Zeichenketten
 
-TODO
+Viele Anwendungen möchten Bytes ein- und ausgeben, sondern möchten stattdessen Zeichenketten verarbeiten.
+Wie du bereits wissen solltest, benötigt man für die Umwandlung von Bytes in Zeichenketten eine zugehörige Zeichencode-Tabelle (z.B. ASCII oder UTF-8).
+Des Weiteren sollte das Programm, das die Daten schreibt, mit derselben Zeichencode-Tabelle arbeiten wie das Programm, das die Daten wieder einliest.
+Java bietet für die Ein- und Ausgabe von Zeichenketten das Konzept der `Reader` und `Writer` im Paket `java.io` an, welches technisch auf dem Konzept der Eingabe- und Ausgabeströme basiert.
 
 ![](../Grafiken/IO/Reader.svg)
 
