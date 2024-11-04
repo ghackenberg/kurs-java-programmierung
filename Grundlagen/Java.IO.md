@@ -122,7 +122,9 @@ Java bietet für die Ein- und Ausgabe von Zeichenketten das Konzept der `Reader`
 
 #### Konsoleneingabe von Zeichenketten
 
-TODO
+Das erste Beispiel zeigt, wie man den Eingabestrom für die Konsoleneingabe in einer `Reader` verwandelt und dann einzelne Zeichen einließt.
+Für die Konsoleneinhabe ist nicht standardmäßig festgelegt, dass Zeichenketten eingelesen werden.
+Vielmehr kann bzw. muss das jede Anwendung für sich selbst entscheiden.
 
 ```java
 import java.lang.System;
@@ -137,10 +139,18 @@ reader.read();
 reader.read();
 ```
 
-TODO
+Das zweite Beispiel zeigt, wie man einzelne Zeilen nacheinander von der Konsoleneingabe einließt.
+Dazu muss zunächst der Eingabestrom der Konsoleneingabe in einen `Reader` verwandelt werden.
+Danach muss dieser `Reader` in einen `BufferedReader` umgewandelt werden.
+Der `BufferedReader` bietet schließlich die Methode `readLine()`.
 
 ```java
+import java.lang.System;
 import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+// InputStream in Reader konvertieren
+InputStreamReader reader = new InputStreamReader(System.in);
 
 // Reader in BufferedReader konvertieren
 BufferedReader buffered = new BufferedReader(reader);
@@ -153,7 +163,11 @@ buffered.readLine();
 
 #### Dateieingabe von Zeichenketten
 
-TODO
+Das erste Beispiel zeigt, wie man einen Dateipfad zum Lesen von Zeichenketten öffnet.
+Java bietet dafür die Klasse `FileReader`, deren Konstruktur den Dateipfad übergeben bekommt.
+Der Konstruktor kann außerdem eine `FileNotFoundException` werfen, wenn der Dateipfad nicht existiert.
+Wenn die Datei existiert, können einzelne Zeichen aus der Datei mit der Methode `read` gelesen werden.
+Schlließlich muss der `FileReader` wieder mit der Methode `close()` geschlossen werden.
 
 ```java
 import java.io.FileReader;
@@ -173,7 +187,11 @@ reader.close();
 TODO
 
 ```java
+import java.io.FileReader;
 import java.io.BufferedReader;
+
+// Datei zum Lesen öffnen
+FileReader reader = new FileReader("pfad.ext");
 
 // Reader in BufferedReader konvertieren
 BufferedReader buffered = new BufferedReader(reader);
