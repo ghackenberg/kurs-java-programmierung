@@ -224,6 +224,10 @@ Die Klasse `PrintWriter` ermöglicht hingegen die Ausgabe inklusive impliziter U
 
 ![](../Grafiken/IO/Writer.svg)
 
+TODO
+
+![](../Grafiken/IO/WriterCharset.svg)
+
 #### 2.2.1. Konsolenausgabe von Zeichenketten
 
 Das erste Beipsiel zeigt, wie man einzelne Zeichenketten auf der Konsole ausgeben kann.

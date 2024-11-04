@@ -1,0 +1,9 @@
+sequenceDiagram
+
+    User ->> InputStreamReader: read()
+
+    activate InputStreamReader
+
+    InputStreamReader -->> User: return c
+
+    deactivate InputStreamReader

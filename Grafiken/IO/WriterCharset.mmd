@@ -1,0 +1,37 @@
+sequenceDiagram
+
+    User ->> OutputStreamWriter: write("Some content")
+
+    activate User
+
+    activate OutputStreamWriter
+
+    note over OutputStreamWriter, Charset: Zeichenkette in Bytes umwandeln
+
+    OutputStreamWriter ->> Charset: encode("Some content")
+
+    activate Charset
+
+    Charset -->> OutputStreamWriter: return byteBuffer
+
+    deactivate Charset
+
+    note over OutputStreamWriter, OutputStream: Bytes in Ausgabestrom schreiben
+
+    loop byteBuffer.hasRemaining()
+        note over OutputStreamWriter, OutputStream: Einzelnes Byte in Ausgabestrom schreiben
+
+        OutputStreamWriter ->> OutputStream: write(byteBuffer.get())
+
+        activate OutputStream
+
+        OutputStream -->>OutputStreamWriter: return
+
+        deactivate OutputStream
+    end
+
+    OutputStreamWriter -->> User: return
+
+    deactivate OutputStreamWriter
+
+    deactivate User
