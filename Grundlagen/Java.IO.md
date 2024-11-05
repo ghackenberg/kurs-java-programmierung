@@ -124,6 +124,13 @@ Java bietet für die Ein- und Ausgabe von Zeichenketten das Konzept der `Reader`
 
 ![](../Grafiken/IO/Reader.svg)
 
+Die folgende Grafik zeigt, wie die Umwandlung von Bytes in Zeichen unter Verwendung der Klasse `Charset` erfolgt.
+Wenn der Nutzer auf einem `InputStreamReader` die Methode `read()` aufruft, wird zunächst ein einzelnes Byte aus dem darunter liegenden Eingabestrom gelesen.
+Dieses Byte wird als nächstes in einen `ByteBuffer` geschrieben, der schließlich unter Verwendung eines `Charset` dekodiert wird.
+Schließlich wird das dekodierte Zeichen an den Nutzer zurückgegeben.
+
+![](../Grafiken/IO/ReaderCharset.svg)
+
 #### 2.1.1. Konsoleneingabe von Zeichenketten
 
 Das erste Beispiel zeigt, wie man den Eingabestrom für die Konsoleneingabe in einer `Reader` verwandelt und dann einzelne Zeichen einließt.
@@ -224,7 +231,10 @@ Die Klasse `PrintWriter` ermöglicht hingegen die Ausgabe inklusive impliziter U
 
 ![](../Grafiken/IO/Writer.svg)
 
-TODO
+Die folgende Grafik zeigt, wie Zeichenketten intern in Bytes umgewandelt werden, bevor sie in einen Ausgabestrom geschrieben werden.
+Der Nutzer ruft zunächst auf dem `OutputStreamWriter` die Methode `write(...)` auf und übergibt die gewünschte Zeichenkette.
+Der `Writer` konvertiert die Zeichenkette intern mit Hilfe des gewählten `Charset` in einen `ByteBuffer`.
+Schließlich schreibt der `Writer` die einzelnen Bytes des `ByteBuffer` in den darunter liegenden Ausgabestrom.
 
 ![](../Grafiken/IO/WriterCharset.svg)
 

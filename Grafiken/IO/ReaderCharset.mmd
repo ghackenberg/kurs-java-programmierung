@@ -4,6 +4,38 @@ sequenceDiagram
 
     activate InputStreamReader
 
-    InputStreamReader -->> User: return c
+    note over InputStreamReader,InputStream: Einzelnes Byte auslesen
+
+    InputStreamReader ->> InputStream: read()
+
+    activate InputStream
+
+    InputStream -->> InputStreamReader: return b
+
+    deactivate InputStream
+
+    note over InputStreamReader,ByteBuffer: Byte in ByteBuffer schreiben
+
+    InputStreamReader ->> ByteBuffer: put(b)
+
+    activate ByteBuffer
+
+    ByteBuffer -->> InputStreamReader: return
+
+    deactivate ByteBuffer
+
+    note over InputStreamReader,Charset: ByteBuffer in CharBuffer umwandeln
+
+    InputStreamReader ->> Charset: decode(bb)
+
+    activate Charset
+
+    Charset -->> InputStreamReader: return cb
+
+    deactivate Charset
+
+    note over InputStreamReader: Erstes Zeichen zurückgeben
+
+    InputStreamReader -->> User: return cb.get()
 
     deactivate InputStreamReader
