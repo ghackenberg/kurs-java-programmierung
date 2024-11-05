@@ -64,6 +64,30 @@ in.read();
 in.close();
 ```
 
+Währen dem Auslesen von Dateien kann es unerwartet zu Problemen kommen, die eine Ausnahme auslösen.
+In so einem Fall kann es passieren, dass im vorigen Quelltext der Eingabestrom nicht ordentlich geschlossen wird.
+Dies hat wiederum zur Folge, dass die Dateiressource nicht freigegeben wird und andere Anwendungen blockiert, die darauf zugreifen möchten.
+Um sicher zu gehen, dass die Dateiressource auch beim Auftreten von Ausnahmen wieder freigegeben wird, emfiehlt sich die Verwendung von `try-with-resources` wie im folgenden Beispiel gezeugt.
+
+```java
+import java.io.FileInputStream;
+
+// Datei zum Lesen öffnen und am Ende implizit wieder schließen
+try (FileInputStream in = new FileInputStream("pfad.ext")) {
+
+   // Einzelne Bytes aus Datei lesen
+   in.read();
+   in.read();
+   in.read();
+
+} catch (IOException e) {
+
+   // Fehler auf der Konsole ausgeben
+   e.printStackTrace();
+
+}
+```
+
 ### 1.2. Ausgabe von Rohdaten
 
 Die Ausgabe von Rohdaten erfolgt grundsätzlich über sogenannte *Ausgabeströme*, welche in Java durch die abstrakte Klasse `OutputStream` repräsentiert werden.
@@ -111,6 +135,28 @@ out.write(125);
 
 // Datei wieder schließen
 out.close();
+```
+
+Auch hier kann es wieder vorkommen, dass im Falle einer Ausnahme die Dateiressource nicht wieder freigegeben wird und andere Anwendungen somit blockiert.
+Um dieses Problem zu umgehen empfiehlt sich daher auch an dieser Stelle die Verwendung von `try-with-resources` wie im folgenden Beispiel gezeigt.
+
+```java
+import java.io.FileOutputStream;
+
+// Datei zum Schreiben öffnen und am Ende implizit wieder schließen
+try (FileOutputStream out = new FileOutputStream("pfad.ext")) {
+
+   // Einzelne Bytes in Datei schreiben
+   out.write(1);
+   out.write(25);
+   out.write(125);
+   
+} catch (IOException e) {
+
+   // Fehler auf der Konsole ausgeben
+   e.printStackTrace();
+
+}
 ```
 
 ## 2. Ein- und Ausgabe von Zeichenketten
@@ -221,6 +267,32 @@ buffered.readLine();
 buffered.close();
 ```
 
+Auch beim Lesen von Zeichenketten aus Dateien kann es vorkommen, dass im Falle einer Ausnahme die Dateiressource nicht wieder freigegeben wird und andere Anwendungen somit blockiert.
+Um dieses Problem zu umgehen empfiehlt sich daher auch an dieser Stelle wieder die Verwendung von `try-with-resources` wie im folgenden Beispiel gezeigt.
+
+```java
+import java.io.FileReader;
+import java.io.BufferedReader;
+
+// Datei zum Lesen öffnen und am Ende implizit wieder schließen
+try (FileReader reader = new FileReader("pfad.ext")) {
+
+   // Reader in BufferedReader konvertieren
+   BufferedReader buffered = new BufferedReader(reader);
+
+   // Einzelne Zeilen aus Datei lesen
+   buffered.readLine();
+   buffered.readLine();
+   buffered.readLine();
+
+} catch (IOException e) {
+   
+   // Fehler auf der Konsole ausgeben
+   e.printStackTrace();
+
+}
+```
+
 ### 2.2. Ausgabe von Zeichenketten
 
 Nun stellt sich abschließend noch die Frage, wie man Zeichenketten auf die Konsole oder in Dateien ausgeben kann.
@@ -274,4 +346,26 @@ writer.write("String");
 
 // Datei schließen
 writer.close();
+```
+
+Schließlich kann es auch beim Schreiben von Zeichenketten in Dateien vorkommen, dass im Falle einer Ausnahme die Dateiressource nicht wieder freigegeben wird und andere Anwendungen somit blockiert.
+Um dieses Problem auch an dieser Stelle zu umgehen empfiehlt sich daher auch hier wieder die Verwendung von `try-with-resources` wie im folgenden Beispiel gezeigt.
+
+```java
+import java.io.FileWriter;
+
+// Datei zum Schreiben öffnen und am Ende implizit wieder schließen
+try (FileWriter writer = new FileWriter("pfad.ext")) {
+
+   // Einzelne Zeichenketten in Datei schreiben
+   writer.write("String");
+   writer.write("String");
+   writer.write("String");
+
+} catch (IOException e) {
+   
+   // Fehler auf der Konsole ausgeben
+   e.printStackTrace();
+
+}
 ```
