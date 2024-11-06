@@ -19,7 +19,7 @@ Schließlich kann die Klasse `DatagramSocket` verwendet werden, um UDP-Datagramm
 
 ### 1.1. UDP-Pakete senden
 
-Das folgende Beispiel zeigt, wie man mit den vorhin eingeführten Klassen ein UDP-Datagram an eine definierte IP-Adresse und einen definierten Port sendet.
+Das erste Beispiel zeigt, wie man mit den vorhin eingeführten Klassen ein UDP-Datagram an eine definierte IP-Adresse und einen definierten Port sendet.
 Das Beispiel erzeugt zunächst eine Instanz der Klasse `DatagramPacket` und setzt die IP-Adresse und die Portnummer des Empfängers sowie die Nutzdaten.
 Danach erzeugt das Beispiel eine Instanz der Klasse `DatagramSocket`, welches für das Senden des UDP-Datagramms verantwortlich ist.
 
@@ -46,7 +46,11 @@ socket.send(packet)
 
 ### 1.2. UDP-Pakete empfangen
 
-TODO
+Das zweite Beipsiel zeigt, wie man mit den vorhin eingeführten Klassen ein UDP-Datagramm empfängt.
+Das Programm legt zunächst eine Puffer an, um den Inhalt des Datenpakets im Hauptspeicher ablegen zu können.
+Dann erzeugt das Programm eine leere Instanz der Klasse `DatagramPacket`, welcher der zuvor angelegte Puffer zugeordnet wird.
+Schließlich erzeugt das Programm eine Instanz der Klasse `DatagramSocket` mit einer definierten Portnummer, über welche die eingehenden UDP-Datagramme empfangen werden sollen.
+Schließlich blockiert das Programm beim Aufruf der Methode `receive(...)` solange, bis ein UDP-Datagramm empfangen wurde.
 
 ```java
 // Portnummer für das Empfangen festlegen
