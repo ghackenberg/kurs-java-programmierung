@@ -1,4 +1,4 @@
-package at.fhooe.hackenberg.chat;
+package at.fhooe.hackenberg.console.udp;
 
 import java.io.BufferedReader;
 import java.io.IOException;

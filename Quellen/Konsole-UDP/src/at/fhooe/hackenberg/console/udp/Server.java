@@ -1,4 +1,4 @@
-package at.fhooe.hackenberg.chat;
+package at.fhooe.hackenberg.console.udp;
 
 import java.io.IOException;
 import java.net.DatagramPacket;

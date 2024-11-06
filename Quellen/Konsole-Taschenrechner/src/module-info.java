@@ -1,5 +1,5 @@
-module calculator {
+module hackenberg.console.calculator {
 	
-	exports at.fhooe.hackenberg.calculator;
+	exports at.fhooe.hackenberg.console.calculator;
 	
 }

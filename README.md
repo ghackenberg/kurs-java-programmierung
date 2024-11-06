@@ -32,7 +32,7 @@ Bei ungültigen Eingaben gibt das Programm eine Fehlermeldung aus und wiederholt
 
 ![](./Quellen/Konsole-Taschenrechner/Screenshot.png)
 
-### 💻 [Konsole-Chat](./Quellen/Konsole-Chat/)
+### 💻 [Konsole-UDP](./Quellen/Konsole-UDP/)
 
 Die zweite Anwendung zeigt das Senden und Empfangen von UDP-Paketen.
 Die Anwendung umfasst eine Client- und eine Serveranwendung, die separat gestartet werden müssen.
@@ -40,7 +40,7 @@ Die Clientanwendung fragt zunächst eine Eingabe vom Benutzer über die Konsole 
 Danach erstellt die Anwendung ein UDP-Paket mit der Eingabe als Inhalt.
 Schließlich sendet das Programm das Paket an eine vordefinierte IP-Adresse und eine vordefinierte Portnummer.
 
-![](./Quellen/Konsole-Chat/Screenshot-Client.png)
+![](./Quellen/Konsole-UDP/Screenshot-Client.png)
 
 Die Serveranwendung wartet hingegen auf eingehende UDP-Pakete auf einer vordefinierten Portnummer.
 Sobald ein UDP-Paket eingegangen ist, werden die Paketinformation auf der Konsole ausgegeben.
@@ -48,23 +48,23 @@ Die Paketinformationen beinhalten die IP-Adresse und die Portnummer des Paketsen
 Des weiteren beinhalten die Paketinformationen den eigenliche Nutzinhalt sowie dessen Zeichenlänge.
 Nachdem die Informationen ausgegeben wurden, terminiert die Anwendung.
 
-![](./Quellen/Konsole-Chat/Screenshot-Server.png)
+![](./Quellen/Konsole-UDP/Screenshot-Server.png)
 
-### 💻 [GUI-Chat](./Quellen/GUI-Chat/)
+### 💻 [GUI-Chat-UDP](./Quellen/GUI-Chat-UDP/)
 
 Die dritte Anwendung erweitert das vorige Beispiel zum Senden und Empfangen von UDP-Paketen um eine grafische Benutzerschnittstelle.
 Die grafische Benutzerschnittstelle fragt zunächst den Namen des Nutzers, die gewünschte Portnummer für das Empfangen von Nachrichten, sowie die IP-Adresse und die Portnummer für das Senden von Nachrichten ab.
 Danach kann der Benutzer Nachrichten eingeben und versenden.
 Außerdem bekommt der Benutzer versendete und empfangene Nachrichten angezeigt.
 
-![](./Quellen/GUI-Chat/Screenshot-Default.png)
+![](./Quellen/GUI-Chat-UDP/Screenshot-Default.png)
 
 Der folgende Screenshot zeigt den Aufbau der grafischen Benutzerschnittstelle bestehend aus einer Szene mit sogenannten Knoten.
 JavaFX unterscheidet verschiedene Knotentypen wie Buttons, Texteingabefelder, Zahleneingabefelder und Beschriftungen (*rote* Kästen).
 Des Weiteren bietet JavaFX bestimmte Knotentypen für das Layout von Kindelememten wie die Klassen `BorderPane`, `GridPane`, `ScrollPane` und `VBox` (*grüne* Kästen).
 Beachte, dass der Stil jedes Knotens individuell konfiguriert werden kann.
 
-![](./Quellen/GUI-Chat/Screenshot-Debug.png)
+![](./Quellen/GUI-Chat-UDP/Screenshot-Debug.png)
 
 Die folgende Grafik zeigt den schematischen Aufbau der grafischen Benutzeroberfläche als Knotenbaum.
 Die Wurzel des Knotenbaums ist eine Instanz der Klasse `Stage`, welche das gesamte Fenster repräsentiert.
@@ -72,7 +72,7 @@ Eine `Stage` enthält wiederum genau eine Instanz der Klasse `Scene`, welche den
 Die `Scene` enthält schließlich genau ein Wurzelelement, welches in diesem konkreten Fall eine Instanz der Klasse `BorderPane` ist.
 Das Wurzelelemnt kann dann weitere Knoten beinhalten.
 
-![](./Quellen/GUI-Chat/Scene.svg)
+![](./Quellen/GUI-Chat-UDP/Scene.svg)
 
 ## Regelungen
 

@@ -1,4 +1,4 @@
-package at.fhooe.hackenberg.calculator;
+package at.fhooe.hackenberg.console.calculator;
 
 import java.io.BufferedReader;
 import java.io.IOException;
