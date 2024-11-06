@@ -24,6 +24,10 @@ Das Beispiel erzeugt zunächst eine Instanz der Klasse `DatagramPacket` und setz
 Danach erzeugt das Beispiel eine Instanz der Klasse `DatagramSocket`, welches für das Senden des UDP-Datagramms verantwortlich ist.
 
 ```java
+import java.net.InetAddress;
+import java.net.DatagramPaket;
+import java.net.DatagramSocket;
+
 // IP-Adresse des Empfängers festlegen
 InetAddress address = ...
 
@@ -50,25 +54,70 @@ Das zweite Beipsiel zeigt, wie man mit den vorhin eingeführten Klassen ein UDP-
 Das Programm legt zunächst eine Puffer an, um den Inhalt des Datenpakets im Hauptspeicher ablegen zu können.
 Dann erzeugt das Programm eine leere Instanz der Klasse `DatagramPacket`, welcher der zuvor angelegte Puffer zugeordnet wird.
 Schließlich erzeugt das Programm eine Instanz der Klasse `DatagramSocket` mit einer definierten Portnummer, über welche die eingehenden UDP-Datagramme empfangen werden sollen.
-Schließlich blockiert das Programm beim Aufruf der Methode `receive(...)` solange, bis ein UDP-Datagramm empfangen wurde.
+Dann blockiert das Programm beim Aufruf der Methode `receive(...)` solange, bis ein UDP-Datagramm empfangen wurde.
+Abschließend gibt das Programm durch den Aufruf der Methode `close()` die Portnummer wieder frei für andere Programme auf demselben Betriebssystem.
 
 ```java
+import java.net.InetAddress;
+import java.net.DatagramPaket;
+import java.net.DatagramSocket;
+
 // Portnummer für das Empfangen festlegen
 int port = ...
 
-// Größe des Buffer festlegen
+// Größe des Puffer festlegen
 int size = ...
 
-// Buffer anlegen
-byte[] buffer = new byte[size]
+// Puffer anlegen
+byte[] buffer = new byte[size];
 
 // Leeres UDP-Paket erzeugen
-DatagramPacket packet = new DatagramPacket()
-packet.setData(buffer)
+DatagramPacket packet = new DatagramPacket();
+packet.setData(buffer);
 
-// UDP-Paket empfangen und befüllen
-DatagramSocket socket = new DatagramSocket(port)
-socket.receive(packet)
+// Socket starten und UDP-Paket empfangen
+DatagramSocket socket = new DatagramSocket(port);
+socket.receive(packet);
+
+// Socket schließen
+socket.close();
+```
+
+Während der Verarbeitung von eingehenden UDP-Paketen kann es dazu kommen, dass eine Ausnahme ausgelöst wird, welche das Schließen des `DatagramSocket` verhindert.
+Wenn ein `DatagramSocket` nicht ordentlich geschlossen wird, führt das dazu, dass die Portnummer für das Empfangen von Datagrammen nicht wieder freigegeben wird.
+Somit steht die Portnummer auch nicht für andere Programme zur Verfügung, welche auf demselben Betriebssystem laufen.
+Um einen solchen Systemzustand zu verhindern, wird die Verwendung von `try-with-resources` empfohlen, wie in folgendem Beispiel gezeigt.
+
+```java
+import java.net.InetAddress;
+import java.net.DatagramPaket;
+import java.net.DatagramSocket;
+
+// Portnummer für das Empfangen festlegen
+int port = ...
+
+// Größe des Puffer festlegen
+int size = ...
+
+// Puffer anlegen
+byte[] buffer = new byte[size];
+
+// Leeres UDP-Paket erzeugen
+DatagramPacket packet = new DatagramPacket();
+packet.setData(buffer);
+
+// Socket starten und am Ende implizit wieder schließen
+try (DatagramSocket socket = new DatagramSocket(port)) {
+
+    // UDP-Paket empfangen
+    socket.receive(packet);
+
+} catch (IOException e) {
+
+    // Fehler auf der Konsole ausgehen
+    e.printStackTrace();
+
+}
 ```
 
 ## 2. Transmission Control Protokoll (TCP)
