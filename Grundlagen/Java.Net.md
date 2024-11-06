@@ -179,10 +179,11 @@ try (Socket socket = new Socket(host, port)) {
 }
 ```
 
-
 ### 2.2. TCP-Server erstellen
 
-TODO
+Das zweite Beispiel zeigt, wie man in Java einen TCP-Server startet und eingehende Verbindungen entgegennimmt bzw. verarbeitet.
+Dazu importieren wir zunächst die Klasse `ServerSocket` aus dem Paket `java.net` und definieren die Portnummer, auf der wir eingehende Verbindungen erwarten.
+Dann erzeugen wir eine Instanz der Klasse `ServerSocket`, der wir die Portnummer übergeben und welche das Java-Programm im Betriebssystem für die Portnummer registriert.
 
 ```java
 import java.net.ServerSocket;
@@ -194,7 +195,9 @@ int port = ...
 ServerSocket server = new ServerSocket(port);
 ```
 
-TODO
+Sobald die Instanz der Klasse `ServerSocket` erstellt wurde und die Portnummer nicht von einem anderen Programm belegt war, können wir eingehende Verbindungen entgegennehmen.
+Für das Entgegennehmen von TCP-Verbindungen bietet die Klasse `ServerSocket` die Methode `accept()`, welche solange blockiert bis eine neue Verbindung zu einem Client aufgebaut wurde.
+Die Methode `accept()` liefert eine Instanz der Klasse `Socket` aus dem Paket `java.net`, welche auch auf Server-Seite die TCP-Verbindung zwischen Client und Server repräsentiert.
 
 ```java
 import java.net.Socket;
@@ -203,7 +206,10 @@ import java.net.Socket;
 Socket socket = server.accept();
 ```
 
-TODO
+Nachdem die TCP-Verbindung aufgebaut wurde, können Server und Client bidirektional Daten über die Verbindung austauschen.
+Für das Empfangen von Daten bietet die Klasse `Socket` auch auf Server-Seite Zugriff auf einen `InputStream`, welcher zum Lesen von Rohdaten (d.h. Bytes) verwendet werden kann.
+Das folgende Beispiel zeigt, wie man hintereinander drei einzelne Bytes aus dem Eingabestrom ließt.
+Die Aufrufe der Methode `read()` blockieren ebenfalls solange, bis die Daten tatsächlich vom Server empfangen wurden.
 
 ```java
 import java.io.InputStream;
@@ -215,7 +221,11 @@ in.read();
 in.read();
 ```
 
-TODO
+Genauso wie Emfangen von Daten kann der Server auch Daten an den Client senden.
+Für das Senden von Daten bietet die Klasse `Socket` Zugriff auf einen entsprechenden `OutputStream`.
+Über den Ausgabestrom können wieder Rohdaten (d.h. einzelne Bytes) an den Client gesendet werden.
+Dabei ist zu beachten, dass in der Regel nicht jedes einzelne Byte über ein eigenes TCP-Segment versendet wird.
+Stattdessen werden typischerweise mehrere Bytes zusammengefasst und gemeinsam über ein einzelnes Segment versendet.
 
 ```java
 import java.io.OutputStream;
@@ -227,21 +237,28 @@ out.write(72);
 out.write(154);
 ```
 
-TODO
+Wenn die TCP-Verbindung zwischen Client und Server nicht mehr benötigt wird, kann diese geschlossen werden.
+Zum Schließen der TCP-Verbindung bietet die Klasse `Socket` wieder die Methode `close()` an.
+Wenn die Methode `close()` aufgerufen wird, führt das dazu, dass - sofern noch nicht geschehen - die notwendigen TCP-Pakete zum Schließen der Verbindung ausgetauscht werden.
+Außerdem werden reservierte Ressourcen auf Betriebssystemebene wieder freigegeben.
 
 ```java
 // Socket schließen
 socket.close();
 ```
 
-TODO
+Nachdem eine TCP-Verbindung zu einem bestimmten Client geschlossen wurde, kann der Server jedoch weiter TCP-Verbindungen zu demselben oder anderen Clients annehmen und verarbeiten.
+Wenn das Serverprogramm jedoch keine weiteren TCP-Verbindungen annehmen will, muss es auch den zugehörigen `ServerSocket` über die Methode `close()` beenden.
+Der Aufruf dieser Methode hat zur Folge, dass im Betriebssystem die Zuordnung zwischen Portnummer und dem Serverprogramm wieder gelöst wird und somit keine TCP-Verbindungen für diese Portnummer mehr an das Java-Programm weitergeleitet werden.
 
 ```java
 // Server beenden
 server.close();
 ```
 
-TODO
+Schließlich kann es auch bei der Verarbeitung von TCP-Verbindungen zu Ausnahmen kommen, welche die ordentliche Schließung eines `Socket` und/oder eines `ServerSocket` umgehen.
+Um einen solchen Systemzustand zu vermeiden, wird daher auch in diesem Fall die Verwendung von `try-with-resources` empfohlen.
+Das folgende Beispiel zeigt, wie man sowohl den `ServerSocket` als auch die angenommenen TCP-Verbindungen über dieses Mittel sauber absichert.
 
 ```java
 import java.io.InputStream;
