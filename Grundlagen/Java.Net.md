@@ -84,7 +84,10 @@ Ein TCP-Server wird schließlich noch durch eine Instanz der Klasse `ServerSocke
 
 ### 2.1. TCP-Client erstellen
 
-TODO
+Das erste Beispiel zeigt, wie man einen TCP-Client in Java programmiert.
+Das Beispiel importiert zunächst die Klasse `Socket` aus dem Paket `java.net`, welche TCP-Verbindungen auf Client- und Server-Seite repräsentiert.
+Dann definiert das Beispiel den Host und den Port des Servers, mit welchem eine TCP-Verbindung aufgebaut werden soll.
+Schließlich erzeugt das Beispiel eine Instanz der Klasse `Socket` mit dem zuvor definierten Host und der zuvor definierten Portnummer.
 
 ```java
 import java.net.Socket;
@@ -99,7 +102,10 @@ int port = ...
 Socket socket = new Socket(host, port);
 ```
 
-TODO
+Der Aufruf des Konstruktors der Klasse `Socket` führt dazu, dass das Java-Programm versucht eine TCP-Verbindung mit dem Zielrechner aufzubauen (siehe 3-Way-Handshake).
+Sobald die Verbindung aufgebaut wurde, kann der eigentliche Austausch von Daten zwischen Client und Server beginnen.
+Das folgende Beispiel zeigt, wie der Client vom Server gesendete Daten empfangen kann.
+Für das Empfangen von Daten bietet ein `Socket` den Zugriff auf einen `InputStream` (siehe [Daten lesen und schreiben mit `java.io`](Java.IO.md)).
 
 ```java
 // Eingabestrom lesen
@@ -109,7 +115,10 @@ in.read();
 in.read();
 ```
 
-TODO
+Ähnlich zum Empfangen von Daten können auch Daten an den Server gesendet werden.
+Der `Socket` bietet für das Senden von Daten den Zugriff auf einen entsprechenden `OutputStream`.
+Über diesen Ausgabestrom können wie bereits bekannt Rohdaten (d.h. einzelne Bytes) verschickt werden.
+Alternativ können natürlich auch Zeichenketten mit einer entsprechenden Codierung auf einen Ausgabestrom geschrieben werden.
 
 ```java
 // Ausgabestrom schreiben
@@ -119,14 +128,18 @@ out.write(72);
 out.write(154);
 ```
 
-TODO
+Wenn der Client die TCP-Verbindung beenden will, kann er die Methode `close()` der Klasse `Socket` aufrufen.
+Der Aufruf dieser Methode führt dazu, dass sofern noch nicht geschehen die notwendigen TCP-Pakete für das Schließen der TCP-Verbindung zwischen Client und Server ausgetauscht werden.
+Außerdem sorgt der Aufruf dafür, dass die vom Client zufällig gewählte Portnummer freigegebn wird und anderen Applikation damit wieder zur Verfügung steht.
 
 ```java
 // Socket schließen
 socket.close();
 ```
 
-TODO
+Während der Nutzung einer TCP-Verbindung können prinzipiell Ausnahmen ausgelöst werden, welche dazu führen, dass die TCP-Verbindung nicht ordnungsgemäß beendet wird.
+Falls ein solcher Systemzustand eintrifft, kann das dazu führen, dass die reservierten Ressourcen auf Betriebssystemebene auch nicht wieder freigegeben werden.
+Um einen solchen Zustand zu verhindern, ist es generell empfehlenswert die Verbindung mit `try-with-resources` aufzubauen, wie in folgendem Beispiel gezeigt.
 
 ```java
 import java.net.Socket;
