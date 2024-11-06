@@ -30,9 +30,13 @@ import javafx.stage.Stage;
 
 public class Program extends Application {
 
+	/**
+	 * Hauptroutine.
+	 */
 	public static void main(String[] args) {
 		
-		Program.launch(args);
+		// Starten der JavaFX-GUI
+		Application.launch(args);
 		
 	}
 	
@@ -47,8 +51,13 @@ public class Program extends Application {
 	private Spinner<Integer> sendPort;
 	private TextField sendMessage;
 	
+	/**
+	 * Senden einer Nachricht an den anderen Teilnehmer.
+	 */
 	private void send() {
+		// UDP-Socket zum Senden erstellen und am Ende implizit wieder schließen
 		try (DatagramSocket sendSocket = new DatagramSocket()) {
+			
 			// Prüfe den Nachrichteninhalt
 			if (sendMessage.getText().trim().length() == 0) {
 				throw new IOException("Bitte gib eine Nachricht ein.");
@@ -83,6 +92,7 @@ public class Program extends Application {
 			
 			// Fokus zurück auf das Texteingabefeld setzen
 			sendMessage.requestFocus();
+			
 		} catch (IOException e) {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Problem beim Senden");
@@ -92,7 +102,78 @@ public class Program extends Application {
 			alert.showAndWait();
 		}
 	}
+	
+	/**
+	 * Empfangen von Nachrichten vom anderen Teilnehmer.
+	 */
+	private void receive() {
+		try {
+			
+			// UDP-Socket erzeugen
+			receiveSocket = new DatagramSocket(receivePort.getValue());
+			
+			// Datenbuffer erzeugen
+			byte[] buffer = new byte[1024];
+			
+			// UDP-Paket erzeugen
+			DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
+			
+			// UDP-Pakete in einer Schleife empfangen
+			while (true) {
+				try {
+					
+					// UDP-Paket empfangen
+					receiveSocket.receive(packet);
+					
+					// Nachrichtentext auslesen 
+					String data = new String(packet.getData(), packet.getOffset(), packet.getLength());
+					
+					// Nachrichtentext in der GUI anzeigen
+					Platform.runLater(() -> {
+						Label label = new Label(data);
+						label.setPadding(new Insets(10));
+						label.setStyle("-fx-background-color: lightblue; -fx-background-radius: 10;");
+						label.setWrapText(true);
+						
+						HBox box = new HBox();
+						box.getChildren().add(label);
+						
+						receiveMessages.getChildren().add(box);
+					});
+					
+				} catch (IOException e) {
+					if (e instanceof SocketException && e.getCause() instanceof AsynchronousCloseException) {
+						// Socket wurde geschlossen => Thread beenden
+						return;
+					} else {
+						// Anderes Problem => Alert
+						Platform.runLater(() -> {
+							Alert alert = new Alert(AlertType.ERROR);
+							alert.setTitle("Problem beim Empfangen");
+							alert.setHeaderText("Es ist ein Problem beim Empfangen aufgetreten.");
+							alert.setContentText(e.getLocalizedMessage());
+							
+							alert.showAndWait();
+						});
+					}
+				}
+			}
+			
+		} catch (SocketException e) {
+			Platform.runLater(() -> {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Problem beim Empfangen");
+				alert.setHeaderText("Es ist ein Problem beim Empfangen aufgetreten.");
+				alert.setContentText(e.getLocalizedMessage());
+				
+				alert.showAndWait();
+			});
+		}
+	}
 
+	/**
+	 * Erstellung und Anzeige der GUI.
+	 */
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		
@@ -128,7 +209,7 @@ public class Program extends Application {
 		otherPortDialog.setContentText("Port:");
 		otherPortDialog.showAndWait();
 		
-		// GUI erstellen
+		// Private GUI-Elemente erstellen
 		
 		receivePort = new Spinner<Integer>(0, 65536, Integer.parseInt(ownPortDialog.getResult()));
 		receivePort.setDisable(true);
@@ -139,16 +220,16 @@ public class Program extends Application {
 		receiveMessages.setSpacing(10);
 		receiveMessages.setPadding(new Insets(10));
 		
-		sendName = new TextField(ownNameDialog.getResult());
-		sendName.setDisable(true);
+		sendPort = new Spinner<Integer>(0, 65536, Integer.parseInt(otherPortDialog.getResult()));
+		sendPort.setDisable(true);
+		sendPort.setPrefWidth(75);
 		
 		sendHost = new TextField(otherHostDialog.getResult());
 		sendHost.setDisable(true);
 		sendHost.setPrefWidth(75);
 		
-		sendPort = new Spinner<Integer>(0, 65536, Integer.parseInt(otherPortDialog.getResult()));
-		sendPort.setDisable(true);
-		sendPort.setPrefWidth(75);
+		sendName = new TextField(ownNameDialog.getResult());
+		sendName.setDisable(true);
 		
 		sendMessage = new TextField("Nachricht");
 		sendMessage.setOnKeyPressed(event -> {
@@ -157,16 +238,7 @@ public class Program extends Application {
 			}
 		});
 		
-		ScrollPane receivePane = new ScrollPane();
-		receivePane.setFitToWidth(true);
-		receivePane.setContent(receiveMessages);
-		// Auto-Scroll an das Listenende
-		receivePane.vvalueProperty().bind(receiveMessages.heightProperty());
-		
-		Button sendButton = new Button("Senden");
-		sendButton.setOnAction(event -> {
-			send();
-		});
+		// Lokale GUI-Element erstellen
 		
 		ImageView sendImage = new ImageView("send.png");
 		sendImage.getStyleClass().add("image-view");
@@ -183,6 +255,17 @@ public class Program extends Application {
 		
 		Label receiveLabel = new Label("Empfangen");
 		receiveLabel.setStyle("-fx-font-weight: bold;");
+		
+		ScrollPane receivePane = new ScrollPane();
+		receivePane.setFitToWidth(true);
+		receivePane.setContent(receiveMessages);
+		// Auto-Scroll an das Listenende
+		receivePane.vvalueProperty().bind(receiveMessages.heightProperty());
+		
+		Button sendButton = new Button("Senden");
+		sendButton.setOnAction(event -> {
+			send();
+		});
 		
 		GridPane settingsBar = new GridPane();
 		settingsBar.getStyleClass().add("grid-pane");
@@ -215,17 +298,24 @@ public class Program extends Application {
 		rootPane.setCenter(receivePane);
 		rootPane.setBottom(sendPane);
 		
+		// Szene erstellen
+		
 		Scene scene = new Scene(rootPane, 640, 480);
 		scene.getStylesheets().add("default.css");
 		if (DEBUG) {
 			scene.getStylesheets().add("debug.css");
 		}
 		
+		// Stage befüllen
+		
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("GUI-Chat");
 		primaryStage.setOnCloseRequest(event -> {
 			try {
+				
+				// UDP-Socket schließen (sonst terminiert Java-Programm nicht wirklich)
 				receiveSocket.close();
+				
 			} catch (Exception e) {
 				Alert alert = new Alert(AlertType.ERROR);
 				alert.setTitle("Problem beim Schließen");
@@ -239,67 +329,7 @@ public class Program extends Application {
 		
 		// Thread zum Empfangen von Nachrichten starten
 		
-		Thread thread = new Thread(() -> {
-			try {
-				// UDP-Socket erzeugen
-				receiveSocket = new DatagramSocket(receivePort.getValue());
-				
-				// Datenbuffer erzeugen
-				byte[] buffer = new byte[1024];
-				
-				// UDP-Paket erzeugen
-				DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
-				
-				// UDP-Pakete in einer Schleife empfangen
-				while (true) {
-					try {
-						// UDP-Paket empfangen
-						receiveSocket.receive(packet);
-						
-						// Nachrichtentext auslesen 
-						String data = new String(packet.getData(), packet.getOffset(), packet.getLength());
-						
-						// Nachrichtentext in der GUI anzeigen
-						Platform.runLater(() -> {
-							Label label = new Label(data);
-							label.setPadding(new Insets(10));
-							label.setStyle("-fx-background-color: lightblue; -fx-background-radius: 10;");
-							label.setWrapText(true);
-							
-							HBox box = new HBox();
-							box.getChildren().add(label);
-							
-							receiveMessages.getChildren().add(box);
-						});
-					} catch (IOException e) {
-						if (e instanceof SocketException && e.getCause() instanceof AsynchronousCloseException) {
-							// Socket wurde geschlossen => Thread beenden
-							return;
-						} else {
-							// Anderes Problem => Alert
-							Platform.runLater(() -> {
-								Alert alert = new Alert(AlertType.ERROR);
-								alert.setTitle("Problem beim Empfangen");
-								alert.setHeaderText("Es ist ein Problem beim Empfangen aufgetreten.");
-								alert.setContentText(e.getLocalizedMessage());
-								
-								alert.showAndWait();
-							});
-						}
-					}
-				}
-			} catch (SocketException e) {
-				Platform.runLater(() -> {
-					Alert alert = new Alert(AlertType.ERROR);
-					alert.setTitle("Problem beim Empfangen");
-					alert.setHeaderText("Es ist ein Problem beim Empfangen aufgetreten.");
-					alert.setContentText(e.getLocalizedMessage());
-					
-					alert.showAndWait();
-				});
-			}
-		});	
-		thread.start();
+		new Thread(this::receive).start();
 		
 	}
 
