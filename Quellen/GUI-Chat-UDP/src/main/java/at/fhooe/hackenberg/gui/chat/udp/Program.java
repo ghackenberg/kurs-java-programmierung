@@ -207,7 +207,7 @@ public class Program extends Application {
 		sendPane.setPadding(new Insets(10));
 		sendPane.setCenter(sendMessage);
 		sendPane.setRight(sendButton);
-		BorderPane.setMargin(sendMessage, new Insets(0, 10, 0, 10));
+		BorderPane.setMargin(sendButton, new Insets(0, 0, 0, 10));
 		
 		BorderPane rootPane = new BorderPane();
 		rootPane.getStyleClass().add("border-pane");
