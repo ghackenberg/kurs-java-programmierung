@@ -73,7 +73,12 @@ socket.receive(packet)
 
 ## 2. Transmission Control Protokoll (TCP)
 
-TODO
+Das folgende Diagramm zeigt die Klassen, welche Java für die Kommunikation mit dem Transmission Control Protokoll (TCP) bereitstellt.
+Die dafür notwendigen IP-Adressen der beiden Teilnehmer werden wieder über die Klasse `InetAddress` dargestellt, welche die einzelnen Adressbytes beinhaltet.
+Eine TCP-Verbindung zwischen zwei Teilnehmern wird über die Klasse `Socket` dargestellt, welche einen Ein- und einen Ausgabestrom für die Kommunikation bereitstellt.
+Beachte, dass bei einer bestehenden Verbindung sowohl der TCP-Server als auch der TCP-Client eine Instanz der Klasse `Socket` hat.
+Die Ein- und Ausgabeströme dieser beiden Instanzen sind jeweils vertauscht, d.h. was beim Server ein Eingabestrom ist, ist beim Client ein Ausgabestrom, und umgekehrt.
+Ein TCP-Server wird schließlich noch durch eine Instanz der Klasse `ServerSocket` dargestellt, über welche eingehende Verbindungen angenommen werden können.
 
 ![](../Grafiken/Net/TCP.svg)
 
@@ -82,8 +87,79 @@ TODO
 TODO
 
 ```java
-// Client
+import java.net.Socket;
+
+// Host definieren
+String host = ...
+
+// Port definieren
+int port = ...
+
+// Socket erzeugen
+Socket socket = new Socket(host, port);
 ```
+
+TODO
+
+```java
+// Eingabestrom lesen
+InputStream in = socket.getInputStream();
+in.read();
+in.read();
+in.read();
+```
+
+TODO
+
+```java
+// Ausgabestrom schreiben
+OutputStream out = socket.getOutputStream();
+out.write(13);
+out.write(72);
+out.write(154);
+```
+
+TODO
+
+```java
+// Socket schließen
+socket.close();
+```
+
+TODO
+
+```java
+import java.net.Socket;
+
+// Host definieren
+String host = ...
+
+// Port definieren
+int port = ...
+
+// Socket erzeugen und am Ende implizit wieder schließen
+try (Socket socket = new Socket(host, port)) {
+
+    // Eingabestrom lesen
+    InputStream in = socket.getInputStream();
+    in.read();
+    in.read();
+    in.read();
+
+    // Ausgabestrom schreiben
+    OutputStream out = socket.getOutputStream();
+    out.write(13);
+    out.write(72);
+    out.write(154);
+
+} catch (IOException e) {
+
+    // Fehler auf der Konsole ausgeben
+    e.printStackTrace();
+
+}
+```
+
 
 ### 2.2. TCP-Server erstellen
 
