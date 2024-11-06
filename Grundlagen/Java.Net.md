@@ -108,6 +108,8 @@ Das folgende Beispiel zeigt, wie der Client vom Server gesendete Daten empfangen
 Für das Empfangen von Daten bietet ein `Socket` den Zugriff auf einen `InputStream` (siehe [Daten lesen und schreiben mit `java.io`](Java.IO.md)).
 
 ```java
+import java.io.InputStream;
+
 // Eingabestrom lesen
 InputStream in = socket.getInputStream();
 in.read();
@@ -121,6 +123,8 @@ Der `Socket` bietet für das Senden von Daten den Zugriff auf einen entsprechend
 Alternativ können natürlich auch Zeichenketten mit einer entsprechenden Codierung auf einen Ausgabestrom geschrieben werden.
 
 ```java
+import java.io.OutputStream;
+
 // Ausgabestrom schreiben
 OutputStream out = socket.getOutputStream();
 out.write(13);
@@ -142,6 +146,8 @@ Falls ein solcher Systemzustand eintrifft, kann das dazu führen, dass die reser
 Um einen solchen Zustand zu verhindern, ist es generell empfehlenswert die Verbindung mit `try-with-resources` aufzubauen, wie in folgendem Beispiel gezeigt.
 
 ```java
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.Socket;
 
 // Host definieren
@@ -179,5 +185,102 @@ try (Socket socket = new Socket(host, port)) {
 TODO
 
 ```java
-// Server
+import java.net.ServerSocket;
+
+// Port definieren
+int port = ...
+
+// Server starten
+ServerSocket server = new ServerSocket(port);
+```
+
+TODO
+
+```java
+import java.net.Socket;
+
+// TCP-Verbindung annehmen
+Socket socket = server.accept();
+```
+
+TODO
+
+```java
+import java.io.InputStream;
+
+// Eingabestrom lesen
+InputStream in = socket.getInputStream();
+in.read();
+in.read();
+in.read();
+```
+
+TODO
+
+```java
+import java.io.OutputStream;
+
+// Ausgabestrom schreiben
+OutputStream out = socket.getOutputStream();
+out.write(13);
+out.write(72);
+out.write(154);
+```
+
+TODO
+
+```java
+// Socket schließen
+socket.close();
+```
+
+TODO
+
+```java
+// Server beenden
+server.close();
+```
+
+TODO
+
+```java
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+// Port definieren
+int port = ...
+
+// Server starten und implizit am Ende beenden
+try (ServerSocket server = new ServerSocket(port)) {
+
+    // Verbindung annehmen und implizit am Ende schließen
+    try (Socket socket = server.accept()) {
+
+        // Eingabestrom lesen
+        InputStream in = socket.getInputStream();
+        in.read();
+        in.read();
+        in.read();
+
+        // Ausgabestrom schreiben
+        OutputStream out = socket.getOutputStream();
+        out.write(13);
+        out.write(72);
+        out.write(154);
+
+    } catch (IOException e) {
+
+        // Fehler auf der Konsole ausgeben
+        e.printStackTrace();
+
+    }
+
+} catch (IOException e) {
+
+    // Fehler auf der Konsole ausgeben
+    e.printStrackTrace();
+
+}
 ```
