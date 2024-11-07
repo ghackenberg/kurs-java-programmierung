@@ -55,11 +55,17 @@ classDiagram
             <<abstract>>
         }
 
+        class Pagination {
+            +currentPageIndex: int
+            +pageCount: int
+        }
+
     }
 
     Control <|-- ScrollPane
     Control <|-- SplitPane
     Control <|-- TabPane
+    Control <|-- Pagination
 
     ScrollPane o-->"1" Node: content
 

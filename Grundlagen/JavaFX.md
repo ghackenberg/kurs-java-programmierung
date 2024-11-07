@@ -62,10 +62,12 @@ Panes:
 
 Controls:
 
-* `ScrollPane`, `SplitPane` und `TabPane`
+* `ScrollPane`, `SplitPane`, `TabPane` und `Pagination`
 * `MenuBar`, `ToolBar` und `ButtonBar`
 * `ListView`, `TableView`, `TreeView` und `TreeTableView`
 * `Label`, `Button`, `ToggleButton`, `MenuButton`, `Hyperlink` und `CheckBox`
+* `TextField` und `TextArea`
+* `ComboBox`, `DatePicker` und `ColorPicker`
 * `Spinner`, `Slider`, `ProgressIndictor` und `ChoiceBox`
 
 ## 1. `Application`, `Stage`, `Scene`, `Parent` und `Node`
@@ -189,7 +191,7 @@ TODO
 
 TODO
 
-### 9.1. `ScrollPane`, `SplitPane` und `TabPane`
+### 9.1. `ScrollPane`, `SplitPane`, `TabPane` und `Pagination`
 
 TODO
 
@@ -213,7 +215,19 @@ TODO
 
 ![](../Grafiken/JavaFX/Control.Labeled.svg)
 
-### 9.5. `Spinner`, `Slider`, `ProgressIndictor` und `ChoiceBox`
+### 9.5. `TextField` und `TextArea`
+
+TODO
+
+![](../Grafiken/JavaFX/Control.TextInput.svg)
+
+### 9.6. `ComboBox`, `DatePicker` und `ColorPicker`
+
+TODO
+
+![](../Grafiken/JavaFX/Control.ComboBox.svg)
+
+### 9.7. `Spinner`, `Slider`, `ProgressIndictor` und `ChoiceBox`
 
 TODO
 

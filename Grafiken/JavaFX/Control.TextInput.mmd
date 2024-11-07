@@ -1,0 +1,59 @@
+classDiagram
+
+    namespace JavaFX {
+
+        class Control {
+            <<abstract>>
+        }
+
+        class TextInputControl {
+            <<abstract>>
+            +text: String
+            +promtText: String
+            +editable: boolean
+            +undoable: boolean
+            +home() void
+            +end() void
+            +selectAll() void
+            +selectHome() void
+            +selectEnd() void
+            +selectForward() void
+            +selectBackward() void
+            +selectPreviousWord() void
+            +selectNextWord() void
+            +selectRange(anchor: int, caret: int) void
+            +cut() void
+            +paste() void
+            +deselect() void
+            +clear() void
+            +undo() void
+        }
+
+        class TextField {
+            +alignment: Pos
+            +prefColumnCount: int
+        }
+
+        class TextArea {
+            +wrapText: boolean
+            +scrollTop: double
+            +scrollLeft: double
+            +prefRowCount: int
+            +prefColumnCount: int
+        }
+
+        class Font {
+
+        }
+
+    }
+
+    Control <|-- TextInputControl
+
+    TextInputControl <|-- TextField
+    TextInputControl <|-- TextArea
+
+    TextInputControl ..>"1" Font: font
+
+    style Control fill:white
+    style Font fill:white

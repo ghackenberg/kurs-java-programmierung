@@ -1,0 +1,49 @@
+classDiagram
+
+    namespace JavaFX {
+
+        class Control {
+            <<abstract>>
+        }
+        
+        class ComboBoxBase["ComboBoxBase<T>"] {
+            <<abstract>>
+            +armed: boolean
+            +editable: boolean
+            +promtText: String
+            +showing: boolean
+            +value: T
+            +arm() void
+            +disarm() void
+            +show() void
+            +hide() void
+        }
+
+        class ComboBox {
+
+        }
+
+        class DatePicker {
+            +showWeekNumbers: boolean
+        }
+
+        class ColorPicker {
+
+        }
+
+        class TextField {
+
+        }
+
+    }
+
+    Control <|-- ComboBoxBase
+
+    ComboBoxBase <|-- ComboBox
+    ComboBoxBase <|-- DatePicker
+    ComboBoxBase <|-- ColorPicker
+
+    DatePicker o-->"1" TextField: editor
+
+    style Control fill:white
+    style TextField fill:white
