@@ -2,7 +2,7 @@
 
 Dieses Dokument beschreibt, wie man mittels JavaFX grafische Benutzerschnittstellen entwickelt.
 
-Basics:
+Grundelemente
 
 * `Application` - Basisklasse einer JavaFX-Anwendung
 * `Stage` - Fenster zur Darstellung von Inhalten
@@ -10,66 +10,71 @@ Basics:
 * `Parent` - Der eigentliche Inhalt des Fensters
 * `Node` - Basisklasse für alle Arten von Inhalten
 
-Helpers:
+Hilfselemente
 
-* `Color` - *TODO*
-* `Paint` - *TODO*
-* `Material` - *TODO*
-* `Font` - *TODO*
+* `Paint` - Darstellung von Farben und Farbverläufen
+* `Material` - Darstellung von visuellen Materialeigenschaften
+* `Font` - Darstellung von Schriftarten und deren Eigenschaften
 
-Nodes:
+Knoten
 
 * `Canvas` - Durchführung von Zeichenoperationen
 * `ImageView` - Anzeigen von Bildern
 * `MediaView` - Abspielen von Videos und Sounds
-* `SubScene` - *TODO*
 * `Shape`- 2D-Formen wie Rechtecke und Kreise
 * `Shape3D` - 3D-Formen wie Würfel und Kugeln
 * `Camera` - Kameras für das Rendering von 3D-Formen
+* `LightBase` - Beleuchtung für 3D-Szenen
+* `SubScene` - Container für 3D-Szenen mit Kamera
 
-2D-Shapes:
+2D-Formen
 
-* `Line` - *TODO*
-* `Polyline` - *TODO*
-* `Rectangle` - *TODO*
-* `Polygon` - *TODO*
-* `Circle` - *TODO*
-* `Ellipse` - *TODO*
-* `Text` - *TODO*
+* `Line` - Gerade Linie zwischen zwei Punkten
+* `Polyline` - Linienzug zwischen zwei oder mehr Punkten
+* `Rectangle` - Rechteckt definiert durch Höhe und Breite
+* `Polygon` - Vieleck definiert durch eine Reihe von Punkten
+* `Circle` - Kreis definiert durch Mittelpunkt und Radius
+* `Ellipse` - Ellipse definiert durch Mittelpunkt und Radii
+* `Text` - Text definiert durch Zeichenkette und Schriftart
 
-3D-Shapes:
+3D-Formen
 
 * `Box` - Wurfel-Geometrie mit Länge, Höhe und Tiefe
 * `Cylinder` - Zylinder-Geometrie mit Radius und Höhe
 * `Sphere` - Kugel-Geometrie mit Radius
 * `MeshView` - Beliebige Form bestehend aus Dreiecken
 
-Cameras:
+Kameras
 
 * `ParallelCamera` - Orthografische Projektion der Formen
 * `PerspectiveCamera` - Perspektifische Projektion der Formen
 
-Parents:
+Lichter
+
+* `AmbientLight` - Umgebungslight ohne spezielle Richtung
+* `PointLight` - Punktlicht ausgehend von einem Punkt im Raum
+
+Eltern
 
 * `Group` - Gruppierung von Kindknoten
 * `Region` - Gerahmte Fläche für Kindknoten
 * `WebView` - Anzeige von HTML-Seiten
 
-Regions:
+Regionen
 
-* `Pane` - *TODO*
-* `Chart` - *TODO*
-* `Axis` - *TODO*
-* `Control` - *TODO*
+* `Pane` - Verschiedene Layouts für Kindelemente
+* `Chart` - Kreis- und XY-Liniendiagramme
+* `Axis` - Die beiden Axen von XY-Liniendiagrammen
+* `Control` - Klassische Steuerelemente einer GUI-Anwendung
 
-Panes:
+Anordnungen
 
-* `BorderPane` - *TODO*
-* `GridPane` - *TODO*
-* `StackPane` - *TODO*
-* `FlowPane` - *TODO*
+* `BorderPane` - Rahmenlayout mit einem Flexiblem Zentralbereich
+* `GridPane` - Rasterlayout mit definierten Spalten und Zeilen
+* `StackPane` - Stapellayout mit einer definierten Stapelrichtung
+* `FlowPane` - Flusslayout mit primärer und sekundärer Flussrichtung
 
-Controls:
+Steuerelemente
 
 * `ScrollPane`, `SplitPane`, `TabPane` und `Pagination`
 * `MenuBar`, `ToolBar` und `ButtonBar`
@@ -79,9 +84,9 @@ Controls:
 * `ComboBox`, `DatePicker` und `ColorPicker`
 * `Spinner`, `Slider`, `ProgressIndictor` und `ChoiceBox`
 
-## 1. Basics
+## 1. Grundelemente
 
-Das 
+TODO
 
 ![](../Grafiken/JavaFX/Stage.svg)
 
@@ -93,15 +98,18 @@ import javafx.stage.Stage;
 
 // Programmklasse
 public class Program extends Application {
+
     // Hauptroutine
     public static void main(String[] args) {
         Application.launch(args);
     }
+
     // Startmethode
     @Override
     public void start(Stage primaryStage) {
         ...
     }
+
 }
 ```
 
@@ -138,107 +146,117 @@ primaryStage.setScene(scene);
 primaryStage.show();
 ```
 
-## 2. Helpers
+## 2. Hilfselemente
 
 TODO
 
 ![](../Grafiken/JavaFX/Paint.svg)
 
-## 3. Nodes
+## 3. Knoten
 
 TODO
 
 ![](../Grafiken/JavaFX/Node.svg)
 
-## 4. 2D-Shapes
+## 4. 2D-Formen
 
 TODO
 
 ![](../Grafiken/JavaFX/Shape.svg)
 
-## 5. 3D-Shapes
+## 5. 3D-Formen
 
 TODO
 
-## 6. Cameras
+![](../Grafiken/JavaFX/Shape3D.svg)
+
+## 6. Kameras
 
 TODO
 
-## 7. Parents
+![](../Grafiken/JavaFX/Camera.svg)
+
+## 7. Lichter
+
+TODO
+
+![](../Grafiken/JavaFX/Light.svg)
+
+## 8. Eltern
 
 TODO
 
 ![](../Grafiken/JavaFX/Parent.svg)
 
-## 8. Regions
+## 9. Regionen
 
 TODO
 
 ![](../Grafiken/JavaFX/Region.svg)
 
-## 9. Panes
+## 10. Anordnungen
 
 TODO
 
 ![](../Grafiken/JavaFX/Pane.svg)
 
-### 9.1. `BorderPane`
+### 10.1. `BorderPane`
 
 TODO
 
-### 9.2. `GridPane`
+### 10.2. `GridPane`
 
 TODO
 
-### 9.3. `StackPane`
+### 10.3. `StackPane`
 
 TODO
 
-### 9.4. `FlowPane`
+### 10.4. `FlowPane`
 
 TODO
 
-## 10. Controls
+## 11. Steuerelemente
 
 TODO
 
-### 10.1. `ScrollPane`, `SplitPane`, `TabPane` und `Pagination`
+### 11.1. `ScrollPane`, `SplitPane`, `TabPane` und `Pagination`
 
 TODO
 
 ![](../Grafiken/JavaFX/Control.Pane.svg)
 
-### 10.2. `MenuBar`, `ToolBar` und `ButtonBar`
+### 11.2. `MenuBar`, `ToolBar` und `ButtonBar`
 
 TODO
 
 ![](../Grafiken/JavaFX/Control.Bar.svg)
 
-### 10.3. `ListView`, `TableView`, `TreeView` und `TreeTableView`
+### 11.3. `ListView`, `TableView`, `TreeView` und `TreeTableView`
 
 TODO
 
 ![](../Grafiken/JavaFX/Control.View.svg)
 
-### 10.4. `Label`, `Button`, `ToggleButton`, `MenuButton`, `Hyperlink` und `CheckBox`
+### 11.4. `Label`, `Button`, `ToggleButton`, `MenuButton`, `Hyperlink` und `CheckBox`
 
 TODO
 
 ![](../Grafiken/JavaFX/Control.Labeled.svg)
 
-### 10.5. `TextField` und `TextArea`
+### 11.5. `TextField` und `TextArea`
 
 TODO
 
 ![](../Grafiken/JavaFX/Control.TextInput.svg)
 
-### 10.6. `ComboBox`, `DatePicker` und `ColorPicker`
+### 11.6. `ComboBox`, `DatePicker` und `ColorPicker`
 
 TODO
 
 ![](../Grafiken/JavaFX/Control.ComboBox.svg)
 
-### 10.7. `Spinner`, `Slider`, `ProgressIndictor` und `ChoiceBox`
+### 11.7. `Spinner`, `Slider`, `ProgressIndictor` und `ChoiceBox`
 
 TODO
 

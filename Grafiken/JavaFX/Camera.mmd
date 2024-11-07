@@ -1,0 +1,25 @@
+classDiagram
+
+    direction LR
+
+    namespace JavaFX {
+
+        class Camera {
+            <<abstract>>
+        }
+
+        class ParallelCamera {
+
+        }
+
+        class PerspectiveCamera {
+            +fieldOfView: double
+            +verticalFieldOfView: boolean
+        }
+
+    }
+
+    Camera <|-- ParallelCamera
+    Camera <|-- PerspectiveCamera
+
+    style Camera fill:white

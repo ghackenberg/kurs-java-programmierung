@@ -1,0 +1,55 @@
+classDiagram
+
+    direction LR
+
+    namespace JavaFX {
+
+        class Shape3D {
+            <<abstract>>
+        }
+
+        class Box {
+            +width: double
+            +height: double
+            +depth: double
+        }
+
+        class Sphere {
+            +radius: double
+            +divisions: int
+        }
+
+        class Cylinder {
+            +height: double
+            +radius: double
+            +divisions: int
+        }
+
+        class MeshView {
+
+        }
+
+        class Mesh {
+            <<abstract>>
+        }
+
+        class TriangleMesh {
+            +vertexFormat: VertexFormat
+            +points: float[]
+            +normals: float[]
+            +texCoords: float[]
+            +faces: int[][]
+        }
+
+    }
+
+    Shape3D <|-- Box
+    Shape3D <|-- Sphere
+    Shape3D <|-- Cylinder
+    Shape3D <|-- MeshView
+
+    Mesh "1" <--o MeshView: mesh
+
+    Mesh <|-- TriangleMesh
+
+    style Shape3D fill:white
