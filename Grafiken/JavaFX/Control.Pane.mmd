@@ -74,9 +74,9 @@ classDiagram
     SplitPaneDivider "*"<--o SplitPane: dividers
 
     TabPane o-->"*" Tab
-    TabPane o-->"1" ContextMenu
-    TabPane o-->"1" Tooltip
 
+    Tab o-->"1" ContextMenu
+    Tab o-->"1" Tooltip
     Tab o-->"1" Node: content
 
     style Node fill:white

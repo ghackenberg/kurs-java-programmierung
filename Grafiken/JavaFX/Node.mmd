@@ -77,6 +77,14 @@ classDiagram
             +...
         }
 
+        class Paint {
+            <<abstract>>
+        }
+
+        class Material {
+            <<abstract>>
+        }
+
     }
 
     Node <|-- ImageView
@@ -101,4 +109,11 @@ classDiagram
 
     MediaPlayer o-->"1" Media
 
+    Shape o-->"1" Paint: stroke
+    Shape o-->"1" Paint: fill
+
+    Shape3D o-->"1" Material
+
     style Node fill:white
+    style Paint fill:white
+    style Material fill:white

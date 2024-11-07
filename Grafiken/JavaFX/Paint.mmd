@@ -33,7 +33,26 @@ classDiagram
             <<abstract>>
         }
 
+        class Font {
+            -name: String
+            -size: double
+            -style: String
+        }
+
+        class Material {
+            <<abstract>>
+        }
+
+        class PhongMaterial {
+            +specularPower: double
+        }
+
     }
+
+    Material <|-- PhongMaterial
+    
+    PhongMaterial ..>"1" Color: diffuseColor
+    PhongMaterial ..>"1" Color: specularColor
 
     Color <--o"1" Stop
 
@@ -44,5 +63,3 @@ classDiagram
 
     Paint <|-- LinearGradient
     Paint <|-- RadialGradient
-
-    style Paint fill:white

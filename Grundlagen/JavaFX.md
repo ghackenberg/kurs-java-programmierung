@@ -8,6 +8,13 @@ Dieses Dokument beschreibt, wie man mittels JavaFX grafische Benutzerschnittstel
 * `Parent` - Der eigentliche Inhalt des Fensters
 * `Node` - Basisklasse für alle Arten von Inhalten
 
+Helpers:
+
+* `Color` - *TODO*
+* `Paint` - *TODO*
+* `Material` - *TODO*
+* `Font` - *TODO*
+
 Nodes:
 
 * `Canvas` - Durchführung von Zeichenoperationen
@@ -129,6 +136,12 @@ primaryStage.setScene(scene);
 primaryStage.show();
 ```
 
+## 2. `Color`, `Paint`, `Material` und `Font`
+
+TODO
+
+![](../Grafiken/JavaFX/Paint.svg)
+
 ## 2. `Canvas`, `ImageView`, `MediaView`, `SubScene`, `Shape`, `Shape3D` und `Camera`
 
 TODO
@@ -154,10 +167,6 @@ TODO
 TODO
 
 ![](../Grafiken/JavaFX/Parent.svg)
-
-TODO
-
-![](../Grafiken/JavaFX/Paint.svg)
 
 ## 7. `Pane`, `Chart`, `Axis` und `Control`
 

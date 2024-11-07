@@ -4,14 +4,6 @@ classDiagram
 
     namespace JavaFX {
 
-        class Node {
-            <<abstract>>
-        }
-
-        class Paint {
-            <<abstract>>
-        }
-
         class Shape {
             <<abstract>>
         }
@@ -64,14 +56,9 @@ classDiagram
         }
 
         class Font {
-            -name: String
-            -size: double
-            -style: String
         }
 
     }
-
-    Paint "2"<--o Shape: fill / stroke
 
     Shape <|-- Line
     Shape <|-- Polyline
@@ -87,3 +74,5 @@ classDiagram
     Text ..>"1" Font
 
     style Shape fill:white
+    style Paint fill:white
+    style Font fill:white
