@@ -2,6 +2,8 @@
 
 Dieses Dokument beschreibt, wie man mittels JavaFX grafische Benutzerschnittstellen entwickelt.
 
+Basics:
+
 * `Application` - Basisklasse einer JavaFX-Anwendung
 * `Stage` - Fenster zur Darstellung von Inhalten
 * `Scene` - Container für den Inhalt eines Festers
@@ -77,7 +79,7 @@ Controls:
 * `ComboBox`, `DatePicker` und `ColorPicker`
 * `Spinner`, `Slider`, `ProgressIndictor` und `ChoiceBox`
 
-## 1. `Application`, `Stage`, `Scene`, `Parent` und `Node`
+## 1. Basics
 
 Das 
 
@@ -136,107 +138,107 @@ primaryStage.setScene(scene);
 primaryStage.show();
 ```
 
-## 2. `Color`, `Paint`, `Material` und `Font`
+## 2. Helpers
 
 TODO
 
 ![](../Grafiken/JavaFX/Paint.svg)
 
-## 2. `Canvas`, `ImageView`, `MediaView`, `SubScene`, `Shape`, `Shape3D` und `Camera`
+## 3. Nodes
 
 TODO
 
 ![](../Grafiken/JavaFX/Node.svg)
 
-## 3. `Line`, `Polyline`, `Rectangle`, `Polygon`, `Circle`, `Ellipse` und `Text`
+## 4. 2D-Shapes
 
 TODO
 
 ![](../Grafiken/JavaFX/Shape.svg)
 
-## 4. `Box`, `Cylinder`, `Sphere` und `MeshView`
+## 5. 3D-Shapes
 
 TODO
 
-## 5. `ParallelCamera` und `PerspectiveCamera`
+## 6. Cameras
 
 TODO
 
-## 6. `Group`, `Region` und `WebView`
+## 7. Parents
 
 TODO
 
 ![](../Grafiken/JavaFX/Parent.svg)
 
-## 7. `Pane`, `Chart`, `Axis` und `Control`
+## 8. Regions
 
 TODO
 
 ![](../Grafiken/JavaFX/Region.svg)
 
-## 8. Panes
+## 9. Panes
 
 TODO
 
 ![](../Grafiken/JavaFX/Pane.svg)
 
-### 8.1. `BorderPane`
+### 9.1. `BorderPane`
 
 TODO
 
-### 8.2. `GridPane`
+### 9.2. `GridPane`
 
 TODO
 
-### 8.3. `StackPane`
+### 9.3. `StackPane`
 
 TODO
 
-### 8.4. `FlowPane`
+### 9.4. `FlowPane`
 
 TODO
 
-## 9. Controls
+## 10. Controls
 
 TODO
 
-### 9.1. `ScrollPane`, `SplitPane`, `TabPane` und `Pagination`
+### 10.1. `ScrollPane`, `SplitPane`, `TabPane` und `Pagination`
 
 TODO
 
 ![](../Grafiken/JavaFX/Control.Pane.svg)
 
-### 9.2. `MenuBar`, `ToolBar` und `ButtonBar`
+### 10.2. `MenuBar`, `ToolBar` und `ButtonBar`
 
 TODO
 
 ![](../Grafiken/JavaFX/Control.Bar.svg)
 
-### 9.3. `ListView`, `TableView`, `TreeView` und `TreeTableView`
+### 10.3. `ListView`, `TableView`, `TreeView` und `TreeTableView`
 
 TODO
 
 ![](../Grafiken/JavaFX/Control.View.svg)
 
-### 9.4. `Label`, `Button`, `ToggleButton`, `MenuButton`, `Hyperlink` und `CheckBox`
+### 10.4. `Label`, `Button`, `ToggleButton`, `MenuButton`, `Hyperlink` und `CheckBox`
 
 TODO
 
 ![](../Grafiken/JavaFX/Control.Labeled.svg)
 
-### 9.5. `TextField` und `TextArea`
+### 10.5. `TextField` und `TextArea`
 
 TODO
 
 ![](../Grafiken/JavaFX/Control.TextInput.svg)
 
-### 9.6. `ComboBox`, `DatePicker` und `ColorPicker`
+### 10.6. `ComboBox`, `DatePicker` und `ColorPicker`
 
 TODO
 
 ![](../Grafiken/JavaFX/Control.ComboBox.svg)
 
-### 9.7. `Spinner`, `Slider`, `ProgressIndictor` und `ChoiceBox`
+### 10.7. `Spinner`, `Slider`, `ProgressIndictor` und `ChoiceBox`
 
 TODO
 
