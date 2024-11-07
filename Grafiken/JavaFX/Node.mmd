@@ -1,5 +1,7 @@
 classDiagram
 
+    direction LR
+
     namespace JavaFX {
         
         class Node {
@@ -55,6 +57,26 @@ classDiagram
             +duration: double
         }
 
+        class SubScene {
+            +...
+        }
+
+        class Shape {
+            <<abstract>>
+            +strokeWidth: double
+            +smooth: boolean
+        }
+
+        class Shape3D {
+            <<abstract>>
+            +...
+        }
+
+        class Camera {
+            <<abstract>>
+            +...
+        }
+
     }
 
     Node <|-- ImageView
@@ -62,6 +84,14 @@ classDiagram
     Node <|-- MediaView
 
     Node <|-- Canvas
+
+    Node <|-- SubScene
+    
+    Node <|-- Shape
+
+    Node <|-- Shape3D
+
+    Node <|-- Camera
 
     Canvas o-->"1" GraphicsContext
 

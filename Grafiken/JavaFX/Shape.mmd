@@ -14,8 +14,6 @@ classDiagram
 
         class Shape {
             <<abstract>>
-            +strokeWidth: double
-            +smooth: boolean
         }
 
         class Line {
@@ -73,8 +71,6 @@ classDiagram
 
     }
 
-    Node <|-- Shape
-
     Paint "2"<--o Shape: fill / stroke
 
     Shape <|-- Line
@@ -90,4 +86,4 @@ classDiagram
 
     Text ..>"1" Font
 
-    style Node fill:white
+    style Shape fill:white
