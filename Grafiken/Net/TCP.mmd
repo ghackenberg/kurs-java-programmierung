@@ -54,7 +54,7 @@ classDiagram
 
     Socket o-- InetAddress: address
 
-    Socket o-- InputStream: input
+    InputStream --o Socket: input
     Socket o-- OutputStream: output
 
     style InputStream fill:white
