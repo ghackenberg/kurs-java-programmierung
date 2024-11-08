@@ -2,7 +2,7 @@
 
 Dieses Dokument beschreibt, wie man mittels JavaFX grafische Benutzerschnittstellen entwickelt.
 
-Anwendungen, Fenster und Szenen
+Anwendungen
 
 * `Application` - Basisklasse einer JavaFX-Anwendung
 * `Stage` - Fenster zur Darstellung von Inhalten
@@ -10,7 +10,7 @@ Anwendungen, Fenster und Szenen
 * `Node` - Basisklasse für alle Arten von Inhalten
 * `Parent` - Basisklasse für Inhalte mit Kindinhalten
 
-Farben und Farbverläufe
+Farben
 
 * `Paint` - *TODO*
 * `Color` - Darstellung von Farben
@@ -26,7 +26,7 @@ Knoten
 * `ImageView` - Anzeigen von Bildern
 * `MediaView` - Abspielen von Videos und Sounds
 
-Elternknoten
+Eltern
 
 * `Region` - Gerahmte Fläche für Kindknoten
 * `WebView` - Anzeige von HTML-Seiten
@@ -53,7 +53,7 @@ Steuerelemente
 * `ComboBox`, `DatePicker` und `ColorPicker`
 * `Spinner`, `Slider`, `ProgressIndictor` und `ChoiceBox`
 
-## 1. Anwendungen, Fenster und Szenen
+## 1. Anwendungen
 
 TODO
 
@@ -115,7 +115,7 @@ primaryStage.setScene(scene);
 primaryStage.show();
 ```
 
-## 2. Farben und Farbverläufe
+## 2. Farben
 
 TODO
 
@@ -133,7 +133,7 @@ TODO
 
 ![](../Grafiken/JavaFX/Node.svg)
 
-## 5. Elternknoten
+## 5. Eltern
 
 TODO
 
