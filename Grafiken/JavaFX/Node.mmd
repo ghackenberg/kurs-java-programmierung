@@ -1,10 +1,12 @@
 classDiagram
 
-    direction LR
-
     namespace JavaFX {
         
         class Node {
+            <<abstract>>
+        }
+
+        class Parent {
             <<abstract>>
         }
 
@@ -24,17 +26,6 @@ classDiagram
             +fitHeight: double
             +preserveRatio: boolean
             +smooth: boolean
-        }
-
-        class Canvas {
-            +width: double
-            +height: double
-        }
-
-        class GraphicsContext {
-            +fill() void
-            +stroke() void
-            +clip() void
         }
 
         class Image {
@@ -57,85 +48,20 @@ classDiagram
             +duration: double
         }
 
-        class SubScene {
-            +width: double
-            +height: double
-        }
-
-        class Shape {
-            <<abstract>>
-            +strokeWidth: double
-            +smooth: boolean
-        }
-
-        class Shape3D {
-            <<abstract>>
-            +cullFace: CullFace
-            +drawMode: DrawMode
-        }
-
-        class Camera {
-            <<abstract>>
-            +nearClip: double
-            +farClip: double
-        }
-
-        class Paint {
-            <<abstract>>
-        }
-
-        class Material {
-            <<abstract>>
-        }
-
-        class LightBase {
-            <<abstract>>
-            +lightOn: boolean
-        }
-
-        class Color {
-            
-        }
-
     }
+
+    Node <|-- Parent
+    Node "*"<--o Parent: children
 
     Node <|-- ImageView
 
     Node <|-- MediaView
-
-    Node <|-- Canvas
-
-    Canvas o-->"1" GraphicsContext
 
     ImageView o-->"1" Image
 
     MediaView o-->"1" MediaPlayer
 
     MediaPlayer o-->"1" Media
-    
-    Node <|-- Shape
-
-    Shape o-->"2" Paint: stroke / fill
-
-    SubScene o-->"1" Camera: camera
-    SubScene o-->"1" Paint: fill
-
-    Node <|-- Camera
-
-    Node "1"<--o SubScene: root
-    Node <|-- SubScene
-
-    Node <|-- Shape3D
-
-    Shape3D o-->"1" Material
-
-    Node <|-- LightBase
-
-    LightBase o-->"1" Color
-
-    Color --|> Paint
 
     style Node fill:white
-    style Paint fill:white
-    style Color fill:white
-    style Material fill:white
+    style Parent fill:white

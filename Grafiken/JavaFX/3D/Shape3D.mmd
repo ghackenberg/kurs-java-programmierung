@@ -33,14 +33,6 @@ classDiagram
             <<abstract>>
         }
 
-        class TriangleMesh {
-            +vertexFormat: VertexFormat
-            +points: float[]
-            +normals: float[]
-            +texCoords: float[]
-            +faces: int[][]
-        }
-
     }
 
     Shape3D <|-- Box
@@ -48,8 +40,7 @@ classDiagram
     Shape3D <|-- Cylinder
     Shape3D <|-- MeshView
 
-    Mesh "1" <--o MeshView: mesh
-
-    Mesh <|-- TriangleMesh
+    MeshView o-->"1" Mesh: mesh
 
     style Shape3D fill:white
+    style Mesh fill:white

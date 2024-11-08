@@ -1,0 +1,27 @@
+classDiagram
+
+    direction LR
+
+    namespace JavaFX {
+        
+        class Node {
+            <<abstract>>
+        }
+
+        class Canvas {
+            +width: double
+            +height: double
+        }
+
+        class Shape {
+            <<abstract>>
+            +strokeWidth: double
+            +smooth: boolean
+        }
+
+    }
+
+    Node <|-- Canvas
+    Node <|-- Shape
+
+    style Node fill:white

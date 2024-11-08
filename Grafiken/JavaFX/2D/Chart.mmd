@@ -1,0 +1,53 @@
+classDiagram
+
+    namespace JavaFX {
+
+        class Chart {
+            <<abstract>>
+        }
+
+        class PieChart {
+            +startAngle: double
+            +clockwise: boolean
+            +labelsVisible: boolean
+        }
+
+        class PieChartData["PieChart.Data"] {
+            +name: String
+            +pieValue: double
+        }
+
+        class XYChart["XYChart&lt;X,Y&gt;"] {
+            +horizontalGridLinesVisible: boolean
+            +horizontalZeroLineVisible: boolean
+            +verticalGridLinesVisible: boolean
+            +verticalZeroLineVisible: boolean
+        }
+
+        class XYChartSeries["XYChart.Series&lt;X,Y&gt;"] {
+            +name: String
+        }
+
+        class XYChartData["XYChart.Data&lt;X,Y&gt;"] {
+            +XValue: X
+            +YValue: Y
+        }
+
+        class Axis["Axis&lt;T&gt;"] {
+        }
+
+    }
+
+    Chart <|-- PieChart
+    Chart <|-- XYChart
+
+    PieChart o-->"*" PieChartData
+
+    XYChart o-->"*" XYChartSeries
+
+    XYChartSeries o-->"*" XYChartData
+
+    XYChart o-->"2" Axis: xAxis / yAxis
+
+    style Chart fill:white
+    style Axis fill:white

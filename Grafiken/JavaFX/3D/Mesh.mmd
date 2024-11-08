@@ -1,0 +1,19 @@
+classDiagram
+
+    namespace JavaFX {
+
+        class Mesh {
+            <<abstract>>
+        }
+
+        class TriangleMesh {
+            +vertexFormat: VertexFormat
+            +points: float[]
+            +normals: float[]
+            +texCoords: float[]
+            +faces: int[][]
+        }
+
+    }
+
+    Mesh <|-- TriangleMesh

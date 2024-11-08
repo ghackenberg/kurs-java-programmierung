@@ -17,6 +17,8 @@ Im Rahmen dieses Kurses werden die folgenden Themen betrachtet:
 * [Dateneingabe und -ausgabe mit `java.io`](./Grundlagen/Java.IO.md)
 * [Netzwerk-Kommunikation mit `java.net`](./Grundlagen/Java.Net.md)
 * [Grafische Benutzerschnittstellen mit `javafx`](./Grundlagen/JavaFX.md)
+  * [*Vertiefung 1:* 2D-Visualisierungen mit `javafx`](./Grundlagen/JavaFX-2D.md)
+  * [*Vertiefung 2:* 3D-Visualisierungen mit `javafx`](./Grundlagen/JavaFX-3D.md)
 
 ## Anwendungen
 

@@ -6,10 +6,6 @@ classDiagram
             <<abstract>>
         }
 
-        class Group {
-            +autoSizeChildren: boolean
-        }
-
         class Region {
             +minWidth: double
             +minHeight: double
@@ -92,26 +88,24 @@ classDiagram
 
     }
 
-    Parent <|-- Group
-
     Parent <|-- Region
 
     Parent <|-- WebView
 
+    Region o-->"1" Border
     Region o-->"2" Insets: padding
     Region o-->"1" Background
-    Region o-->"1" Border
+
+    Border o-->"*" BorderImage
+    Border o-->"*" BorderStroke
 
     Background o-->"*" BackgroundFill
     Background o-->"*" BackgroundImage
 
-    Border o-->"*" BorderStroke
-    Border o-->"*" BorderImage
+    BorderStroke o-->"1" BorderWidths
+    BorderStroke o-->"1" CornerRadii
 
     BackgroundFill o-->"1" CornerRadii
-
-    BorderStroke o-->"1" CornerRadii
-    BorderStroke o-->"1" BorderWidths
 
     WebView o-->"1" WebEngine
 

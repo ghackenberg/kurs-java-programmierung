@@ -1,0 +1,28 @@
+classDiagram
+
+    direction LR
+
+    namespace JavaFX {
+        
+       
+
+        class Region {
+        }
+
+        class Chart {
+            <<abstract>>
+            +title: String
+            +animated: boolean
+            +legendVisible: boolean
+        }
+
+        class Axis["Axis&lt;T&gt;"] {
+            +label: String
+        }
+
+    }
+
+    Region <|-- Chart
+    Region <|-- Axis
+
+    style Region fill:white

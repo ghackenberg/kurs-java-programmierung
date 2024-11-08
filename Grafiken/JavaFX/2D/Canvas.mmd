@@ -1,0 +1,44 @@
+classDiagram
+
+    namespace JavaFX {
+
+        class Canvas {
+        }
+
+        class GraphicsContext {
+            +globalAlpha: double
+            +lineWidth: double
+            +arc(cX: double, cY: double, rX: double, rY: double, aS: double, a: double) void
+            +rect(x: double, y: double, w: double, h: double) void
+            +beginPath() void
+            +moveTo(x: double, y: double) void
+            +lineTo(x: double, y: double) void
+            +arcTo(x1: double, y1: double, x2: double, y2: double, r: double) void
+            +quadraticCurveTo(xc: double, xy: double, x1: double, x2: double) void
+            +bezierCurveTo(xc1: double, yc1: double, xc2: double, yc2: double, x1: double, y1: double) void
+            +closePath() void
+            +stroke() void
+            +fill() void
+            +clearRect(x: double, y: double, w: double, h: double) void
+        }
+
+        class Paint {
+            <<abstract>>
+        }
+
+        class Font {
+
+        }
+
+    }
+
+    Canvas o-->"1" GraphicsContext
+
+    GraphicsContext ..>"1" Paint: stroke
+    GraphicsContext ..>"1" Paint: fill
+    GraphicsContext ..>"1" Font
+
+
+    style Canvas fill:white
+    style Paint fill:white
+    style Font fill:white

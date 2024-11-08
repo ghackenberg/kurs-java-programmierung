@@ -1,7 +1,5 @@
 classDiagram
 
-    direction LR
-
     namespace JavaFX {
 
         class Region {
@@ -10,44 +8,6 @@ classDiagram
 
         class Pane {
 
-        }
-
-        class Chart {
-            <<abstract>>
-            +title: String
-            +animated: boolean
-            +legendVisible: boolean
-        }
-
-        class PieChart {
-            +startAngle: double
-            +clockwise: boolean
-            +labelsVisible: boolean
-        }
-
-        class PieChartData["PieChart.Data"] {
-            +name: String
-            +pieValue: double
-        }
-
-        class XYChart["XYChart&lt;X,Y&gt;"] {
-            +horizontalGridLinesVisible: boolean
-            +horizontalZeroLineVisible: boolean
-            +verticalGridLinesVisible: boolean
-            +verticalZeroLineVisible: boolean
-        }
-
-        class XYChartSeries["XYChart.Series&lt;X,Y&gt;"] {
-            +name: String
-        }
-
-        class XYChartData["XYChart.Data&lt;X,Y&gt;"] {
-            +XValue: X
-            +YValue: Y
-        }
-
-        class Axis["Axis&lt;T&gt;"] {
-            +label: String
         }
 
         class Control {
@@ -101,30 +61,17 @@ classDiagram
     }
 
     Region <|-- Pane
-    Region <|-- Chart
-    Region <|-- Axis
     Region <|-- Control
-
-    Chart <|-- PieChart
-    Chart <|-- XYChart
-
-    PieChart o-->"*" PieChartData
-
-    XYChart o-->"*" XYChartSeries
-
-    XYChartSeries o-->"*" XYChartData
-
-    XYChart o-->"2" Axis: xAxis / yAxis
 
     Control o-->"1" ContextMenu
     Control o-->"1" Tooltip
 
     ContextMenu o-->"*" MenuItem
 
-    MenuItem "*"<--o Menu
-    MenuItem <|-- Menu
-    MenuItem <|-- CheckMenuItem
     MenuItem <|-- RadioMenuItem
+    MenuItem <|-- CheckMenuItem
+    MenuItem "*"<--o Menu: items
+    MenuItem <|-- Menu
 
     ToggleGroup o-->"*" Toggle
     ToggleGroup ..> Toggle: selectedToggle

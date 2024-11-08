@@ -1,0 +1,30 @@
+classDiagram
+
+    namespace JavaFX {
+
+        class Color {
+        }
+
+        class Paint {
+            <<abstract>>
+        }
+
+        class Material {
+            <<abstract>>
+        }
+
+        class PhongMaterial {
+            +specularPower: double
+        }
+
+    }
+
+    Material <|-- PhongMaterial
+    
+    PhongMaterial ..>"1" Color: diffuseColor
+    PhongMaterial ..>"1" Color: specularColor
+
+    Color --|> Paint
+
+    style Paint fill:white
+    style Color fill:white

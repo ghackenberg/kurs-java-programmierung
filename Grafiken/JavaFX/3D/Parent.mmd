@@ -1,0 +1,25 @@
+classDiagram
+
+    namespace JavaFX {
+
+        class Node {
+            <<abstract>>
+        }
+        
+        class Parent {
+            <<abstract>>
+        }
+
+        class Group {
+            +autoSizeChildren: boolean
+        }
+
+    }
+
+    Node <|-- Parent
+    Node "*"<--o Parent: children
+
+    Parent <|-- Group
+
+    style Node fill:white
+    style Parent fill:white

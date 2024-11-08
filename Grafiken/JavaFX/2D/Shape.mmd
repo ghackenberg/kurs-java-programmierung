@@ -4,6 +4,10 @@ classDiagram
 
     namespace JavaFX {
 
+        class Paint {
+            <<abstract>>
+        }
+
         class Shape {
             <<abstract>>
         }
@@ -59,6 +63,8 @@ classDiagram
         }
 
     }
+
+    Paint "2"<--o Shape: stroke / fill
 
     Shape <|-- Line
     Shape <|-- Polyline

@@ -1,0 +1,85 @@
+classDiagram
+
+    namespace JavaFX {
+        
+        class Node {
+            <<abstract>>
+            +translateX: double
+            +translateY: double
+            +translateZ: double
+            +scaleX: double
+            +scaleY: double
+            +scaleZ: double
+            +rotationAxis: Point3D
+            +rotate: double
+        }
+
+        class SubScene {
+            +width: double
+            +height: double
+        }
+
+        class Shape3D {
+            <<abstract>>
+            +cullFace: CullFace
+            +drawMode: DrawMode
+        }
+
+        class Camera {
+            <<abstract>>
+            +nearClip: double
+            +farClip: double
+        }
+
+        class Material {
+            <<abstract>>
+        }
+
+        class PhongMaterial {
+
+        }
+
+        class LightBase {
+            <<abstract>>
+            +lightOn: boolean
+        }
+
+        class Paint {
+            <<abstract>>
+        }
+
+        class Color {
+            
+        }
+
+    }
+
+    SubScene o-->"1" Camera: camera
+    SubScene o-->"1" Paint: fill
+
+    Node <|-- Camera
+
+    Node "1"<--o SubScene: root
+    Node <|-- SubScene
+
+    Node <|-- Shape3D
+
+    Shape3D o-->"1" Material
+
+    Material <|-- PhongMaterial
+
+    PhongMaterial o-->"1" Color: diffuseColor
+    PhongMaterial o-->"1" Color: specularColor
+
+    Node <|-- LightBase
+
+    LightBase o-->"1" Color
+
+    Paint <|-- Color
+
+    style Node fill:white
+    style Parent fill:white
+    style Paint fill:white
+    style Color fill:white
+    style Material fill:white
+    style PhongMaterial fill:white
