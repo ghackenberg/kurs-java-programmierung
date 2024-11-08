@@ -1,34 +1,23 @@
 classDiagram
 
-    direction LR
-
     namespace JavaFX {
 
         class Control {
             <<abstract>>
         }
 
-        class ChoiceBox {
-
-        }
-
         class ProgressIndicator {
 
         }
 
-        class Spinner {
-
-        }
-
-        class Slider {
+        class ProgressBar {
 
         }
 
     }
 
-    Control <|-- ChoiceBox
     Control <|-- ProgressIndicator
-    Control <|-- Spinner
-    Control <|-- Slider
+
+    ProgressIndicator <|-- ProgressBar
 
     style Control fill:white

@@ -43,16 +43,6 @@ Anordnungen
 * `StackPane` - Stapellayout mit einer definierten Stapelrichtung
 * `FlowPane` - Flusslayout mit primärer und sekundärer Flussrichtung
 
-Steuerelemente
-
-* `ScrollPane`, `SplitPane`, `TabPane` und `Pagination`
-* `MenuBar`, `ToolBar` und `ButtonBar`
-* `ListView`, `TableView`, `TreeView` und `TreeTableView`
-* `Label`, `Button`, `ToggleButton`, `MenuButton`, `Hyperlink` und `CheckBox`
-* `TextField` und `TextArea`
-* `ComboBox`, `DatePicker` und `ColorPicker`
-* `Spinner`, `Slider`, `ProgressIndictor` und `ChoiceBox`
-
 ## 1. Anwendungen
 
 TODO
@@ -166,49 +156,3 @@ TODO
 ### 7.4. `FlowPane`
 
 TODO
-
-## 8. Steuerelemente
-
-TODO
-
-### 8.1. `ScrollPane`, `SplitPane`, `TabPane` und `Pagination`
-
-TODO
-
-![](../Grafiken/JavaFX/Controls/Pane.svg)
-
-### 8.2. `MenuBar`, `ToolBar` und `ButtonBar`
-
-TODO
-
-![](../Grafiken/JavaFX/Controls/Bar.svg)
-
-### 8.3. `ListView`, `TableView`, `TreeView` und `TreeTableView`
-
-TODO
-
-![](../Grafiken/JavaFX/Controls/View.svg)
-
-### 8.4. `Label`, `Button`, `ToggleButton`, `MenuButton`, `Hyperlink` und `CheckBox`
-
-TODO
-
-![](../Grafiken/JavaFX/Controls/Labeled.svg)
-
-### 8.5. `TextField` und `TextArea`
-
-TODO
-
-![](../Grafiken/JavaFX/Controls/TextInput.svg)
-
-### 8.6. `ComboBox`, `DatePicker` und `ColorPicker`
-
-TODO
-
-![](../Grafiken/JavaFX/Controls/ComboBox.svg)
-
-### 8.7. `Spinner`, `Slider`, `ProgressIndictor` und `ChoiceBox`
-
-TODO
-
-![](../Grafiken/JavaFX/Controls/Other.svg)

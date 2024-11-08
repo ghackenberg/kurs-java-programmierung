@@ -1,0 +1,46 @@
+classDiagram
+
+    namespace JavaFX {
+
+        class SelectionModel["SelectionModel&lt;T&gt;"] {
+            +selectedIndex: int
+            +selectedItem: T
+            +clearAndSelect(index: int) void
+            +clearSelection() void
+            +clearSelection(index: int) void
+            +isEmpty() boolean
+            +isSelected(index: int) boolean
+            +select(index: int) void
+            +select(item: T) void
+            +selectFirst() void
+            +selectLast() void
+            +selectPrevious() void
+            +selectNext() void
+        }
+
+        class MultipleSelectionModel["MultipleSelectionModel&lt;T&gt;"] {
+            +selectionMode: SelectionMode
+            +getSelectedIndices() int[]
+            +getSelectedItems() T[]
+            +selectAll() void
+            +selectIndices(indices: int[]) void
+            +selectRange(start: int, end: int) void
+        }
+
+        class TableSelectionModel["TableSelectionModel&lt;T&gt;"] {
+            +cellSelectionEnabled: boolean
+            +clearAndSelect(row: int, column: TableColumn~T,?~) void
+            +clearSelection(row: int, column: TableColumn~T,?~) void
+            +focus(index: int) void
+            +select(row: int, column: TableColumn~T,?~) void
+            +selectAboveCell() void
+            +selectBelowCell() void
+            +selectLeftCell() void
+            +selectRightCell() void
+        }
+
+    }
+
+    SelectionModel <|-- MultipleSelectionModel
+
+    MultipleSelectionModel <|-- TableSelectionModel

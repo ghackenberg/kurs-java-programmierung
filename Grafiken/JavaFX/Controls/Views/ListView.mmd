@@ -1,0 +1,41 @@
+classDiagram
+
+    namespace JavaFX {
+
+        class Node {
+            <<abstract>>
+        }
+
+        class Control {
+            <<abstract>>
+        }
+
+        class ListView["ListView&lt;T&gt;"] {
+            +editable: boolean
+            +editingIndex: int
+            +fixedCellSize: double
+            +orientation: Orientation
+            +items: T[]
+            +edit(index: int) void
+            +scrollTo(index: int) void
+            +scrollTo(item: T) void
+        }
+
+        class FocusModel["FocusModel&lt;T&gt;"] {
+        }
+
+        class MultipleSelectionModel["MultipleSelectionModel&lt;T&gt;"] {
+        }
+
+    }
+
+    Control <|-- ListView
+
+    ListView o-->"1" FocusModel: focusModel
+    ListView o-->"1" MultipleSelectionModel: selectionModel
+    ListView o-->"1" Node: placeholder
+
+    style Node fill:white
+    style Control fill:white
+    style FocusModel fill:white
+    style MultipleSelectionModel fill:white

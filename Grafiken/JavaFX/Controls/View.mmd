@@ -8,20 +8,16 @@ classDiagram
             <<abstract>>
         }
 
-        class ListView {
-
+        class ListView["ListView&lt;T&gt;"] {
         }
 
-        class TableView {
-
+        class TableView["TableView&lt;T&gt;"] {
         }
 
-        class TreeView {
-
+        class TreeView["TreeView&lt;T&gt;"] {
         }
 
-        class TreeTableView {
-
+        class TreeTableView["TreeTableView&lt;T&gt;"] {
         }
 
     }
@@ -31,4 +27,5 @@ classDiagram
     Control <|-- TreeView
     Control <|-- TreeTableView
 
+    style Node fill:white
     style Control fill:white

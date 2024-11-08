@@ -1,0 +1,24 @@
+classDiagram
+
+    direction LR
+
+    namespace JavaFX {
+
+        class Control {
+            <<abstract>>
+        }
+
+        class Spinner {
+
+        }
+
+        class Slider {
+
+        }
+
+    }
+
+    Control <|-- Spinner
+    Control <|-- Slider
+
+    style Control fill:white

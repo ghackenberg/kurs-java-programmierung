@@ -1,0 +1,25 @@
+classDiagram
+
+    namespace JavaFX {
+
+        class FocusModel["FocusModel&lt;T&gt;"] {
+            +focusedIndex: int
+            +focusedItem: T
+            +focus(index: int) void
+            +focusPrevious() void
+            +focusNext() void
+            +isFocused(index: int) boolean
+        }
+
+        class TableFocusModel["TableFocusModel&lt;T&gt;"] {
+            +focus(row: int, column: TableColumn~T,?~) void
+            +focusAboveCell() void
+            +focusBelowCell() void
+            +focusLeftCell() void
+            +focusRightCell() void
+            +isFocused(row: int, column: TableColumn~T,?~) boolean
+        }
+
+    }
+
+    FocusModel <|-- TableFocusModel

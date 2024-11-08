@@ -1,0 +1,60 @@
+classDiagram
+
+    namespace JavaFX {
+
+        class Node {
+            <<abstract>>
+        }
+
+        class Control {
+            <<abstract>>
+        }
+
+        class TreeTableView["TreeTableView&lt;T&gt;"] {
+            +comparator: Comparator~T~
+            +editable: boolean
+            +expandedItemCount: int
+            +fixedCellSize: double
+            +showRoot: boolean
+            +tableMenuButtonVisible: boolean
+            +edit(row: int, column: TableColumn~T,?~) void
+            +scrollTo(index: int) void
+            +scrollToColumn(column: TableColumn~T,?~) void
+            +scrollToColumnIndex(index: int) void
+            +sort() void
+        }
+
+        class TreeItem["TreeItem&lt;T&gt;"] {
+            +expanded: boolean
+            +leaf: boolean
+            +value: T
+            +nextSibling() TreeItem~T~
+            +nextSibling(after: TreeItem~T~) TreeItem~T~
+            +previousSibling() TreeItem~T~
+            +previousSibling(before: TreeItem~T~) TreeItem~T~
+        }
+
+        class TableFocusModel["TableFocusModel&lt;TreeItem&lt;T&gt;&gt;"] {
+
+        }
+
+        class TableSelectionModel["TableSelectionModel&lt;TreeItem&lt;T&gt;&gt;"] {
+
+        }
+
+    }
+
+    Control <|-- TreeTableView
+
+    TreeTableView o-->"1" TreeItem: root
+    TreeTableView o-->"1" TableFocusModel: focusModel
+    TreeTableView o-->"1" TableSelectionModel: selectionModel
+    TreeTableView o-->"1" Node: placeholder
+
+    TreeItem o-->"1" Node: graphic
+    TreeItem o-->"*" TreeItem: children
+
+    style Node fill:white
+    style Control fill:white
+    style TableFocusModel fill:white
+    style TableSelectionModel fill:white

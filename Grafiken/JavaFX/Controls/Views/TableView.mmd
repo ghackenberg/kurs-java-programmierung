@@ -1,0 +1,53 @@
+classDiagram
+
+    namespace JavaFX {
+
+        class Node {
+            <<abstract>>
+        }
+
+        class Control {
+            <<abstract>>
+        }
+
+        class TableView["TableView&lt;T&gt;"] {
+            +comparator: Comparator~T~
+            +editable: boolean
+            +fixedCellSize: double
+            +items: T[]
+            +tableMenuButtonVisible: boolean
+            +edit(int: row, column: TableColumn~T,?~) void
+            +resizeColumn(column: TableColumn~T,?~, delta: double) void
+            +scrollTo(index: int) void
+            +scrollTo(item: T) void
+            +scrollToColumn(column: TableColumn~T,?~) void
+            +scrollToColumnIndex(index: int) void
+            +sort() void
+        }
+
+        class TableFocusModel["TableFocusModel&lt;T&gt;"] {
+
+        }
+
+        class TableSelectionModel["TableSelectionModel&lt;T&gt;"] {
+
+        }
+
+        class TablePosition["TablePosition&lt;T,S&gt;"] {
+            +getRow() int
+            +getColumn() int
+        }
+
+    }
+
+    Control <|-- TableView
+
+    TableView o-->"1" Node: placeholder
+    TableView o-->"1" TablePosition: editingCell
+    TableView o-->"1" TableFocusModel: focusModel
+    TableView o-->"1" TableSelectionModel: selectionModel
+
+    style Node fill:white
+    style Control fill:white
+    style TableFocusModel fill:white
+    style TableSelectionModel fill:white

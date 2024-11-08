@@ -5,6 +5,10 @@ classDiagram
         class Control {
             <<abstract>>
         }
+
+        class ChoiceBox {
+
+        }
         
         class ComboBoxBase["ComboBoxBase<T>"] {
             <<abstract>>
@@ -36,7 +40,8 @@ classDiagram
         }
 
     }
-
+    
+    Control <|-- ChoiceBox
     Control <|-- ComboBoxBase
 
     ComboBoxBase <|-- ComboBox

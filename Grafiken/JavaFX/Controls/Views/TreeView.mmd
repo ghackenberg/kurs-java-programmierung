@@ -1,0 +1,55 @@
+classDiagram
+
+    namespace JavaFX {
+
+        class Node {
+            <<abstract>>
+        }
+
+        class Control {
+            <<abstract>>
+        }
+
+        class TreeView["TreeView&lt;T&gt;"] {
+            +editable: boolean
+            +expandedItemCount: int
+            +fixedCellSize: double
+            +showRoot: boolean
+            +edit(item: TreeItem~T~) void
+            +scrollTo(index: int) void
+        }
+
+        class TreeItem["TreeItem&lt;T&gt;"] {
+            +expanded: boolean
+            +leaf: boolean
+            +value: T
+            +nextSibling() TreeItem~T~
+            +nextSibling(after: TreeItem~T~) TreeItem~T~
+            +previousSibling() TreeItem~T~
+            +previousSibling(before: TreeItem~T~) TreeItem~T~
+        }
+
+        class FocusModel["FocusModel&lt;TreeItem&lt;T&gt;&gt;"] {
+
+        }
+
+        class MultipleSelectionModel["MultipleSelectionModel&lt;TreeItem&lt;T&gt;&gt;"] {
+
+        }
+
+    }
+
+    Control <|-- TreeView
+
+    TreeView o-->"1" TreeItem: root
+    TreeView ..>"1" TreeItem: editingItem
+    TreeView o-->"1" FocusModel: focusModel
+    TreeView o-->"1" MultipleSelectionModel: selectionModel
+
+    TreeItem o-->"1" Node: graphic
+    TreeItem o-->"*" TreeItem: children
+
+    style Node fill:white
+    style Control fill:white
+    style FocusModel fill:white
+    style MultipleSelectionModel fill:white
