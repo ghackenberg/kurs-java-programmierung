@@ -2,10 +2,12 @@
 
 Materialien
 
+* `Material` - *TODO*
 * `PhongMaterial` - Darstellung von visuellen Materialeigenschaften
 
 Geometrien
 
+* `Mesh` - *TODO*
 * `TriangleMesh` - *TODO*
 
 Knoten
