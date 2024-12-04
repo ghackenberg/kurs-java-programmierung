@@ -6,9 +6,13 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.layout.BorderPane;
 
 public class Example2 {
 
+	/**
+	 * Erzeugt ein Balkendiagramm.
+	 */
 	public static Node create() {
 		
 		// Erste Datenserie
@@ -39,7 +43,11 @@ public class Example2 {
 		chart.getData().add(series1);
 		chart.getData().add(series2);
 		
-		return chart;
+		// Hintergrund
+		BorderPane pane = new BorderPane(chart);
+		pane.setStyle("-fx-background-color: lightgray;");
+		
+		return pane;
 		
 	}
 

@@ -6,9 +6,13 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.StackedAreaChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.layout.BorderPane;
 
 public class Example3 {
 
+	/**
+	 * Erzeugt ein gestapeltes Flächendiagramm.
+	 */
 	public static Node create() {
 		
 		// Erste Datenserie
@@ -39,7 +43,11 @@ public class Example3 {
 		chart.getData().add(series1);
 		chart.getData().add(series2);
 		
-		return chart;
+		// Hintergrund
+		BorderPane pane = new BorderPane(chart);
+		pane.setStyle("-fx-background-color: lightgray;");
+		
+		return pane;
 		
 	}
 }

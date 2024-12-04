@@ -53,9 +53,21 @@ Nachdem die Informationen ausgegeben wurden, terminiert die Anwendung.
 
 ![](./Quellen/Konsole-UDP/Screenshot-Server.png)
 
+### 💻 [GUI-Grundlagen](./Quellen/GUI-Grundlagen/)
+
+Die dritte Anwendung dient der Einführung in die Entwicklung grafischer Benutzerschnittstellen mit dem JavaFX Framework. Dazu benötigen wir unter Anderem Apache Maven für die Projektverwaltung. Insbesondere ermöglich Apache Maven die deklarative Beschreibung von Abhängigkeiten zu anderen Bibliotheken (in diesem konkreten Fall OpenJFX), die nicht standardmäßig mit der Java Laufzeitumgebung ausgeliefert werden.
+
+![](./Quellen/GUI-Grundlagen/Screenshot.png)
+
+### 💻 [GUI-Visualisierung](./Quellen/GUI-Visualisierung/)
+
+Die vierte Anwendung zeigt Möglichkeiten auf, wie man in JavaFX Visualisierungen integrieren kann. Standardmäßig bietet JavaFX die Möglichkeit, einfache Diagrammvisualisierungen in Anwendungen zu integrieren. Darüber hinaus bietet JavaFX auch die Möglichkeit, eingene 2D- und 3D-Visualiserungen zu programmieren. Für eigene Visualisierungen steht ein entsprechendes Objektmodell bestehend aus 2D-Formen (Linien, Kreise, usw.) und 3D-Formen (Kugeln, Würfel, usw.) zur Verfügung.
+
+![](./Quellen/GUI-Visualisierung/Screenshot.png)
+
 ### 💻 [GUI-Chat-UDP](./Quellen/GUI-Chat-UDP/)
 
-Die dritte Anwendung erweitert das vorige Beispiel zum Senden und Empfangen von UDP-Paketen um eine grafische Benutzerschnittstelle.
+Die fünfte Anwendung erweitert das vorige Beispiel zum Senden und Empfangen von UDP-Paketen um eine grafische Benutzerschnittstelle.
 Die grafische Benutzerschnittstelle fragt zunächst den Namen des Nutzers, die gewünschte Portnummer für das Empfangen von Nachrichten, sowie die IP-Adresse und die Portnummer für das Senden von Nachrichten ab.
 Danach kann der Benutzer Nachrichten eingeben und versenden.
 Außerdem bekommt der Benutzer versendete und empfangene Nachrichten angezeigt.
