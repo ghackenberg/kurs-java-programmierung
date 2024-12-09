@@ -7,7 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.PerspectiveCamera;
 import javafx.scene.PointLight;
 import javafx.scene.SubScene;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Material;
 import javafx.scene.paint.PhongMaterial;
@@ -82,7 +82,7 @@ public class Example4 {
 		scene.setManaged(false);
 		
 		// Hintergrund
-		BorderPane pane = new BorderPane(scene);
+		Pane pane = new Pane(scene);
 		pane.setStyle("-fx-background-color: lightgray;");
 		
 		scene.widthProperty().bind(pane.widthProperty());
