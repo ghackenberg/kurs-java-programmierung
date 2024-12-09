@@ -59,6 +59,14 @@ Die dritte Anwendung dient der Einführung in die Entwicklung grafischer Benutze
 
 ![](./Quellen/GUI-Grundlagen/Screenshot.png)
 
+Die folgende Grafik zeigt die zugrunde liegende Objektstruktur der grafischen Anwendung.
+An oberster Stelle der Struktur findet wir ein Randlayout, welches ein Menüband als Kindknoten enthält.
+Das Menüband wiederum enthält drei verschiedene Menüs, welche aus unterschiedlichen Menüelementen bestehen.
+Die Menüelemente verweisen schließlich auf Ereignisroutinen, welche bei deren Auswahl ausgeführt werden.
+In den Ereignisroutinen kann man folglich die individuelle Funktionsweise der Menüelemente definieren.
+
+![](./Quellen/GUI-Grundlagen/Scene.svg)
+
 ### 💻 [GUI-Visualisierung](./Quellen/GUI-Visualisierung/)
 
 Die vierte Anwendung zeigt Möglichkeiten auf, wie man in JavaFX Visualisierungen integrieren kann. Standardmäßig bietet JavaFX die Möglichkeit, einfache Diagrammvisualisierungen in Anwendungen zu integrieren. Darüber hinaus bietet JavaFX auch die Möglichkeit, eingene 2D- und 3D-Visualiserungen zu programmieren. Für eigene Visualisierungen steht ein entsprechendes Objektmodell bestehend aus 2D-Formen (Linien, Kreise, usw.) und 3D-Formen (Kugeln, Würfel, usw.) zur Verfügung.

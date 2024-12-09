@@ -1,0 +1,49 @@
+flowchart
+
+    BorderPane["BorderPane<hr/><i>root</i>"]
+
+    BorderPane --top--> MenuBar["MenuBar<hr/><i>main</i>"]
+
+    MenuBar --> Menus(["<code>menus</code>"])
+
+    Menus --> Menu1("Menu<hr><i>file</i>")
+    Menus --> Menu2("Menu<hr><i>edit</i>")
+    Menus --> Menu3("Menu<hr><i>help</i>")
+
+    Menu1 --> Items1(["<code>items</code>"])
+    Menu2 --> Items2(["<code>items</code>"])
+    Menu3 --> Items3(["<code>items</code>"])
+
+    Items1 --> MenuItem1("MenuItem<hr/><i>load</i>")
+    Items1 --> MenuItem2("MenuItem<hr/><i>save</i>")
+    Items1 --> MenuItem3("MenuItem<hr/><i>saveAs</i>")
+
+    Items2 --> MenuItem5("MenuItem<hr/><i>copy</i>")
+    Items2 --> MenuItem6("MenuItem<hr/><i>cut</i>")
+    Items2 --> MenuItem7("MenuItem<hr/><i>paste</i>")
+
+    Items3 --> MenuItem8("MenuItem<hr/><i>...</i>")
+
+    MenuItem1 --"onAction"--> Action1(["event -> {}"])
+    MenuItem2 --"onAction"--> Action2(["event -> {}"])
+    MenuItem3 --"onAction"--> Action3(["event -> {}"])
+    MenuItem5 --"onAction"--> Action5(["event -> {}"])
+    MenuItem6 --"onAction"--> Action6(["event -> {}"])
+    MenuItem7 --"onAction"--> Action7(["event -> {}"])
+    MenuItem8 --"onAction"--> Action8(["event -> {}"])
+
+    style Menus fill:#ddd,stroke:none
+
+    style Items1 fill:#ddd,stroke:none
+    style Items2 fill:#ddd,stroke:none
+    style Items3 fill:#ddd,stroke:none
+
+    style MenuBar fill:yellow,stroke:orange
+
+    style Action1 fill:lightgreen,stroke:green
+    style Action2 fill:lightgreen,stroke:green
+    style Action3 fill:lightgreen,stroke:green
+    style Action5 fill:lightgreen,stroke:green
+    style Action6 fill:lightgreen,stroke:green
+    style Action7 fill:lightgreen,stroke:green
+    style Action8 fill:lightgreen,stroke:green
