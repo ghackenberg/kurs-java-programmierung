@@ -1,0 +1,19 @@
+flowchart LR
+
+    Program["Program<hr><i>Hauptroutine</i>"]
+
+    Program --readLine()--> BufferedReader["BufferedReader<hr/><i>Zeilen lesen</i>"]
+
+    BufferedReader --read()--> InputStreamReader["InputStreamReader<hr><i>Zeichen lesen</i>"]
+
+    InputStreamReader --read()--> System["<code>System.in</code><hr/><i>Bytes lesen</i>"]
+
+    Program --println(...)--> Systemout["<code>System.out</code><hr/><i>Daten schreiben</i>"]
+
+    InputStreamReader ~~~ Systemout
+
+    style BufferedReader fill:yellow,stroke:orange
+    style InputStreamReader fill:yellow,stroke:orange
+
+    style System fill:lightgreen,stroke:green
+    style Systemout fill:lightgreen,stroke:green

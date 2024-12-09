@@ -35,6 +35,15 @@ Bei ungültigen Eingaben gibt das Programm eine Fehlermeldung aus und wiederholt
 
 ![](./Quellen/Konsole-Taschenrechner/Screenshot.png)
 
+Die folgende Grafik zeigt den technischen Aufbau der Taschenrechneranwendung.
+Die Anwendung besteht aus einer Programmklasse mit einer Hauptroutine sowie weiteren Klassen für die Datenein- und -ausgabe.
+Die Dateneingabe erfolgt über einen `BufferedReader`, mit dem ganze Zeilen eingelesen werden können.
+Die Zeileneingabe basiert wiederum auf einem `InputStreamReader`, welche Eingaberohdaten in Zeichen mit einer Zeichenkodierung (z.B. UTF-8) verwandelt.
+Die Zeicheneingabe nutzt schließlich die Standardeingabe, welche die notwendigen Rohdaten liefert.
+Die Ausgabe erfolgt ebenso über die Standardausgabe der Konsolenanwendung, welche sowohl Rohdaten als auch Zeichenketten verarbeiten kann.
+
+![](./Quellen/Konsole-Taschenrechner/Architecture.svg)
+
 ### 💻 [Konsole-UDP](./Quellen/Konsole-UDP/)
 
 Die zweite Anwendung zeigt das Senden und Empfangen von UDP-Paketen.
