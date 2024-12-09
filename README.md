@@ -53,6 +53,13 @@ Nachdem die Informationen ausgegeben wurden, terminiert die Anwendung.
 
 ![](./Quellen/Konsole-UDP/Screenshot-Server.png)
 
+Die folgende Grafik zeigt den technischen Aufbau der Anwendung bestehend aus einem Client und einem Server.
+Sowohl der Client als auch der Server werden durch eine Programmklasse mit einer Hauptroutine dargestellt.
+Beide Programmklassen nutzen wiederum die Klassen `DatagramSocket` zum Senden und Empfangen sowie `DatagramPacket` zur Darstellung von Datenpaketen.
+Auf Clientseite enthält das Datenpaket die Adresse des Servers, auf Serverseite hingegen die Adresse des Clients.
+
+![](./Quellen/Konsole-UDP/Architecture.svg)
+
 ### 💻 [GUI-Grundlagen](./Quellen/GUI-Grundlagen/)
 
 Die dritte Anwendung dient der Einführung in die Entwicklung grafischer Benutzerschnittstellen mit dem JavaFX Framework. Dazu benötigen wir unter Anderem Apache Maven für die Projektverwaltung. Insbesondere ermöglich Apache Maven die deklarative Beschreibung von Abhängigkeiten zu anderen Bibliotheken (in diesem konkreten Fall OpenJFX), die nicht standardmäßig mit der Java Laufzeitumgebung ausgeliefert werden.

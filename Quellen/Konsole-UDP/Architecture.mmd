@@ -1,0 +1,24 @@
+flowchart
+
+    subgraph Server
+
+        Server1("Server<hr/><i>main(...)</i>")
+
+        Server1 --new ...--> DatagramSocket2("DatagramSocket<hr/><i>fixed port</i>")
+
+        DatagramSocket2 --receive(...)--> DatagramPacket2("DatagramPacket<hr/><i>client address<br/>client port<br/>payload</i>")
+
+    end
+
+    subgraph Client
+
+        Client1("Client<hr/><i>main(...)</i>")
+
+        Client1 --new ...--> DatagramSocket1("DatagramSocket<hr/><i>random port</i>")
+
+        DatagramSocket1 --send(...)--> DatagramPacket1("DatagramPacket<hr/><i>server address<br/>server port<br/>payload</i>")
+
+    end
+
+    Server --UDP datagram--> Client
+    Client --UDP datagram--> Server
