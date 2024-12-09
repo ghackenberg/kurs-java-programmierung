@@ -65,6 +65,15 @@ Die vierte Anwendung zeigt Möglichkeiten auf, wie man in JavaFX Visualisierunge
 
 ![](./Quellen/GUI-Visualisierung/Screenshot.png)
 
+Die folgende Grafik zeigt die zugrunde liegende Objektstruktur dieses Beispiels.
+Der oberste Knoten der Objektstruktur ist ein Rasterlayout, welches vier Kindknoten beinhaltet.
+Der erste Kindknoten ist das Tortendiagramm, welches in der linken oberen Rasterzelle zu sehen ist.
+Der zweite Kindknoten ist das Balkendiagramm, welches in der rechten oberen Rasterzelle zu sehen ist.
+Der dritte Kindknoten ist die 2D-Visualisierung, welche in der linken unteren Zelle zu sehen ist.
+Und der vierte Kindknoten ist die 3D-Visualisierung, welche in der rechten unteren Zelle zu sehen ist.
+
+![](./Quellen/GUI-Visualisierung/Scene.svg)
+
 ### 💻 [GUI-Chat-UDP](./Quellen/GUI-Chat-UDP/)
 
 Die fünfte Anwendung erweitert das vorige Beispiel zum Senden und Empfangen von UDP-Paketen um eine grafische Benutzerschnittstelle.

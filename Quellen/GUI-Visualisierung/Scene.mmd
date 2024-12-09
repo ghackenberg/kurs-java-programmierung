@@ -1,0 +1,39 @@
+flowchart
+
+    GridPane["GridPane<hr/><i>gridPane</i>"] --> Children1(["<code>children</code>"])
+
+    Children1 --> BorderPane2["BorderPane<hr/><i>example1<br/>(Tortendiagramm)</i>"]
+    Children1 --> BorderPane3["BorderPane<hr/><i>example2<br/>(Balkendiagramm)</i>"]
+    Children1 --> Pane1["Pane<hr/><i>example3<br/>(2D-Formen)</i>"]
+    Children1 --> Pane2["Pane<hr/><i>example4<br/>(3D-Formen)</i>"]
+
+    BorderPane2 --children--> PieChart
+    
+    BorderPane3 --children--> BarChart
+
+    BarChart --"xAxis"--> CategoryAxis
+    BarChart --yAxis--> NumberAxis
+
+    Pane1 --children--> Group1["Group"]
+
+    Group1 --> Children2(["<code>children</code>"])
+
+    Children2 --> Line
+    Children2 --> Circle
+    Children2 --> Rectangle
+    
+    Pane2 --children--> SubScene
+    
+    SubScene --camera--> PerspectiveCamera
+    SubScene --root--> Group2["Group"]
+
+    Group2 --> Children3(["<code>children</code>"])
+
+    Children3 --> Box
+    Children3 --> Sphere
+    Children3 --> Cylinder
+
+    style BorderPane2 fill:white
+    style BorderPane3 fill:white
+    style Pane1 fill:white
+    style Pane2 fill:white

@@ -2,6 +2,7 @@ package at.fhooe.hackenberg.gui.visualisierung;
 
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.NumberBinding;
+import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -35,8 +36,6 @@ public class Example3 {
 		line.endXProperty().bind(canvas.widthProperty().divide(4).multiply(3));
 		line.endYProperty().bind(canvas.heightProperty().divide(4).multiply(3));
 		
-		canvas.getChildren().add(line);
-		
 		// Kreis
 		Circle circle = new Circle();
 		
@@ -46,8 +45,6 @@ public class Example3 {
 		circle.centerYProperty().bind(canvas.heightProperty().divide(2));
 		
 		circle.radiusProperty().bind(unit.divide(2));
-		
-		canvas.getChildren().add(circle);
 		
 		// Rechteck
 		Rectangle rectangle = new Rectangle();
@@ -59,8 +56,6 @@ public class Example3 {
 		
 		rectangle.xProperty().bind(canvas.widthProperty().divide(4).subtract(unit.divide(2)));
 		rectangle.yProperty().bind(canvas.heightProperty().divide(4).subtract(unit.divide(2)));
-		
-		canvas.getChildren().add(rectangle);
 		
 		// Abgerundetes Rechteck
 		Rectangle arc = new Rectangle();
@@ -76,7 +71,10 @@ public class Example3 {
 		arc.xProperty().bind(canvas.widthProperty().divide(4).multiply(3).subtract(unit.divide(2)));
 		arc.yProperty().bind(canvas.heightProperty().divide(4).multiply(3).subtract(unit.divide(2)));
 		
-		canvas.getChildren().add(arc);
+		// Szene
+		Group scene = new Group(line, circle, rectangle, arc);
+		
+		canvas.getChildren().add(scene);
 		
 		return canvas;
 		
