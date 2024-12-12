@@ -61,6 +61,7 @@ public class Program extends Application {
 				new MenuItem("Speichern"),
 				new MenuItem("Schließen")
 			),
+			new Menu("Bearbeiten"),
 			new Menu("Hilfe", null,
 				new MenuItem("Über")
 			)
