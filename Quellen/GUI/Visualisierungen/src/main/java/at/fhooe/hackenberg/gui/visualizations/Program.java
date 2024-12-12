@@ -70,7 +70,7 @@ public class Program extends Application {
 		
 		// Stage konfigurieren und anzeigen
 		primaryStage.setScene(scene);
-		primaryStage.setTitle("GUI-Visualisierung");
+		primaryStage.setTitle("GUI.Visualisierungen");
 		primaryStage.show();
 		
 	}

@@ -31,8 +31,8 @@ Im folgenden unterscheiden wir zwischen Konsolenanwendungen, welche typischerwei
 
 Dieser Abschnitt führt dich in die Entwicklung von Konsolenanwendungen mit der Programmiersprache Java ein und beinhaltet die folgenden Beispiele:
 
-- Das erste Beispiel fokussiert sich auf die Eingabe und Ausgabe von Daten über die Konsole sowie die Umwandlung von Rohdaten und Zeichenketten.
-- Das zweite Beispiel betrachtet hingegen die Kommunikation von Anwendungen über das IP-Netzwerke und das User Datagram Protocol.
+- Das **erste Beispiel** fokussiert sich auf die Eingabe und Ausgabe von Daten über die Konsole sowie die Umwandlung von Rohdaten und Zeichenketten.
+- Das **zweite Beispiel** betrachtet hingegen die Kommunikation von Anwendungen über das IP-Netzwerke und das User Datagram Protocol.
 
 #### 💻 [Konsole.IO](./Quellen/Konsole/IO/)
 
@@ -82,10 +82,10 @@ Auf Clientseite enthält das Datenpaket die Adresse des Servers, auf Serverseite
 
 Dieser zweite Abschnitt beschäftigt sich mit der Entwicklung von grafischen Benutzerschnittstellen und Anwendungen mit der Programmiersprache Java und enthält die folgenden Beispiele:
 
-- Das erste Beispieö betrachtet die Erstellung von klassischen Menüstrukturen sowie die Registrierung von Ereignisroutinen.
-- Das zweite Beispiel fokussiert die Darstellung und Bearbeitung von Datensammlungen mit Listen und Tabellen.
-- Das dritte Beispiel erklärt die Erstellung von Datenvisualisierungen mit Diagrammen und anderen Grafikelementen.
-- Und das vierte Beispiel zeigt die Entwicklung einer Chat-Anwendung basierend auf dem User Datagram Protocol.
+- Das **erste Beispiel** betrachtet die Erstellung von klassischen Menüstrukturen sowie die Registrierung von Ereignisroutinen.
+- Das **zweite Beispiel** fokussiert die Darstellung und Bearbeitung von Datensammlungen mit den dafür verfügbaren Steuerelementen.
+- Das **dritte Beispie**l erklärt die Erstellung von Datenvisualisierungen mit Diagrammen und anderen 2D- und 3D-Grafikelementen.
+- Das **vierte Beispiel** zeigt schließlich die Entwicklung einer Chat-Anwendung basierend auf IP-Netzwerken und dem User Datagram Protocol.
 
 #### 💻 [GUI.Menüs](./Quellen/GUI/Menüs/)
 

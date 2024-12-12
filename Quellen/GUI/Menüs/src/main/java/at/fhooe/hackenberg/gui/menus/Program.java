@@ -68,7 +68,7 @@ public class Program extends Application {
 		
 		Scene scene = new Scene(root, 640, 480);
 		
-		primaryStage.setTitle("GUI-Grundlagen");
+		primaryStage.setTitle("GUI.Menüs");
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
