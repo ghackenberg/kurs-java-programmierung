@@ -1,5 +1,9 @@
 package at.fhooe.hackenberg.gui.visualizations;
 
+import at.fhooe.hackenberg.gui.visualizations.examples.Example1;
+import at.fhooe.hackenberg.gui.visualizations.examples.Example2;
+import at.fhooe.hackenberg.gui.visualizations.examples.Example3;
+import at.fhooe.hackenberg.gui.visualizations.examples.Example4;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;

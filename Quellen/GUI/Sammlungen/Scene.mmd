@@ -1,0 +1,65 @@
+flowchart
+
+    GridPane
+
+    GridPane --> Children(["<code>children</code>"])
+
+    Children --> ListView("ListView<hr/><i>example1</i>")
+    Children --> TableView("TableView<hr/><i>example2</i>")
+    Children --> TreeView("TreeView<hr/><i>example3</i>")
+    Children --> TreeTableView("TreeTableView<hr/><i>example4</i>")
+
+    TableView --> Columns1(["<code>columns</code>"])
+
+    Columns1 --> TableColumn1("TableColumn<hr/><i>Wert 1</i>")
+    Columns1 --> TableColumn2("TableColumn<hr/><i>Wert 2</i>")
+    Columns1 --> TableColumn3("TableColumn<hr/><i>Wert 3</i>")
+
+    TableColumn3 --cellFactory--> CheckBoxTableCell["<code>cell -> new CheckBoxTableCell()</code>"]
+
+    TreeTableView --> Columns2(["<code>columns</code>"])
+
+    Columns2 --> TreeTableColumn1("TreeTableColumn<hr/><i>Wert 1</i>")
+    Columns2 --> TreeTableColumn2("TreeTableColumn<hr/><i>Wert 2</i>")
+    Columns2 --> TreeTableColumn3("TreeTableColumn<hr/><i>Wert 3</i>")
+
+    TreeTableColumn3 --cellFactory--> CheckBoxTreeTableCell["<code>cell -> new CheckBoxTreeTableCell()</code>"]
+
+    TreeView --root--> TreeItem1("TreeItem")
+
+    TreeTableView --root--> TreeItem2("TreeItem")
+
+    TreeItem1 --> Children1(["<code>children</code>"])
+    TreeItem2 --> Children2(["<code>children</code>"])
+
+    Children1 --> TreeItem1
+    Children2 --> TreeItem2
+
+    ListView --items--> SimpleItem1("SimpleItem<hr/><i>value</i>")
+    TableView --items--> ComplexItem1("ComplexItem<hr/><i>value1<br/>value2<br/>value3</i>")
+
+    TreeItem1 --value--> SimpleItem2("SimpleItem<hr/><i>value</i>")
+    TreeItem2 --value--> ComplexItem2("ComplexItem<hr/><i>value1<br/>value2<br/>value3</i>")
+
+    SimpleItem2 ~~~ Children1
+    ComplexItem2 ~~~ Children2
+
+    style ListView fill:yellow,stroke:orange
+    style TableView fill:yellow,stroke:orange
+    style TreeView fill:yellow,stroke:orange
+    style TreeTableView fill:yellow,stroke:orange
+
+    style SimpleItem1 fill:lightgreen,stroke:green
+    style SimpleItem2 fill:lightgreen,stroke:green
+    style ComplexItem1 fill:lightgreen,stroke:green
+    style ComplexItem2 fill:lightgreen,stroke:green
+
+    style CheckBoxTableCell fill:lightblue,stroke:blue
+    style CheckBoxTreeTableCell fill:lightblue,stroke:blue
+
+    style Children fill:#eee,stroke:none
+    style Children1 fill:#eee,stroke:none
+    style Children2 fill:#eee,stroke:none
+    style Columns1 fill:#eee,stroke:none
+    style Columns2 fill:#eee,stroke:none
+    

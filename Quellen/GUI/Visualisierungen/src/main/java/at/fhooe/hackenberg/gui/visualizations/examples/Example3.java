@@ -1,4 +1,4 @@
-package at.fhooe.hackenberg.gui.visualizations;
+package at.fhooe.hackenberg.gui.visualizations.examples;
 
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.NumberBinding;

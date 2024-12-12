@@ -89,7 +89,8 @@ Dieser zweite Abschnitt beschäftigt sich mit der Entwicklung von grafischen Ben
 
 #### 💻 [GUI.Menüs](./Quellen/GUI/Menüs/)
 
-Die dritte Anwendung dient der Einführung in die Entwicklung grafischer Benutzerschnittstellen mit dem JavaFX Framework. Dazu benötigen wir unter Anderem Apache Maven für die Projektverwaltung. Insbesondere ermöglich Apache Maven die deklarative Beschreibung von Abhängigkeiten zu anderen Bibliotheken (in diesem konkreten Fall OpenJFX), die nicht standardmäßig mit der Java Laufzeitumgebung ausgeliefert werden.
+Die erste Anwendung dient der Einführung in die Entwicklung grafischer Benutzerschnittstellen mit dem JavaFX Framework.
+Dazu benötigen wir unter Anderem Apache Maven für die Projektverwaltung. Insbesondere ermöglich Apache Maven die deklarative Beschreibung von Abhängigkeiten zu anderen Bibliotheken (in diesem konkreten Fall OpenJFX), die nicht standardmäßig mit der Java Laufzeitumgebung ausgeliefert werden.
 
 ![](./Quellen/GUI/Menüs/Screenshot.png)
 
@@ -101,9 +102,31 @@ In den Ereignisroutinen kann man folglich die individuelle Funktionsweise der Me
 
 ![](./Quellen/GUI/Menüs/Scene.svg)
 
+#### 💻 [GUI.Sammlungen](./Quellen/GUI/Sammlungen/)
+
+Die zweite Anwendung zeigt Möglichkeiten auf, wie man in JavaFX Sammlungen von Datensätzen anzeigen und bearbeitbar machen kann.
+Grundsätzlich bietet JavaFX dafür eine Reihe unterschiedlicher Steuerelemente, welche abhängig vom konkreten Anwendungsfall eingesetzt werden können.
+Zu den Steuerelementen für Datensammlungen gehören Listenansichten, Tabellenansichten, Baumansichten, und Baumtabellenansichten.
+Listen und Tabellen eignen sich dabei für flache Datenstrukturen, während Baumansichten und Baumtabellenansichten für geschachtelte Datenstrukturen gedacht sind.
+
+![](./Quellen/GUI/Sammlungen/Screenshot.png)
+
+Die folgende Grafik zeigt die Objektstruktur, welche der Anwendung zugrunde liegt.
+An oberster Stelle der Objektstruktur finden wir ein Rasterlayout, welches die verfügbare Bildschirmfläche unter den Kindknoten aufteilt.
+Die Kindknoten selbst sind die Listenansicht, die Tabellenansicht, die Baumansicht, und die Baumtabellenansicht.
+Die Listenansicht verweist des weiteren auf die Listenelemente, welche in der Ansicht dargestellt werden sollen.
+Die Tabellenansicht beinhaltet neben den Tabellenelementen die Definition der einzelnen Spalten in From von Spaltenobjekten.
+Die Baumansicht verweist hingegen ein Baumelement, welches den Wurzelknoten der Baumstruktur repräsentiert und weitere Kindelemente beinhalten kann.
+Die Baumtabellenansicht definiert schließich sowohl die Tabellenspalten in From von Spaltenobjekten als auch den ein Baumelement als Wurzelknoten.
+
+![](./Quellen/GUI/Sammlungen/Scene.svg)
+
 #### 💻 [GUI.Visualisierungen](./Quellen/GUI/Visualisierungen/)
 
-Die vierte Anwendung zeigt Möglichkeiten auf, wie man in JavaFX Visualisierungen integrieren kann. Standardmäßig bietet JavaFX die Möglichkeit, einfache Diagrammvisualisierungen in Anwendungen zu integrieren. Darüber hinaus bietet JavaFX auch die Möglichkeit, eingene 2D- und 3D-Visualiserungen zu programmieren. Für eigene Visualisierungen steht ein entsprechendes Objektmodell bestehend aus 2D-Formen (Linien, Kreise, usw.) und 3D-Formen (Kugeln, Würfel, usw.) zur Verfügung.
+Die dritte Anwendung zeigt Möglichkeiten auf, wie man in JavaFX Visualisierungen integrieren kann.
+Standardmäßig bietet JavaFX die Möglichkeit, einfache Diagrammvisualisierungen in Anwendungen zu integrieren.
+Darüber hinaus bietet JavaFX auch die Möglichkeit, eingene 2D- und 3D-Visualiserungen zu programmieren.
+Für eigene Visualisierungen steht ein entsprechendes Objektmodell bestehend aus 2D-Formen (Linien, Kreise, usw.) und 3D-Formen (Kugeln, Würfel, usw.) zur Verfügung.
 
 ![](./Quellen/GUI/Visualisierungen/Screenshot.png)
 
@@ -118,7 +141,7 @@ Und der vierte Kindknoten ist die 3D-Visualisierung, welche in der rechten unter
 
 #### 💻 [GUI.Chat](./Quellen/GUI/Chat/)
 
-Die fünfte Anwendung erweitert das vorige Beispiel zum Senden und Empfangen von UDP-Paketen um eine grafische Benutzerschnittstelle.
+Die vierte Anwendung erweitert das vorige Beispiel zum Senden und Empfangen von UDP-Paketen um eine grafische Benutzerschnittstelle.
 Die grafische Benutzerschnittstelle fragt zunächst den Namen des Nutzers, die gewünschte Portnummer für das Empfangen von Nachrichten, sowie die IP-Adresse und die Portnummer für das Senden von Nachrichten ab.
 Danach kann der Benutzer Nachrichten eingeben und versenden.
 Außerdem bekommt der Benutzer versendete und empfangene Nachrichten angezeigt.

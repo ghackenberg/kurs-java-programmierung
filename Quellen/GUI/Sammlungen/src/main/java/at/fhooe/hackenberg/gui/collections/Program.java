@@ -1,8 +1,16 @@
 package at.fhooe.hackenberg.gui.collections;
 
+import at.fhooe.hackenberg.gui.collections.examples.Example1;
+import at.fhooe.hackenberg.gui.collections.examples.Example2;
+import at.fhooe.hackenberg.gui.collections.examples.Example3;
+import at.fhooe.hackenberg.gui.collections.examples.Example4;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
@@ -16,7 +24,23 @@ public class Program extends Application {
 	}
 
 	@Override
-	public void start(Stage primaryStage) throws Exception {		
+	public void start(Stage primaryStage) throws Exception {
+		
+		// Menü definieren
+		
+		MenuBar menu = new MenuBar(
+			new Menu("Datei", null,
+				new MenuItem("Öffnen"),
+				new MenuItem("Speichern"),
+				new MenuItem("Speichern unter"),
+				new MenuItem("Schließen")
+			),
+			new Menu("Bearbeiten"),
+			new Menu("Hilfe")
+		);
+		
+		// Rasterlayout definieren
+		
 		GridPane grid = new GridPane();
 		
 		grid.getColumnConstraints().add(createColumnConstraints());
@@ -35,11 +59,20 @@ public class Program extends Application {
 		grid.add(Example3.create(), 0, 1);
 		grid.add(Example4.create(), 1, 1);
 		
-		Scene scene = new Scene(grid, 640, 480);
+		// Randlayout definieren
+		
+		BorderPane root = new BorderPane(grid, menu, null, null, null);
+		
+		// Szene defnieren
+		
+		Scene scene = new Scene(root, 640, 480);
+		
+		// Stage konfigurieren
 		
 		primaryStage.setTitle("GUI.Sammlungen");
 		primaryStage.setScene(scene);
 		primaryStage.show();
+		
 	}
 	
 	private static ColumnConstraints createColumnConstraints() {
