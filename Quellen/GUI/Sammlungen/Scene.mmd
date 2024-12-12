@@ -11,16 +11,14 @@ flowchart
 
     TableView --> Columns1(["<code>columns</code>"])
 
-    Columns1 --> TableColumn1("TableColumn<hr/><i>Wert 1</i>")
-    Columns1 --> TableColumn2("TableColumn<hr/><i>Wert 2</i>")
+    Columns1 --> TableColumn1("TableColumn<hr/><i>Wert 1<br/>Wert 2</i>")
     Columns1 --> TableColumn3("TableColumn<hr/><i>Wert 3</i>")
 
     TableColumn3 --cellFactory--> CheckBoxTableCell["<code>cell -> new CheckBoxTableCell()</code>"]
 
     TreeTableView --> Columns2(["<code>columns</code>"])
 
-    Columns2 --> TreeTableColumn1("TreeTableColumn<hr/><i>Wert 1</i>")
-    Columns2 --> TreeTableColumn2("TreeTableColumn<hr/><i>Wert 2</i>")
+    Columns2 --> TreeTableColumn1("TreeTableColumn<hr/><i>Wert 1<br/>Wert2</i>")
     Columns2 --> TreeTableColumn3("TreeTableColumn<hr/><i>Wert 3</i>")
 
     TreeTableColumn3 --cellFactory--> CheckBoxTreeTableCell["<code>cell -> new CheckBoxTreeTableCell()</code>"]
