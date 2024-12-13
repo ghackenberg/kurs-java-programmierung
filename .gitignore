@@ -1,4 +1,4 @@
-/Quellen/*/bin
-/Quellen/*/target
+/Quellen/*/*/bin
+/Quellen/*/*/target
 
 *.jar
