@@ -15,24 +15,24 @@ public class Example2 {
 		
 		// Inhalte des Layouts erstellen
 		
-		HBox top = new HBox(new Label("Top"));
-		HBox left = new HBox(new Label("Left"));
-		HBox right = new HBox(new Label("Right"));
-		HBox bottom = new HBox(new Label("Bottom"));
+		HBox topLeft = new HBox(new Label("Top-left"));
+		HBox topRight = new HBox(new Label("Top-right"));
+		HBox bottomLeft = new HBox(new Label("Bottom-left"));
+		HBox bottomRight = new HBox(new Label("Bottom-right"));
 		
 		// Innere Randabstände setzen
 		
-		top.setPadding(new Insets(10));
-		left.setPadding(new Insets(10));
-		right.setPadding(new Insets(10));
-		bottom.setPadding(new Insets(10));
+		topLeft.setPadding(new Insets(10));
+		topRight.setPadding(new Insets(10));
+		bottomLeft.setPadding(new Insets(10));
+		bottomRight.setPadding(new Insets(10));
 		
 		// Hintergrundfarben setzen
 		
-		top.setStyle("-fx-background-color: orange;");
-		left.setStyle("-fx-background-color: orange;");
-		right.setStyle("-fx-background-color: orange;");
-		bottom.setStyle("-fx-background-color: orange;");
+		topLeft.setStyle("-fx-background-color: orange;");
+		topRight.setStyle("-fx-background-color: orange;");
+		bottomLeft.setStyle("-fx-background-color: orange;");
+		bottomRight.setStyle("-fx-background-color: orange;");
 		
 		// Layout selbst erstellen
 		
@@ -54,10 +54,10 @@ public class Example2 {
 		
 		// Inhalte hinzufügen
 		
-		pane.add(top, 0, 0, 2, 1);
-		pane.add(left, 2, 0, 1, 1);
-		pane.add(right, 0, 1, 1, 1);
-		pane.add(bottom, 1, 1, 2, 1);
+		pane.add(topLeft, 0, 0, 2, 1);
+		pane.add(topRight, 2, 0, 1, 1);
+		pane.add(bottomLeft, 0, 1, 1, 1);
+		pane.add(bottomRight, 1, 1, 2, 1);
 
 		// Layout inklusive Inhalte zurückgeben
 		
