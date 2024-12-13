@@ -17,9 +17,11 @@ Im Rahmen dieses Kurses werden die folgenden Themen betrachtet:
 * [Dateneingabe und -ausgabe mit `java.io`](./Grundlagen/Java.IO.md)
 * [Netzwerk-Kommunikation mit `java.net`](./Grundlagen/Java.Net.md)
 * [Grafische Benutzerschnittstellen mit `javafx`](./Grundlagen/JavaFX.md)
-  * [*Vertiefung 1:* Steuerelemente](./Grundlagen/JavaFX-Controls.md)
-  * [*Vertiefung 2:* 2D-Visualisierungen](./Grundlagen/JavaFX-2D.md)
-  * [*Vertiefung 3:* 3D-Visualisierungen](./Grundlagen/JavaFX-3D.md)
+  * [*Vertiefung 1:* Anordnung von Inhalten](./Grundlagen/JavaFX-Panes.md)
+  * [*Vertiefung 2:* Interaktive Steuerelemente](./Grundlagen/JavaFX-Controls.md)
+  * [*Vertiefung 3:* Darstellung von Datensammlungen](./Grundlagen/JavaFX-Collections.md)
+  * [*Vertiefung 4:* Erstellung von 2D-Visualisierungen](./Grundlagen/JavaFX-2D.md)
+  * [*Vertiefung 5:* Erstellung von 3D-Visualisierungen](./Grundlagen/JavaFX-3D.md)
 
 ## Anwendungen
 

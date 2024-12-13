@@ -45,13 +45,6 @@ Datenauswahl
 * `DatePicker` - *TODO*
 * `ColorPicker` - *TODO*
 
-Datensammlungen
-
-* `ListView` - *TODO*
-* `TableView` - *TODO*
-* `TreeView` - *TODO*
-* `TreeTableView` - *TODO*
-
 ## 1. Bänder
 
 TODO
@@ -93,41 +86,3 @@ TODO
 TODO
 
 ![](../Grafiken/JavaFX/Controls/Choice.svg)
-
-## 8. Datensammlungen
-
-TODO
-
-![](../Grafiken/JavaFX/Controls/View.svg)
-
-TODO
-
-![](../Grafiken/JavaFX/Controls/Models/Focus.svg)
-
-TODO
-
-![](../Grafiken/JavaFX/Controls/Models/Selection.svg)
-
-### 8.1. Listen
-
-TODO
-
-![](../Grafiken/JavaFX/Controls/Views/ListView.svg)
-
-### 8.2. Tabellen
-
-TODO
-
-![](../Grafiken/JavaFX/Controls/Views/TableView.svg)
-
-### 8.3. Bäume
-
-TODO
-
-![](../Grafiken/JavaFX/Controls/Views/TreeView.svg)
-
-### 8.4. Baumtabellen
-
-TODO
-
-![](../Grafiken/JavaFX/Controls/Views/TreeTableView.svg)

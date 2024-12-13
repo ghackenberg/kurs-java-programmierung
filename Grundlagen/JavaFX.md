@@ -134,25 +134,3 @@ TODO
 TODO
 
 ![](../Grafiken/JavaFX/Region.svg)
-
-## 7. Anordnungen
-
-TODO
-
-![](../Grafiken/JavaFX/Pane.svg)
-
-### 7.1. `BorderPane`
-
-TODO
-
-### 7.2. `GridPane`
-
-TODO
-
-### 7.3. `StackPane`
-
-TODO
-
-### 7.4. `FlowPane`
-
-TODO
