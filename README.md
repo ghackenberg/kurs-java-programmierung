@@ -25,7 +25,7 @@ Im Rahmen dieses Kurses werden die folgenden Themen betrachtet:
 
 *Mit konkreten Beispielen lernt man doch am besten!*
 Das Repository bietet dir einfache Beispiele, um die Entwicklung von Anwendungen mit der Programmiersprache Java zu erlernen.
-Im folgenden unterscheiden wir zwischen Konsolenanwendungen, welche typischerweise im Hintergrund laufen, sowie grafischen Anwendungen, mit denen die Benutzer direkt interagieren.
+Im folgenden unterscheiden wir zwischen **Konsolenanwendungen**, welche typischerweise im Hintergrund laufen, sowie **grafischen Anwendungen (GUIs)**, mit denen die Benutzer direkt interagieren.
 
 ### Konsolenanwendungen
 
