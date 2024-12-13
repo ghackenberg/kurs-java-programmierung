@@ -8,7 +8,7 @@ public class Example3 {
 	public static Node create() {
 		StackPane pane = new StackPane();
 		
-		pane.setStyle("-fx-background: lightgray");
+		pane.setStyle("-fx-background-color: lightgray");
 		
 		return pane;
 	}

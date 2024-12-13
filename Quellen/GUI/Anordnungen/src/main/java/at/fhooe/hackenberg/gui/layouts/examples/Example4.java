@@ -8,7 +8,7 @@ public class Example4 {
 	public static Node create() {
 		FlowPane pane = new FlowPane();
 		
-		pane.setStyle("-fx-background: lightgray");
+		pane.setStyle("-fx-background-color: lightgray");
 		
 		return pane;
 	}

@@ -21,11 +21,11 @@ public class Example1 {
 		right.setPadding(new Insets(10));
 		bottom.setPadding(new Insets(10));
 		
-		center.setStyle("-fx-background-color: gray;");
-		top.setStyle("-fx-background-color: gray;");
-		left.setStyle("-fx-background-color: gray;");
-		right.setStyle("-fx-background-color: gray;");
-		bottom.setStyle("-fx-background-color: gray;");
+		center.setStyle("-fx-background-color: orange;");
+		top.setStyle("-fx-background-color: orange;");
+		left.setStyle("-fx-background-color: orange;");
+		right.setStyle("-fx-background-color: orange;");
+		bottom.setStyle("-fx-background-color: orange;");
 		
 		BorderPane.setMargin(center, new Insets(5));
 		BorderPane.setMargin(top, new Insets(5));
