@@ -12,11 +12,11 @@ public class Example1 {
 		
 		// Inhalte des Layouts erstellen
 		
-		HBox center = new HBox(new Label("Center"));
-		HBox top = new HBox(new Label("Top"));
-		HBox left = new HBox(new Label("Left"));
-		HBox right = new HBox(new Label("Right"));
-		HBox bottom = new HBox(new Label("Bottom"));
+		HBox center = new HBox(new Label("Mitte"));
+		HBox top = new HBox(new Label("Oben"));
+		HBox left = new HBox(new Label("Links"));
+		HBox right = new HBox(new Label("Rechts"));
+		HBox bottom = new HBox(new Label("Unten"));
 		
 		// Innere Randabstände setzen
 		

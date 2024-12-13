@@ -82,15 +82,37 @@ Auf Clientseite enthält das Datenpaket die Adresse des Servers, auf Serverseite
 
 Dieser zweite Abschnitt beschäftigt sich mit der Entwicklung von grafischen Benutzerschnittstellen und Anwendungen mit der Programmiersprache Java und enthält die folgenden Beispiele:
 
-- Das **erste Beispiel** betrachtet die Erstellung von klassischen Menüstrukturen sowie die Registrierung von Ereignisroutinen.
-- Das **zweite Beispiel** fokussiert die Darstellung und Bearbeitung von Datensammlungen mit den dafür verfügbaren Steuerelementen.
-- Das **dritte Beispie**l erklärt die Erstellung von Datenvisualisierungen mit Diagrammen und anderen 2D- und 3D-Grafikelementen.
-- Das **vierte Beispiel** zeigt schließlich die Entwicklung einer Chat-Anwendung basierend auf IP-Netzwerken und dem User Datagram Protocol.
+- Das **erste Beispiel** beschreibt zunächst die unterschiedlichen möglichen Anordnungen von Inhalten auf der verfügbaren Bildschirmfläche.
+- Das **zweite Beispiel** betrachtet die Erstellung von klassischen Menüstrukturen für Anwendungen sowie die Registrierung von Ereignisroutinen.
+- Das **dritte Beispiel** fokussiert die Darstellung und Bearbeitung von eigenen Datensammlungen mit Listen-, Tabellen- und Baumansichten.
+- Das **vierte Beispie**l erklärt die Erstellung von eigenen Datenvisualisierungen mit Diagrammen und grundlegenden 2D- und 3D-Grafikelementen.
+- Das **fünfte Beispiel** zeigt schließlich die Entwicklung einer einfachen Chat-Anwendung basierend auf IP-Netzwerken und dem User Datagram Protocol.
+
+#### 💻 [GUI.Anordnungen](./Quellen/GUI/Anordnungen/)
+
+Die erste Anwendung erklärt, wie in JavaFX die Inhalte auf der verfügbaren Bildschirmfläche anordnen kann.
+Für die Anordnung von Inhalten bietet JavaFX unterschiedliche Algorithmen, welche in Form von eigenen Knotentypen realisiert sind.
+Die Algorithmen entscheiden wiederum automatisch, welcher Teil der Bildschirmfläche den einzelnen Inhalten zur Verfügung steht.
+Der zugewiesene Teil der Bildschirmfläche ist durch die linke obere Bildschirmkoordinate sowie die Breite und Höhe der Fläche in Pixeln definiert.
+Diese Informationen werden durch den verwendeten Algorithmus an die darunter liegenden Inhalte weitergegeben und dort letztlich zur Füllung der entsprechenden Bildschirmpixel verwendet.
+
+![](./Quellen/GUI/Anordnungen/Screenshot.png)
+
+Die folgende Grafik zeigt die interne Objektstruktur, welche dieser Beispielanwendung zugrunde leigt.
+An oberster Stelle findet sich eine Rasteranordnung, um das gesamte Fenster in zwei Spalten und zwei Zeilen bzw. vier gleich große Zellen einzuteilen.
+In die linke obere Zelle legen wir eine Randanordnung, welche aus fünf Bereichen (oben, links, mitte, rechts, unten) besteht.
+In die linke untere Zelle legen wir eine Rasteranordnung, welche in diesem konkreten Fall aus drei gleich großen Spalten und zwei gleich großen Zeilen besteht und deren Inhalte teilweise zwei Spalten überspannen.
+In die rechte obere Zelle legen wir eine Stapelanordnung, welche die Inhalte in der verfügbaren Fläche zentriert und in der vordefinierten Reihenfolge übereinander legt.
+In die rechte untere Zelle legen wir schließlich eine Flußanorndung, welche die verfügbare Bildschirmfläche primär horizontal und sekundär vertikal mit Inhalten auffüllt.
+
+![](./Quellen/GUI/Anordnungen/Scene.svg)
 
 #### 💻 [GUI.Menüs](./Quellen/GUI/Menüs/)
 
-Die erste Anwendung dient der Einführung in die Entwicklung grafischer Benutzerschnittstellen mit dem JavaFX Framework.
-Dazu benötigen wir unter Anderem Apache Maven für die Projektverwaltung. Insbesondere ermöglich Apache Maven die deklarative Beschreibung von Abhängigkeiten zu anderen Bibliotheken (in diesem konkreten Fall OpenJFX), die nicht standardmäßig mit der Java Laufzeitumgebung ausgeliefert werden.
+Die zweite Anwendung zeigt, wie man mit JavaFX klassische Menüstrukturen definiert und Ereignisroutinen für die einzelnen Menüpunkte hinterlegt.
+Klassische Menüstrukturen bestehen grundsätzlich aus Menüs (z.B. Datei, Bearbeiten, und Hilfe) sowie Menüelementen (z.B. Öffnen, Speichern, Speichern unter, und Schließen).
+Die übergeordneten Menüs können zunächst aufgeklappt und zugeklappt werden, die Menüelemente können hingegen ausgewählt werden und somit eine Aktion anstoßen.
+Die Aktion selbst, welche angestoßen werden soll, wird schließlich als Ereignisroutine für das jeweilige Menüelementen gesetzt bzw. konfiguriert.
 
 ![](./Quellen/GUI/Menüs/Screenshot.png)
 
@@ -104,7 +126,7 @@ In den Ereignisroutinen kann man folglich die individuelle Funktionsweise der Me
 
 #### 💻 [GUI.Sammlungen](./Quellen/GUI/Sammlungen/)
 
-Die zweite Anwendung zeigt Möglichkeiten auf, wie man in JavaFX Sammlungen von Datensätzen anzeigen und bearbeitbar machen kann.
+Die dritte Anwendung zeigt Möglichkeiten auf, wie man in JavaFX Sammlungen von Datensätzen anzeigen und bearbeitbar machen kann.
 Grundsätzlich bietet JavaFX dafür eine Reihe unterschiedlicher Steuerelemente, welche abhängig vom konkreten Anwendungsfall eingesetzt werden können.
 Zu den Steuerelementen für Datensammlungen gehören Listenansichten, Tabellenansichten, Baumansichten, und Baumtabellenansichten.
 Listen und Tabellen eignen sich dabei für flache Datenstrukturen, während Baumansichten und Baumtabellenansichten für geschachtelte Datenstrukturen gedacht sind.
@@ -123,7 +145,7 @@ Die Baumtabellenansicht definiert schließich sowohl die Tabellenspalten in From
 
 #### 💻 [GUI.Visualisierungen](./Quellen/GUI/Visualisierungen/)
 
-Die dritte Anwendung zeigt Möglichkeiten auf, wie man in JavaFX Visualisierungen integrieren kann.
+Die vierte Anwendung zeigt Möglichkeiten auf, wie man in JavaFX Visualisierungen integrieren kann.
 Standardmäßig bietet JavaFX die Möglichkeit, einfache Diagrammvisualisierungen in Anwendungen zu integrieren.
 Darüber hinaus bietet JavaFX auch die Möglichkeit, eingene 2D- und 3D-Visualiserungen zu programmieren.
 Für eigene Visualisierungen steht ein entsprechendes Objektmodell bestehend aus 2D-Formen (Linien, Kreise, usw.) und 3D-Formen (Kugeln, Würfel, usw.) zur Verfügung.
@@ -141,7 +163,7 @@ Und der vierte Kindknoten ist die 3D-Visualisierung, welche in der rechten unter
 
 #### 💻 [GUI.Chat](./Quellen/GUI/Chat/)
 
-Die vierte Anwendung erweitert das vorige Beispiel zum Senden und Empfangen von UDP-Paketen um eine grafische Benutzerschnittstelle.
+Die fünfte Anwendung erweitert das vorige Beispiel zum Senden und Empfangen von UDP-Paketen um eine grafische Benutzerschnittstelle.
 Die grafische Benutzerschnittstelle fragt zunächst den Namen des Nutzers, die gewünschte Portnummer für das Empfangen von Nachrichten, sowie die IP-Adresse und die Portnummer für das Senden von Nachrichten ab.
 Danach kann der Benutzer Nachrichten eingeben und versenden.
 Außerdem bekommt der Benutzer versendete und empfangene Nachrichten angezeigt.

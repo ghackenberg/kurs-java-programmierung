@@ -1,0 +1,28 @@
+flowchart
+
+    GridLayout1("GridLayout<hr/><i>root</i>")
+    GridLayout1 --> Children(["<code>children</code>"])
+
+    Children --> BorderLayout("<b>BorderLayout</b><hr/><i>example1</i><br/><br/>(= Randanordnung)")
+    Children --> GridLayout2("<b>GridLayout</b><hr/><i>example2</i><br/><br/>(= Rasteranordnung)")
+    Children --> StackLayout("<b>StackLayout</b><hr/><i>example2</i><br/><br/>(= Stapelanordnung)")
+    Children --> FlowLayout("<b>FlowLayout</b><hr/><i>example3</i><br/><br/>(= Flußanordnung)")
+
+    BorderLayout --children--> HBox1("HBox<hr/><i>top,<br/>left, center, right,<br/>bottom</i><br/><br/>(für den Hintergrund)")
+
+    HBox1 --children--> Label1("Label")
+
+    GridLayout2 --children--> HBox2("HBox<hr/><i>topLeft, topRight,<br/>bottomLeft, bottomRight</i><br/><br/>(für den Hintergrund)")
+
+    HBox2 --children--> Label2("Label")
+
+    StackLayout --children--> Label3("Label<hr/><i>z0,<br/>z1,<br/>z2</i>")
+
+    FlowLayout --children--> Label4("Label<hr/><i>t0, t1, t2,<br/>t3, t4, t5,<br/>t6, t7, t8</i>")
+
+    style Children fill:#eee,stroke:none
+
+    style BorderLayout fill:yellow,stroke:orange
+    style GridLayout2 fill:yellow,stroke:orange
+    style StackLayout fill:yellow,stroke:orange
+    style FlowLayout fill:yellow,stroke:orange

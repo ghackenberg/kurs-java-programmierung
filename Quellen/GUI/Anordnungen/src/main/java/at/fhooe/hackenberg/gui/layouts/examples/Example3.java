@@ -11,8 +11,8 @@ public class Example3 {
 		
 		// Inhalte des Layouts erstellen
 		
-		Label z0 = new Label("This is a just very wide text");
-		Label z1 = new Label("Less wide text");
+		Label z0 = new Label("Das ist doch ein ziemlich breiter Text");
+		Label z1 = new Label("Etwas Weniger Text");
 		Label z2 = new Label("Text");
 		
 		// Innere Randabstände setzen
