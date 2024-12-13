@@ -2,10 +2,10 @@
 
 TODO
 
-* `BorderPane` - TODO
-* `GridPane` - TODO
-* `StackPane` - TODO
-* `FlowPane` - TODO
+* `BorderPane` - Rahmenlayout mit einem Flexiblem Zentralbereich
+* `GridPane` - Rasterlayout mit definierten Spalten und Zeilen
+* `StackPane` - Stapellayout mit einer definierten Stapelrichtung
+* `FlowPane` - Flusslayout mit primärer und sekundärer Flussrichtung
 
 TODO
 
